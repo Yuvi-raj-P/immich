@@ -10,9 +10,9 @@
 
 part of openapi.api;
 
-
 class NotificationsApi {
-  NotificationsApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
+  NotificationsApi([ApiClient? apiClient])
+      : apiClient = apiClient ?? defaultApiClient;
 
   final ApiClient apiClient;
 
@@ -20,7 +20,9 @@ class NotificationsApi {
   /// Parameters:
   ///
   /// * [SystemConfigSmtpDto] systemConfigSmtpDto (required):
-  Future<Response> sendTestEmailWithHttpInfo(SystemConfigSmtpDto systemConfigSmtpDto,) async {
+  Future<Response> sendTestEmailWithHttpInfo(
+    SystemConfigSmtpDto systemConfigSmtpDto,
+  ) async {
     // ignore: prefer_const_declarations
     final path = r'/notifications/test-email';
 
@@ -32,7 +34,6 @@ class NotificationsApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>['application/json'];
-
 
     return apiClient.invokeAPI(
       path,
@@ -48,8 +49,12 @@ class NotificationsApi {
   /// Parameters:
   ///
   /// * [SystemConfigSmtpDto] systemConfigSmtpDto (required):
-  Future<void> sendTestEmail(SystemConfigSmtpDto systemConfigSmtpDto,) async {
-    final response = await sendTestEmailWithHttpInfo(systemConfigSmtpDto,);
+  Future<void> sendTestEmail(
+    SystemConfigSmtpDto systemConfigSmtpDto,
+  ) async {
+    final response = await sendTestEmailWithHttpInfo(
+      systemConfigSmtpDto,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

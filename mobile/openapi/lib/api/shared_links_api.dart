@@ -10,9 +10,9 @@
 
 part of openapi.api;
 
-
 class SharedLinksApi {
-  SharedLinksApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
+  SharedLinksApi([ApiClient? apiClient])
+      : apiClient = apiClient ?? defaultApiClient;
 
   final ApiClient apiClient;
 
@@ -24,10 +24,13 @@ class SharedLinksApi {
   /// * [AssetIdsDto] assetIdsDto (required):
   ///
   /// * [String] key:
-  Future<Response> addSharedLinkAssetsWithHttpInfo(String id, AssetIdsDto assetIdsDto, { String? key, }) async {
+  Future<Response> addSharedLinkAssetsWithHttpInfo(
+    String id,
+    AssetIdsDto assetIdsDto, {
+    String? key,
+  }) async {
     // ignore: prefer_const_declarations
-    final path = r'/shared-links/{id}/assets'
-      .replaceAll('{id}', id);
+    final path = r'/shared-links/{id}/assets'.replaceAll('{id}', id);
 
     // ignore: prefer_final_locals
     Object? postBody = assetIdsDto;
@@ -41,7 +44,6 @@ class SharedLinksApi {
     }
 
     const contentTypes = <String>['application/json'];
-
 
     return apiClient.invokeAPI(
       path,
@@ -61,20 +63,29 @@ class SharedLinksApi {
   /// * [AssetIdsDto] assetIdsDto (required):
   ///
   /// * [String] key:
-  Future<List<AssetIdsResponseDto>?> addSharedLinkAssets(String id, AssetIdsDto assetIdsDto, { String? key, }) async {
-    final response = await addSharedLinkAssetsWithHttpInfo(id, assetIdsDto,  key: key, );
+  Future<List<AssetIdsResponseDto>?> addSharedLinkAssets(
+    String id,
+    AssetIdsDto assetIdsDto, {
+    String? key,
+  }) async {
+    final response = await addSharedLinkAssetsWithHttpInfo(
+      id,
+      assetIdsDto,
+      key: key,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<AssetIdsResponseDto>') as List)
-        .cast<AssetIdsResponseDto>()
-        .toList(growable: false);
-
+      return (await apiClient.deserializeAsync(
+              responseBody, 'List<AssetIdsResponseDto>') as List)
+          .cast<AssetIdsResponseDto>()
+          .toList(growable: false);
     }
     return null;
   }
@@ -83,7 +94,9 @@ class SharedLinksApi {
   /// Parameters:
   ///
   /// * [SharedLinkCreateDto] sharedLinkCreateDto (required):
-  Future<Response> createSharedLinkWithHttpInfo(SharedLinkCreateDto sharedLinkCreateDto,) async {
+  Future<Response> createSharedLinkWithHttpInfo(
+    SharedLinkCreateDto sharedLinkCreateDto,
+  ) async {
     // ignore: prefer_const_declarations
     final path = r'/shared-links';
 
@@ -95,7 +108,6 @@ class SharedLinksApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>['application/json'];
-
 
     return apiClient.invokeAPI(
       path,
@@ -111,17 +123,24 @@ class SharedLinksApi {
   /// Parameters:
   ///
   /// * [SharedLinkCreateDto] sharedLinkCreateDto (required):
-  Future<SharedLinkResponseDto?> createSharedLink(SharedLinkCreateDto sharedLinkCreateDto,) async {
-    final response = await createSharedLinkWithHttpInfo(sharedLinkCreateDto,);
+  Future<SharedLinkResponseDto?> createSharedLink(
+    SharedLinkCreateDto sharedLinkCreateDto,
+  ) async {
+    final response = await createSharedLinkWithHttpInfo(
+      sharedLinkCreateDto,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SharedLinkResponseDto',) as SharedLinkResponseDto;
-    
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'SharedLinkResponseDto',
+      ) as SharedLinkResponseDto;
     }
     return null;
   }
@@ -139,7 +158,6 @@ class SharedLinksApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -160,12 +178,13 @@ class SharedLinksApi {
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<SharedLinkResponseDto>') as List)
-        .cast<SharedLinkResponseDto>()
-        .toList(growable: false);
-
+      return (await apiClient.deserializeAsync(
+              responseBody, 'List<SharedLinkResponseDto>') as List)
+          .cast<SharedLinkResponseDto>()
+          .toList(growable: false);
     }
     return null;
   }
@@ -178,7 +197,11 @@ class SharedLinksApi {
   /// * [String] password:
   ///
   /// * [String] token:
-  Future<Response> getMySharedLinkWithHttpInfo({ String? key, String? password, String? token, }) async {
+  Future<Response> getMySharedLinkWithHttpInfo({
+    String? key,
+    String? password,
+    String? token,
+  }) async {
     // ignore: prefer_const_declarations
     final path = r'/shared-links/me';
 
@@ -201,7 +224,6 @@ class SharedLinksApi {
 
     const contentTypes = <String>[];
 
-
     return apiClient.invokeAPI(
       path,
       'GET',
@@ -220,17 +242,28 @@ class SharedLinksApi {
   /// * [String] password:
   ///
   /// * [String] token:
-  Future<SharedLinkResponseDto?> getMySharedLink({ String? key, String? password, String? token, }) async {
-    final response = await getMySharedLinkWithHttpInfo( key: key, password: password, token: token, );
+  Future<SharedLinkResponseDto?> getMySharedLink({
+    String? key,
+    String? password,
+    String? token,
+  }) async {
+    final response = await getMySharedLinkWithHttpInfo(
+      key: key,
+      password: password,
+      token: token,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SharedLinkResponseDto',) as SharedLinkResponseDto;
-    
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'SharedLinkResponseDto',
+      ) as SharedLinkResponseDto;
     }
     return null;
   }
@@ -239,10 +272,11 @@ class SharedLinksApi {
   /// Parameters:
   ///
   /// * [String] id (required):
-  Future<Response> getSharedLinkByIdWithHttpInfo(String id,) async {
+  Future<Response> getSharedLinkByIdWithHttpInfo(
+    String id,
+  ) async {
     // ignore: prefer_const_declarations
-    final path = r'/shared-links/{id}'
-      .replaceAll('{id}', id);
+    final path = r'/shared-links/{id}'.replaceAll('{id}', id);
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -252,7 +286,6 @@ class SharedLinksApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -268,17 +301,24 @@ class SharedLinksApi {
   /// Parameters:
   ///
   /// * [String] id (required):
-  Future<SharedLinkResponseDto?> getSharedLinkById(String id,) async {
-    final response = await getSharedLinkByIdWithHttpInfo(id,);
+  Future<SharedLinkResponseDto?> getSharedLinkById(
+    String id,
+  ) async {
+    final response = await getSharedLinkByIdWithHttpInfo(
+      id,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SharedLinkResponseDto',) as SharedLinkResponseDto;
-    
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'SharedLinkResponseDto',
+      ) as SharedLinkResponseDto;
     }
     return null;
   }
@@ -287,10 +327,11 @@ class SharedLinksApi {
   /// Parameters:
   ///
   /// * [String] id (required):
-  Future<Response> removeSharedLinkWithHttpInfo(String id,) async {
+  Future<Response> removeSharedLinkWithHttpInfo(
+    String id,
+  ) async {
     // ignore: prefer_const_declarations
-    final path = r'/shared-links/{id}'
-      .replaceAll('{id}', id);
+    final path = r'/shared-links/{id}'.replaceAll('{id}', id);
 
     // ignore: prefer_final_locals
     Object? postBody;
@@ -300,7 +341,6 @@ class SharedLinksApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -316,8 +356,12 @@ class SharedLinksApi {
   /// Parameters:
   ///
   /// * [String] id (required):
-  Future<void> removeSharedLink(String id,) async {
-    final response = await removeSharedLinkWithHttpInfo(id,);
+  Future<void> removeSharedLink(
+    String id,
+  ) async {
+    final response = await removeSharedLinkWithHttpInfo(
+      id,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -331,10 +375,13 @@ class SharedLinksApi {
   /// * [AssetIdsDto] assetIdsDto (required):
   ///
   /// * [String] key:
-  Future<Response> removeSharedLinkAssetsWithHttpInfo(String id, AssetIdsDto assetIdsDto, { String? key, }) async {
+  Future<Response> removeSharedLinkAssetsWithHttpInfo(
+    String id,
+    AssetIdsDto assetIdsDto, {
+    String? key,
+  }) async {
     // ignore: prefer_const_declarations
-    final path = r'/shared-links/{id}/assets'
-      .replaceAll('{id}', id);
+    final path = r'/shared-links/{id}/assets'.replaceAll('{id}', id);
 
     // ignore: prefer_final_locals
     Object? postBody = assetIdsDto;
@@ -349,7 +396,6 @@ class SharedLinksApi {
 
     const contentTypes = <String>['application/json'];
 
-
     return apiClient.invokeAPI(
       path,
       'DELETE',
@@ -368,20 +414,29 @@ class SharedLinksApi {
   /// * [AssetIdsDto] assetIdsDto (required):
   ///
   /// * [String] key:
-  Future<List<AssetIdsResponseDto>?> removeSharedLinkAssets(String id, AssetIdsDto assetIdsDto, { String? key, }) async {
-    final response = await removeSharedLinkAssetsWithHttpInfo(id, assetIdsDto,  key: key, );
+  Future<List<AssetIdsResponseDto>?> removeSharedLinkAssets(
+    String id,
+    AssetIdsDto assetIdsDto, {
+    String? key,
+  }) async {
+    final response = await removeSharedLinkAssetsWithHttpInfo(
+      id,
+      assetIdsDto,
+      key: key,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<AssetIdsResponseDto>') as List)
-        .cast<AssetIdsResponseDto>()
-        .toList(growable: false);
-
+      return (await apiClient.deserializeAsync(
+              responseBody, 'List<AssetIdsResponseDto>') as List)
+          .cast<AssetIdsResponseDto>()
+          .toList(growable: false);
     }
     return null;
   }
@@ -392,10 +447,12 @@ class SharedLinksApi {
   /// * [String] id (required):
   ///
   /// * [SharedLinkEditDto] sharedLinkEditDto (required):
-  Future<Response> updateSharedLinkWithHttpInfo(String id, SharedLinkEditDto sharedLinkEditDto,) async {
+  Future<Response> updateSharedLinkWithHttpInfo(
+    String id,
+    SharedLinkEditDto sharedLinkEditDto,
+  ) async {
     // ignore: prefer_const_declarations
-    final path = r'/shared-links/{id}'
-      .replaceAll('{id}', id);
+    final path = r'/shared-links/{id}'.replaceAll('{id}', id);
 
     // ignore: prefer_final_locals
     Object? postBody = sharedLinkEditDto;
@@ -405,7 +462,6 @@ class SharedLinksApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>['application/json'];
-
 
     return apiClient.invokeAPI(
       path,
@@ -423,17 +479,26 @@ class SharedLinksApi {
   /// * [String] id (required):
   ///
   /// * [SharedLinkEditDto] sharedLinkEditDto (required):
-  Future<SharedLinkResponseDto?> updateSharedLink(String id, SharedLinkEditDto sharedLinkEditDto,) async {
-    final response = await updateSharedLinkWithHttpInfo(id, sharedLinkEditDto,);
+  Future<SharedLinkResponseDto?> updateSharedLink(
+    String id,
+    SharedLinkEditDto sharedLinkEditDto,
+  ) async {
+    final response = await updateSharedLinkWithHttpInfo(
+      id,
+      sharedLinkEditDto,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SharedLinkResponseDto',) as SharedLinkResponseDto;
-    
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'SharedLinkResponseDto',
+      ) as SharedLinkResponseDto;
     }
     return null;
   }

@@ -10,7 +10,6 @@
 
 part of openapi.api;
 
-
 class MapTheme {
   /// Instantiate a new enum with the provided [value].
   const MapTheme._(this.value);
@@ -32,9 +31,13 @@ class MapTheme {
     dark,
   ];
 
-  static MapTheme? fromJson(dynamic value) => MapThemeTypeTransformer().decode(value);
+  static MapTheme? fromJson(dynamic value) =>
+      MapThemeTypeTransformer().decode(value);
 
-  static List<MapTheme> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<MapTheme> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <MapTheme>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -51,7 +54,8 @@ class MapTheme {
 /// Transformation class that can [encode] an instance of [MapTheme] to String,
 /// and [decode] dynamic data back to [MapTheme].
 class MapThemeTypeTransformer {
-  factory MapThemeTypeTransformer() => _instance ??= const MapThemeTypeTransformer._();
+  factory MapThemeTypeTransformer() =>
+      _instance ??= const MapThemeTypeTransformer._();
 
   const MapThemeTypeTransformer._();
 
@@ -68,8 +72,10 @@ class MapThemeTypeTransformer {
   MapTheme? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'light': return MapTheme.light;
-        case r'dark': return MapTheme.dark;
+        case r'light':
+          return MapTheme.light;
+        case r'dark':
+          return MapTheme.dark;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -82,4 +88,3 @@ class MapThemeTypeTransformer {
   /// Singleton [MapThemeTypeTransformer] instance.
   static MapThemeTypeTransformer? _instance;
 }
-

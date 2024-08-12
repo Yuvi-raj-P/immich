@@ -10,7 +10,6 @@
 
 part of openapi.api;
 
-
 class PartnerDirection {
   /// Instantiate a new enum with the provided [value].
   const PartnerDirection._(this.value);
@@ -32,9 +31,13 @@ class PartnerDirection {
     with_,
   ];
 
-  static PartnerDirection? fromJson(dynamic value) => PartnerDirectionTypeTransformer().decode(value);
+  static PartnerDirection? fromJson(dynamic value) =>
+      PartnerDirectionTypeTransformer().decode(value);
 
-  static List<PartnerDirection> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<PartnerDirection> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <PartnerDirection>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -51,7 +54,8 @@ class PartnerDirection {
 /// Transformation class that can [encode] an instance of [PartnerDirection] to String,
 /// and [decode] dynamic data back to [PartnerDirection].
 class PartnerDirectionTypeTransformer {
-  factory PartnerDirectionTypeTransformer() => _instance ??= const PartnerDirectionTypeTransformer._();
+  factory PartnerDirectionTypeTransformer() =>
+      _instance ??= const PartnerDirectionTypeTransformer._();
 
   const PartnerDirectionTypeTransformer._();
 
@@ -68,8 +72,10 @@ class PartnerDirectionTypeTransformer {
   PartnerDirection? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'shared-by': return PartnerDirection.by;
-        case r'shared-with': return PartnerDirection.with_;
+        case r'shared-by':
+          return PartnerDirection.by;
+        case r'shared-with':
+          return PartnerDirection.with_;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -82,4 +88,3 @@ class PartnerDirectionTypeTransformer {
   /// Singleton [PartnerDirectionTypeTransformer] instance.
   static PartnerDirectionTypeTransformer? _instance;
 }
-

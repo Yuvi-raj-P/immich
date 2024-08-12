@@ -70,58 +70,61 @@ class UpdateAssetDto {
   num? longitude;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is UpdateAssetDto &&
-    other.dateTimeOriginal == dateTimeOriginal &&
-    other.description == description &&
-    other.isArchived == isArchived &&
-    other.isFavorite == isFavorite &&
-    other.latitude == latitude &&
-    other.longitude == longitude;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is UpdateAssetDto &&
+          other.dateTimeOriginal == dateTimeOriginal &&
+          other.description == description &&
+          other.isArchived == isArchived &&
+          other.isFavorite == isFavorite &&
+          other.latitude == latitude &&
+          other.longitude == longitude;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (dateTimeOriginal == null ? 0 : dateTimeOriginal!.hashCode) +
-    (description == null ? 0 : description!.hashCode) +
-    (isArchived == null ? 0 : isArchived!.hashCode) +
-    (isFavorite == null ? 0 : isFavorite!.hashCode) +
-    (latitude == null ? 0 : latitude!.hashCode) +
-    (longitude == null ? 0 : longitude!.hashCode);
+      // ignore: unnecessary_parenthesis
+      (dateTimeOriginal == null ? 0 : dateTimeOriginal!.hashCode) +
+      (description == null ? 0 : description!.hashCode) +
+      (isArchived == null ? 0 : isArchived!.hashCode) +
+      (isFavorite == null ? 0 : isFavorite!.hashCode) +
+      (latitude == null ? 0 : latitude!.hashCode) +
+      (longitude == null ? 0 : longitude!.hashCode);
 
   @override
-  String toString() => 'UpdateAssetDto[dateTimeOriginal=$dateTimeOriginal, description=$description, isArchived=$isArchived, isFavorite=$isFavorite, latitude=$latitude, longitude=$longitude]';
+  String toString() =>
+      'UpdateAssetDto[dateTimeOriginal=$dateTimeOriginal, description=$description, isArchived=$isArchived, isFavorite=$isFavorite, latitude=$latitude, longitude=$longitude]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
     if (this.dateTimeOriginal != null) {
       json[r'dateTimeOriginal'] = this.dateTimeOriginal;
     } else {
-    //  json[r'dateTimeOriginal'] = null;
+      //  json[r'dateTimeOriginal'] = null;
     }
     if (this.description != null) {
       json[r'description'] = this.description;
     } else {
-    //  json[r'description'] = null;
+      //  json[r'description'] = null;
     }
     if (this.isArchived != null) {
       json[r'isArchived'] = this.isArchived;
     } else {
-    //  json[r'isArchived'] = null;
+      //  json[r'isArchived'] = null;
     }
     if (this.isFavorite != null) {
       json[r'isFavorite'] = this.isFavorite;
     } else {
-    //  json[r'isFavorite'] = null;
+      //  json[r'isFavorite'] = null;
     }
     if (this.latitude != null) {
       json[r'latitude'] = this.latitude;
     } else {
-    //  json[r'latitude'] = null;
+      //  json[r'latitude'] = null;
     }
     if (this.longitude != null) {
       json[r'longitude'] = this.longitude;
     } else {
-    //  json[r'longitude'] = null;
+      //  json[r'longitude'] = null;
     }
     return json;
   }
@@ -145,7 +148,10 @@ class UpdateAssetDto {
     return null;
   }
 
-  static List<UpdateAssetDto> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<UpdateAssetDto> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <UpdateAssetDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -173,20 +179,24 @@ class UpdateAssetDto {
   }
 
   // maps a json object with a list of UpdateAssetDto-objects as value to a dart map
-  static Map<String, List<UpdateAssetDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<UpdateAssetDto>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<UpdateAssetDto>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = UpdateAssetDto.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = UpdateAssetDto.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
   }
 
   /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{
-  };
+  static const requiredKeys = <String>{};
 }
-

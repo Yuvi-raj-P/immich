@@ -22,23 +22,24 @@ class SystemConfigLibraryDto {
   SystemConfigLibraryWatchDto watch;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is SystemConfigLibraryDto &&
-    other.scan == scan &&
-    other.watch == watch;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SystemConfigLibraryDto &&
+          other.scan == scan &&
+          other.watch == watch;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (scan.hashCode) +
-    (watch.hashCode);
+      // ignore: unnecessary_parenthesis
+      (scan.hashCode) + (watch.hashCode);
 
   @override
   String toString() => 'SystemConfigLibraryDto[scan=$scan, watch=$watch]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'scan'] = this.scan;
-      json[r'watch'] = this.watch;
+    json[r'scan'] = this.scan;
+    json[r'watch'] = this.watch;
     return json;
   }
 
@@ -57,7 +58,10 @@ class SystemConfigLibraryDto {
     return null;
   }
 
-  static List<SystemConfigLibraryDto> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<SystemConfigLibraryDto> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <SystemConfigLibraryDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -85,13 +89,19 @@ class SystemConfigLibraryDto {
   }
 
   // maps a json object with a list of SystemConfigLibraryDto-objects as value to a dart map
-  static Map<String, List<SystemConfigLibraryDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<SystemConfigLibraryDto>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<SystemConfigLibraryDto>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = SystemConfigLibraryDto.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = SystemConfigLibraryDto.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -103,4 +113,3 @@ class SystemConfigLibraryDto {
     'watch',
   };
 }
-

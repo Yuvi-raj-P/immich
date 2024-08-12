@@ -34,36 +34,39 @@ class AssetBulkUploadCheckResult {
   AssetBulkUploadCheckResultReasonEnum? reason;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is AssetBulkUploadCheckResult &&
-    other.action == action &&
-    other.assetId == assetId &&
-    other.id == id &&
-    other.reason == reason;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is AssetBulkUploadCheckResult &&
+          other.action == action &&
+          other.assetId == assetId &&
+          other.id == id &&
+          other.reason == reason;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (action.hashCode) +
-    (assetId == null ? 0 : assetId!.hashCode) +
-    (id.hashCode) +
-    (reason == null ? 0 : reason!.hashCode);
+      // ignore: unnecessary_parenthesis
+      (action.hashCode) +
+      (assetId == null ? 0 : assetId!.hashCode) +
+      (id.hashCode) +
+      (reason == null ? 0 : reason!.hashCode);
 
   @override
-  String toString() => 'AssetBulkUploadCheckResult[action=$action, assetId=$assetId, id=$id, reason=$reason]';
+  String toString() =>
+      'AssetBulkUploadCheckResult[action=$action, assetId=$assetId, id=$id, reason=$reason]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'action'] = this.action;
+    json[r'action'] = this.action;
     if (this.assetId != null) {
       json[r'assetId'] = this.assetId;
     } else {
-    //  json[r'assetId'] = null;
+      //  json[r'assetId'] = null;
     }
-      json[r'id'] = this.id;
+    json[r'id'] = this.id;
     if (this.reason != null) {
       json[r'reason'] = this.reason;
     } else {
-    //  json[r'reason'] = null;
+      //  json[r'reason'] = null;
     }
     return json;
   }
@@ -85,7 +88,10 @@ class AssetBulkUploadCheckResult {
     return null;
   }
 
-  static List<AssetBulkUploadCheckResult> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<AssetBulkUploadCheckResult> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <AssetBulkUploadCheckResult>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -113,13 +119,19 @@ class AssetBulkUploadCheckResult {
   }
 
   // maps a json object with a list of AssetBulkUploadCheckResult-objects as value to a dart map
-  static Map<String, List<AssetBulkUploadCheckResult>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<AssetBulkUploadCheckResult>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<AssetBulkUploadCheckResult>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = AssetBulkUploadCheckResult.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = AssetBulkUploadCheckResult.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -131,7 +143,6 @@ class AssetBulkUploadCheckResult {
     'id',
   };
 }
-
 
 class AssetBulkUploadCheckResultActionEnum {
   /// Instantiate a new enum with the provided [value].
@@ -154,9 +165,13 @@ class AssetBulkUploadCheckResultActionEnum {
     reject,
   ];
 
-  static AssetBulkUploadCheckResultActionEnum? fromJson(dynamic value) => AssetBulkUploadCheckResultActionEnumTypeTransformer().decode(value);
+  static AssetBulkUploadCheckResultActionEnum? fromJson(dynamic value) =>
+      AssetBulkUploadCheckResultActionEnumTypeTransformer().decode(value);
 
-  static List<AssetBulkUploadCheckResultActionEnum> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<AssetBulkUploadCheckResultActionEnum> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <AssetBulkUploadCheckResultActionEnum>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -173,7 +188,8 @@ class AssetBulkUploadCheckResultActionEnum {
 /// Transformation class that can [encode] an instance of [AssetBulkUploadCheckResultActionEnum] to String,
 /// and [decode] dynamic data back to [AssetBulkUploadCheckResultActionEnum].
 class AssetBulkUploadCheckResultActionEnumTypeTransformer {
-  factory AssetBulkUploadCheckResultActionEnumTypeTransformer() => _instance ??= const AssetBulkUploadCheckResultActionEnumTypeTransformer._();
+  factory AssetBulkUploadCheckResultActionEnumTypeTransformer() => _instance ??=
+      const AssetBulkUploadCheckResultActionEnumTypeTransformer._();
 
   const AssetBulkUploadCheckResultActionEnumTypeTransformer._();
 
@@ -187,11 +203,14 @@ class AssetBulkUploadCheckResultActionEnumTypeTransformer {
   ///
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
-  AssetBulkUploadCheckResultActionEnum? decode(dynamic data, {bool allowNull = true}) {
+  AssetBulkUploadCheckResultActionEnum? decode(dynamic data,
+      {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'accept': return AssetBulkUploadCheckResultActionEnum.accept;
-        case r'reject': return AssetBulkUploadCheckResultActionEnum.reject;
+        case r'accept':
+          return AssetBulkUploadCheckResultActionEnum.accept;
+        case r'reject':
+          return AssetBulkUploadCheckResultActionEnum.reject;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -204,8 +223,6 @@ class AssetBulkUploadCheckResultActionEnumTypeTransformer {
   /// Singleton [AssetBulkUploadCheckResultActionEnumTypeTransformer] instance.
   static AssetBulkUploadCheckResultActionEnumTypeTransformer? _instance;
 }
-
-
 
 class AssetBulkUploadCheckResultReasonEnum {
   /// Instantiate a new enum with the provided [value].
@@ -220,7 +237,8 @@ class AssetBulkUploadCheckResultReasonEnum {
   String toJson() => value;
 
   static const duplicate = AssetBulkUploadCheckResultReasonEnum._(r'duplicate');
-  static const unsupportedFormat = AssetBulkUploadCheckResultReasonEnum._(r'unsupported-format');
+  static const unsupportedFormat =
+      AssetBulkUploadCheckResultReasonEnum._(r'unsupported-format');
 
   /// List of all possible values in this [enum][AssetBulkUploadCheckResultReasonEnum].
   static const values = <AssetBulkUploadCheckResultReasonEnum>[
@@ -228,9 +246,13 @@ class AssetBulkUploadCheckResultReasonEnum {
     unsupportedFormat,
   ];
 
-  static AssetBulkUploadCheckResultReasonEnum? fromJson(dynamic value) => AssetBulkUploadCheckResultReasonEnumTypeTransformer().decode(value);
+  static AssetBulkUploadCheckResultReasonEnum? fromJson(dynamic value) =>
+      AssetBulkUploadCheckResultReasonEnumTypeTransformer().decode(value);
 
-  static List<AssetBulkUploadCheckResultReasonEnum> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<AssetBulkUploadCheckResultReasonEnum> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <AssetBulkUploadCheckResultReasonEnum>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -247,7 +269,8 @@ class AssetBulkUploadCheckResultReasonEnum {
 /// Transformation class that can [encode] an instance of [AssetBulkUploadCheckResultReasonEnum] to String,
 /// and [decode] dynamic data back to [AssetBulkUploadCheckResultReasonEnum].
 class AssetBulkUploadCheckResultReasonEnumTypeTransformer {
-  factory AssetBulkUploadCheckResultReasonEnumTypeTransformer() => _instance ??= const AssetBulkUploadCheckResultReasonEnumTypeTransformer._();
+  factory AssetBulkUploadCheckResultReasonEnumTypeTransformer() => _instance ??=
+      const AssetBulkUploadCheckResultReasonEnumTypeTransformer._();
 
   const AssetBulkUploadCheckResultReasonEnumTypeTransformer._();
 
@@ -261,11 +284,14 @@ class AssetBulkUploadCheckResultReasonEnumTypeTransformer {
   ///
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
-  AssetBulkUploadCheckResultReasonEnum? decode(dynamic data, {bool allowNull = true}) {
+  AssetBulkUploadCheckResultReasonEnum? decode(dynamic data,
+      {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'duplicate': return AssetBulkUploadCheckResultReasonEnum.duplicate;
-        case r'unsupported-format': return AssetBulkUploadCheckResultReasonEnum.unsupportedFormat;
+        case r'duplicate':
+          return AssetBulkUploadCheckResultReasonEnum.duplicate;
+        case r'unsupported-format':
+          return AssetBulkUploadCheckResultReasonEnum.unsupportedFormat;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -278,5 +304,3 @@ class AssetBulkUploadCheckResultReasonEnumTypeTransformer {
   /// Singleton [AssetBulkUploadCheckResultReasonEnumTypeTransformer] instance.
   static AssetBulkUploadCheckResultReasonEnumTypeTransformer? _instance;
 }
-
-

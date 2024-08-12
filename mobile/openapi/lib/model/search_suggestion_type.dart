@@ -10,7 +10,6 @@
 
 part of openapi.api;
 
-
 class SearchSuggestionType {
   /// Instantiate a new enum with the provided [value].
   const SearchSuggestionType._(this.value);
@@ -38,9 +37,13 @@ class SearchSuggestionType {
     cameraModel,
   ];
 
-  static SearchSuggestionType? fromJson(dynamic value) => SearchSuggestionTypeTypeTransformer().decode(value);
+  static SearchSuggestionType? fromJson(dynamic value) =>
+      SearchSuggestionTypeTypeTransformer().decode(value);
 
-  static List<SearchSuggestionType> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<SearchSuggestionType> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <SearchSuggestionType>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -57,7 +60,8 @@ class SearchSuggestionType {
 /// Transformation class that can [encode] an instance of [SearchSuggestionType] to String,
 /// and [decode] dynamic data back to [SearchSuggestionType].
 class SearchSuggestionTypeTypeTransformer {
-  factory SearchSuggestionTypeTypeTransformer() => _instance ??= const SearchSuggestionTypeTypeTransformer._();
+  factory SearchSuggestionTypeTypeTransformer() =>
+      _instance ??= const SearchSuggestionTypeTypeTransformer._();
 
   const SearchSuggestionTypeTypeTransformer._();
 
@@ -74,11 +78,16 @@ class SearchSuggestionTypeTypeTransformer {
   SearchSuggestionType? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'country': return SearchSuggestionType.country;
-        case r'state': return SearchSuggestionType.state;
-        case r'city': return SearchSuggestionType.city;
-        case r'camera-make': return SearchSuggestionType.cameraMake;
-        case r'camera-model': return SearchSuggestionType.cameraModel;
+        case r'country':
+          return SearchSuggestionType.country;
+        case r'state':
+          return SearchSuggestionType.state;
+        case r'city':
+          return SearchSuggestionType.city;
+        case r'camera-make':
+          return SearchSuggestionType.cameraMake;
+        case r'camera-model':
+          return SearchSuggestionType.cameraModel;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -91,4 +100,3 @@ class SearchSuggestionTypeTypeTransformer {
   /// Singleton [SearchSuggestionTypeTypeTransformer] instance.
   static SearchSuggestionTypeTypeTransformer? _instance;
 }
-

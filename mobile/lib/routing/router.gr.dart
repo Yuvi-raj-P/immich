@@ -172,18 +172,19 @@ abstract class _$AppRouter extends RootStackRouter {
         child: CropImagePage(
           key: args.key,
           image: args.image,
+          asset: args.asset,
         ),
       );
     },
     EditImageRoute.name: (routeData) {
-      final args = routeData.argsAs<EditImageRouteArgs>(
-          orElse: () => const EditImageRouteArgs());
+      final args = routeData.argsAs<EditImageRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: EditImagePage(
           key: args.key,
-          image: args.image,
           asset: args.asset,
+          image: args.image,
+          isEdited: args.isEdited,
         ),
       );
     },
@@ -864,12 +865,14 @@ class CropImageRoute extends PageRouteInfo<CropImageRouteArgs> {
   CropImageRoute({
     Key? key,
     required Image image,
+    required Asset asset,
     List<PageRouteInfo>? children,
   }) : super(
           CropImageRoute.name,
           args: CropImageRouteArgs(
             key: key,
             image: image,
+            asset: asset,
           ),
           initialChildren: children,
         );
@@ -884,15 +887,18 @@ class CropImageRouteArgs {
   const CropImageRouteArgs({
     this.key,
     required this.image,
+    required this.asset,
   });
 
   final Key? key;
 
   final Image image;
 
+  final Asset asset;
+
   @override
   String toString() {
-    return 'CropImageRouteArgs{key: $key, image: $image}';
+    return 'CropImageRouteArgs{key: $key, image: $image, asset: $asset}';
   }
 }
 
@@ -901,15 +907,17 @@ class CropImageRouteArgs {
 class EditImageRoute extends PageRouteInfo<EditImageRouteArgs> {
   EditImageRoute({
     Key? key,
-    Image? image,
-    Asset? asset,
+    required Asset asset,
+    required Image image,
+    required bool isEdited,
     List<PageRouteInfo>? children,
   }) : super(
           EditImageRoute.name,
           args: EditImageRouteArgs(
             key: key,
-            image: image,
             asset: asset,
+            image: image,
+            isEdited: isEdited,
           ),
           initialChildren: children,
         );
@@ -923,19 +931,22 @@ class EditImageRoute extends PageRouteInfo<EditImageRouteArgs> {
 class EditImageRouteArgs {
   const EditImageRouteArgs({
     this.key,
-    this.image,
-    this.asset,
+    required this.asset,
+    required this.image,
+    required this.isEdited,
   });
 
   final Key? key;
 
-  final Image? image;
+  final Asset asset;
 
-  final Asset? asset;
+  final Image image;
+
+  final bool isEdited;
 
   @override
   String toString() {
-    return 'EditImageRouteArgs{key: $key, image: $image, asset: $asset}';
+    return 'EditImageRouteArgs{key: $key, asset: $asset, image: $image, isEdited: $isEdited}';
   }
 }
 

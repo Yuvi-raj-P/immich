@@ -10,7 +10,6 @@
 
 part of openapi.api;
 
-
 class PathEntityType {
   /// Instantiate a new enum with the provided [value].
   const PathEntityType._(this.value);
@@ -34,9 +33,13 @@ class PathEntityType {
     user,
   ];
 
-  static PathEntityType? fromJson(dynamic value) => PathEntityTypeTypeTransformer().decode(value);
+  static PathEntityType? fromJson(dynamic value) =>
+      PathEntityTypeTypeTransformer().decode(value);
 
-  static List<PathEntityType> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<PathEntityType> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <PathEntityType>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -53,7 +56,8 @@ class PathEntityType {
 /// Transformation class that can [encode] an instance of [PathEntityType] to String,
 /// and [decode] dynamic data back to [PathEntityType].
 class PathEntityTypeTypeTransformer {
-  factory PathEntityTypeTypeTransformer() => _instance ??= const PathEntityTypeTypeTransformer._();
+  factory PathEntityTypeTypeTransformer() =>
+      _instance ??= const PathEntityTypeTypeTransformer._();
 
   const PathEntityTypeTypeTransformer._();
 
@@ -70,9 +74,12 @@ class PathEntityTypeTypeTransformer {
   PathEntityType? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'asset': return PathEntityType.asset;
-        case r'person': return PathEntityType.person;
-        case r'user': return PathEntityType.user;
+        case r'asset':
+          return PathEntityType.asset;
+        case r'person':
+          return PathEntityType.person;
+        case r'user':
+          return PathEntityType.user;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -85,4 +92,3 @@ class PathEntityTypeTypeTransformer {
   /// Singleton [PathEntityTypeTypeTransformer] instance.
   static PathEntityTypeTypeTransformer? _instance;
 }
-

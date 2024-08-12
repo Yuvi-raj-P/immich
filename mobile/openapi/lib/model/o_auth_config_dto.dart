@@ -19,20 +19,21 @@ class OAuthConfigDto {
   String redirectUri;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is OAuthConfigDto &&
-    other.redirectUri == redirectUri;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is OAuthConfigDto && other.redirectUri == redirectUri;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (redirectUri.hashCode);
+      // ignore: unnecessary_parenthesis
+      (redirectUri.hashCode);
 
   @override
   String toString() => 'OAuthConfigDto[redirectUri=$redirectUri]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'redirectUri'] = this.redirectUri;
+    json[r'redirectUri'] = this.redirectUri;
     return json;
   }
 
@@ -50,7 +51,10 @@ class OAuthConfigDto {
     return null;
   }
 
-  static List<OAuthConfigDto> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<OAuthConfigDto> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <OAuthConfigDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -78,13 +82,19 @@ class OAuthConfigDto {
   }
 
   // maps a json object with a list of OAuthConfigDto-objects as value to a dart map
-  static Map<String, List<OAuthConfigDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<OAuthConfigDto>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<OAuthConfigDto>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = OAuthConfigDto.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = OAuthConfigDto.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -95,4 +105,3 @@ class OAuthConfigDto {
     'redirectUri',
   };
 }
-

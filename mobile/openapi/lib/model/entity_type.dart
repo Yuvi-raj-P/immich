@@ -10,7 +10,6 @@
 
 part of openapi.api;
 
-
 class EntityType {
   /// Instantiate a new enum with the provided [value].
   const EntityType._(this.value);
@@ -32,9 +31,13 @@ class EntityType {
     ALBUM,
   ];
 
-  static EntityType? fromJson(dynamic value) => EntityTypeTypeTransformer().decode(value);
+  static EntityType? fromJson(dynamic value) =>
+      EntityTypeTypeTransformer().decode(value);
 
-  static List<EntityType> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<EntityType> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <EntityType>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -51,7 +54,8 @@ class EntityType {
 /// Transformation class that can [encode] an instance of [EntityType] to String,
 /// and [decode] dynamic data back to [EntityType].
 class EntityTypeTypeTransformer {
-  factory EntityTypeTypeTransformer() => _instance ??= const EntityTypeTypeTransformer._();
+  factory EntityTypeTypeTransformer() =>
+      _instance ??= const EntityTypeTypeTransformer._();
 
   const EntityTypeTypeTransformer._();
 
@@ -68,8 +72,10 @@ class EntityTypeTypeTransformer {
   EntityType? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'ASSET': return EntityType.ASSET;
-        case r'ALBUM': return EntityType.ALBUM;
+        case r'ASSET':
+          return EntityType.ASSET;
+        case r'ALBUM':
+          return EntityType.ALBUM;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -82,4 +88,3 @@ class EntityTypeTypeTransformer {
   /// Singleton [EntityTypeTypeTransformer] instance.
   static EntityTypeTypeTransformer? _instance;
 }
-

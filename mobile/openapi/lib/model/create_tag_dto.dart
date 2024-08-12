@@ -22,23 +22,22 @@ class CreateTagDto {
   TagTypeEnum type;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is CreateTagDto &&
-    other.name == name &&
-    other.type == type;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CreateTagDto && other.name == name && other.type == type;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (name.hashCode) +
-    (type.hashCode);
+      // ignore: unnecessary_parenthesis
+      (name.hashCode) + (type.hashCode);
 
   @override
   String toString() => 'CreateTagDto[name=$name, type=$type]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'name'] = this.name;
-      json[r'type'] = this.type;
+    json[r'name'] = this.name;
+    json[r'type'] = this.type;
     return json;
   }
 
@@ -57,7 +56,10 @@ class CreateTagDto {
     return null;
   }
 
-  static List<CreateTagDto> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<CreateTagDto> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <CreateTagDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -85,13 +87,19 @@ class CreateTagDto {
   }
 
   // maps a json object with a list of CreateTagDto-objects as value to a dart map
-  static Map<String, List<CreateTagDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<CreateTagDto>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<CreateTagDto>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = CreateTagDto.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = CreateTagDto.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -103,4 +111,3 @@ class CreateTagDto {
     'type',
   };
 }
-

@@ -22,23 +22,25 @@ class CheckExistingAssetsDto {
   String deviceId;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is CheckExistingAssetsDto &&
-    _deepEquality.equals(other.deviceAssetIds, deviceAssetIds) &&
-    other.deviceId == deviceId;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CheckExistingAssetsDto &&
+          _deepEquality.equals(other.deviceAssetIds, deviceAssetIds) &&
+          other.deviceId == deviceId;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (deviceAssetIds.hashCode) +
-    (deviceId.hashCode);
+      // ignore: unnecessary_parenthesis
+      (deviceAssetIds.hashCode) + (deviceId.hashCode);
 
   @override
-  String toString() => 'CheckExistingAssetsDto[deviceAssetIds=$deviceAssetIds, deviceId=$deviceId]';
+  String toString() =>
+      'CheckExistingAssetsDto[deviceAssetIds=$deviceAssetIds, deviceId=$deviceId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'deviceAssetIds'] = this.deviceAssetIds;
-      json[r'deviceId'] = this.deviceId;
+    json[r'deviceAssetIds'] = this.deviceAssetIds;
+    json[r'deviceId'] = this.deviceId;
     return json;
   }
 
@@ -51,7 +53,9 @@ class CheckExistingAssetsDto {
 
       return CheckExistingAssetsDto(
         deviceAssetIds: json[r'deviceAssetIds'] is Iterable
-            ? (json[r'deviceAssetIds'] as Iterable).cast<String>().toList(growable: false)
+            ? (json[r'deviceAssetIds'] as Iterable)
+                .cast<String>()
+                .toList(growable: false)
             : const [],
         deviceId: mapValueOfType<String>(json, r'deviceId')!,
       );
@@ -59,7 +63,10 @@ class CheckExistingAssetsDto {
     return null;
   }
 
-  static List<CheckExistingAssetsDto> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<CheckExistingAssetsDto> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <CheckExistingAssetsDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -87,13 +94,19 @@ class CheckExistingAssetsDto {
   }
 
   // maps a json object with a list of CheckExistingAssetsDto-objects as value to a dart map
-  static Map<String, List<CheckExistingAssetsDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<CheckExistingAssetsDto>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<CheckExistingAssetsDto>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = CheckExistingAssetsDto.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = CheckExistingAssetsDto.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -105,4 +118,3 @@ class CheckExistingAssetsDto {
     'deviceId',
   };
 }
-

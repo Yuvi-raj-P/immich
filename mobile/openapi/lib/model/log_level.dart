@@ -10,7 +10,6 @@
 
 part of openapi.api;
 
-
 class LogLevel {
   /// Instantiate a new enum with the provided [value].
   const LogLevel._(this.value);
@@ -40,9 +39,13 @@ class LogLevel {
     fatal,
   ];
 
-  static LogLevel? fromJson(dynamic value) => LogLevelTypeTransformer().decode(value);
+  static LogLevel? fromJson(dynamic value) =>
+      LogLevelTypeTransformer().decode(value);
 
-  static List<LogLevel> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<LogLevel> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <LogLevel>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -59,7 +62,8 @@ class LogLevel {
 /// Transformation class that can [encode] an instance of [LogLevel] to String,
 /// and [decode] dynamic data back to [LogLevel].
 class LogLevelTypeTransformer {
-  factory LogLevelTypeTransformer() => _instance ??= const LogLevelTypeTransformer._();
+  factory LogLevelTypeTransformer() =>
+      _instance ??= const LogLevelTypeTransformer._();
 
   const LogLevelTypeTransformer._();
 
@@ -76,12 +80,18 @@ class LogLevelTypeTransformer {
   LogLevel? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'verbose': return LogLevel.verbose;
-        case r'debug': return LogLevel.debug;
-        case r'log': return LogLevel.log;
-        case r'warn': return LogLevel.warn;
-        case r'error': return LogLevel.error;
-        case r'fatal': return LogLevel.fatal;
+        case r'verbose':
+          return LogLevel.verbose;
+        case r'debug':
+          return LogLevel.debug;
+        case r'log':
+          return LogLevel.log;
+        case r'warn':
+          return LogLevel.warn;
+        case r'error':
+          return LogLevel.error;
+        case r'fatal':
+          return LogLevel.fatal;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -94,4 +104,3 @@ class LogLevelTypeTransformer {
   /// Singleton [LogLevelTypeTransformer] instance.
   static LogLevelTypeTransformer? _instance;
 }
-

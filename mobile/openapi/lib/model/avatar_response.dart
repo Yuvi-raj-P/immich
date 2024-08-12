@@ -19,20 +19,20 @@ class AvatarResponse {
   UserAvatarColor color;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is AvatarResponse &&
-    other.color == color;
+  bool operator ==(Object other) =>
+      identical(this, other) || other is AvatarResponse && other.color == color;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (color.hashCode);
+      // ignore: unnecessary_parenthesis
+      (color.hashCode);
 
   @override
   String toString() => 'AvatarResponse[color=$color]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'color'] = this.color;
+    json[r'color'] = this.color;
     return json;
   }
 
@@ -50,7 +50,10 @@ class AvatarResponse {
     return null;
   }
 
-  static List<AvatarResponse> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<AvatarResponse> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <AvatarResponse>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -78,13 +81,19 @@ class AvatarResponse {
   }
 
   // maps a json object with a list of AvatarResponse-objects as value to a dart map
-  static Map<String, List<AvatarResponse>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<AvatarResponse>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<AvatarResponse>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = AvatarResponse.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = AvatarResponse.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -95,4 +104,3 @@ class AvatarResponse {
     'color',
   };
 }
-

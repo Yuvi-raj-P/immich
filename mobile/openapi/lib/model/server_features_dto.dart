@@ -55,56 +55,59 @@ class ServerFeaturesDto {
   bool trash;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is ServerFeaturesDto &&
-    other.configFile == configFile &&
-    other.duplicateDetection == duplicateDetection &&
-    other.email == email &&
-    other.facialRecognition == facialRecognition &&
-    other.map == map &&
-    other.oauth == oauth &&
-    other.oauthAutoLaunch == oauthAutoLaunch &&
-    other.passwordLogin == passwordLogin &&
-    other.reverseGeocoding == reverseGeocoding &&
-    other.search == search &&
-    other.sidecar == sidecar &&
-    other.smartSearch == smartSearch &&
-    other.trash == trash;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ServerFeaturesDto &&
+          other.configFile == configFile &&
+          other.duplicateDetection == duplicateDetection &&
+          other.email == email &&
+          other.facialRecognition == facialRecognition &&
+          other.map == map &&
+          other.oauth == oauth &&
+          other.oauthAutoLaunch == oauthAutoLaunch &&
+          other.passwordLogin == passwordLogin &&
+          other.reverseGeocoding == reverseGeocoding &&
+          other.search == search &&
+          other.sidecar == sidecar &&
+          other.smartSearch == smartSearch &&
+          other.trash == trash;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (configFile.hashCode) +
-    (duplicateDetection.hashCode) +
-    (email.hashCode) +
-    (facialRecognition.hashCode) +
-    (map.hashCode) +
-    (oauth.hashCode) +
-    (oauthAutoLaunch.hashCode) +
-    (passwordLogin.hashCode) +
-    (reverseGeocoding.hashCode) +
-    (search.hashCode) +
-    (sidecar.hashCode) +
-    (smartSearch.hashCode) +
-    (trash.hashCode);
+      // ignore: unnecessary_parenthesis
+      (configFile.hashCode) +
+      (duplicateDetection.hashCode) +
+      (email.hashCode) +
+      (facialRecognition.hashCode) +
+      (map.hashCode) +
+      (oauth.hashCode) +
+      (oauthAutoLaunch.hashCode) +
+      (passwordLogin.hashCode) +
+      (reverseGeocoding.hashCode) +
+      (search.hashCode) +
+      (sidecar.hashCode) +
+      (smartSearch.hashCode) +
+      (trash.hashCode);
 
   @override
-  String toString() => 'ServerFeaturesDto[configFile=$configFile, duplicateDetection=$duplicateDetection, email=$email, facialRecognition=$facialRecognition, map=$map, oauth=$oauth, oauthAutoLaunch=$oauthAutoLaunch, passwordLogin=$passwordLogin, reverseGeocoding=$reverseGeocoding, search=$search, sidecar=$sidecar, smartSearch=$smartSearch, trash=$trash]';
+  String toString() =>
+      'ServerFeaturesDto[configFile=$configFile, duplicateDetection=$duplicateDetection, email=$email, facialRecognition=$facialRecognition, map=$map, oauth=$oauth, oauthAutoLaunch=$oauthAutoLaunch, passwordLogin=$passwordLogin, reverseGeocoding=$reverseGeocoding, search=$search, sidecar=$sidecar, smartSearch=$smartSearch, trash=$trash]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'configFile'] = this.configFile;
-      json[r'duplicateDetection'] = this.duplicateDetection;
-      json[r'email'] = this.email;
-      json[r'facialRecognition'] = this.facialRecognition;
-      json[r'map'] = this.map;
-      json[r'oauth'] = this.oauth;
-      json[r'oauthAutoLaunch'] = this.oauthAutoLaunch;
-      json[r'passwordLogin'] = this.passwordLogin;
-      json[r'reverseGeocoding'] = this.reverseGeocoding;
-      json[r'search'] = this.search;
-      json[r'sidecar'] = this.sidecar;
-      json[r'smartSearch'] = this.smartSearch;
-      json[r'trash'] = this.trash;
+    json[r'configFile'] = this.configFile;
+    json[r'duplicateDetection'] = this.duplicateDetection;
+    json[r'email'] = this.email;
+    json[r'facialRecognition'] = this.facialRecognition;
+    json[r'map'] = this.map;
+    json[r'oauth'] = this.oauth;
+    json[r'oauthAutoLaunch'] = this.oauthAutoLaunch;
+    json[r'passwordLogin'] = this.passwordLogin;
+    json[r'reverseGeocoding'] = this.reverseGeocoding;
+    json[r'search'] = this.search;
+    json[r'sidecar'] = this.sidecar;
+    json[r'smartSearch'] = this.smartSearch;
+    json[r'trash'] = this.trash;
     return json;
   }
 
@@ -134,7 +137,10 @@ class ServerFeaturesDto {
     return null;
   }
 
-  static List<ServerFeaturesDto> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<ServerFeaturesDto> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <ServerFeaturesDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -162,13 +168,19 @@ class ServerFeaturesDto {
   }
 
   // maps a json object with a list of ServerFeaturesDto-objects as value to a dart map
-  static Map<String, List<ServerFeaturesDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<ServerFeaturesDto>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<ServerFeaturesDto>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = ServerFeaturesDto.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = ServerFeaturesDto.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -191,4 +203,3 @@ class ServerFeaturesDto {
     'trash',
   };
 }
-

@@ -22,23 +22,25 @@ class SearchExploreResponseDto {
   List<SearchExploreItem> items;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is SearchExploreResponseDto &&
-    other.fieldName == fieldName &&
-    _deepEquality.equals(other.items, items);
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SearchExploreResponseDto &&
+          other.fieldName == fieldName &&
+          _deepEquality.equals(other.items, items);
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (fieldName.hashCode) +
-    (items.hashCode);
+      // ignore: unnecessary_parenthesis
+      (fieldName.hashCode) + (items.hashCode);
 
   @override
-  String toString() => 'SearchExploreResponseDto[fieldName=$fieldName, items=$items]';
+  String toString() =>
+      'SearchExploreResponseDto[fieldName=$fieldName, items=$items]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'fieldName'] = this.fieldName;
-      json[r'items'] = this.items;
+    json[r'fieldName'] = this.fieldName;
+    json[r'items'] = this.items;
     return json;
   }
 
@@ -57,7 +59,10 @@ class SearchExploreResponseDto {
     return null;
   }
 
-  static List<SearchExploreResponseDto> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<SearchExploreResponseDto> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <SearchExploreResponseDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -85,13 +90,19 @@ class SearchExploreResponseDto {
   }
 
   // maps a json object with a list of SearchExploreResponseDto-objects as value to a dart map
-  static Map<String, List<SearchExploreResponseDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<SearchExploreResponseDto>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<SearchExploreResponseDto>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = SearchExploreResponseDto.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = SearchExploreResponseDto.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -103,4 +114,3 @@ class SearchExploreResponseDto {
     'items',
   };
 }
-

@@ -62,62 +62,65 @@ class SystemConfigOAuthDto {
   String storageQuotaClaim;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is SystemConfigOAuthDto &&
-    other.autoLaunch == autoLaunch &&
-    other.autoRegister == autoRegister &&
-    other.buttonText == buttonText &&
-    other.clientId == clientId &&
-    other.clientSecret == clientSecret &&
-    other.defaultStorageQuota == defaultStorageQuota &&
-    other.enabled == enabled &&
-    other.issuerUrl == issuerUrl &&
-    other.mobileOverrideEnabled == mobileOverrideEnabled &&
-    other.mobileRedirectUri == mobileRedirectUri &&
-    other.profileSigningAlgorithm == profileSigningAlgorithm &&
-    other.scope == scope &&
-    other.signingAlgorithm == signingAlgorithm &&
-    other.storageLabelClaim == storageLabelClaim &&
-    other.storageQuotaClaim == storageQuotaClaim;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SystemConfigOAuthDto &&
+          other.autoLaunch == autoLaunch &&
+          other.autoRegister == autoRegister &&
+          other.buttonText == buttonText &&
+          other.clientId == clientId &&
+          other.clientSecret == clientSecret &&
+          other.defaultStorageQuota == defaultStorageQuota &&
+          other.enabled == enabled &&
+          other.issuerUrl == issuerUrl &&
+          other.mobileOverrideEnabled == mobileOverrideEnabled &&
+          other.mobileRedirectUri == mobileRedirectUri &&
+          other.profileSigningAlgorithm == profileSigningAlgorithm &&
+          other.scope == scope &&
+          other.signingAlgorithm == signingAlgorithm &&
+          other.storageLabelClaim == storageLabelClaim &&
+          other.storageQuotaClaim == storageQuotaClaim;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (autoLaunch.hashCode) +
-    (autoRegister.hashCode) +
-    (buttonText.hashCode) +
-    (clientId.hashCode) +
-    (clientSecret.hashCode) +
-    (defaultStorageQuota.hashCode) +
-    (enabled.hashCode) +
-    (issuerUrl.hashCode) +
-    (mobileOverrideEnabled.hashCode) +
-    (mobileRedirectUri.hashCode) +
-    (profileSigningAlgorithm.hashCode) +
-    (scope.hashCode) +
-    (signingAlgorithm.hashCode) +
-    (storageLabelClaim.hashCode) +
-    (storageQuotaClaim.hashCode);
+      // ignore: unnecessary_parenthesis
+      (autoLaunch.hashCode) +
+      (autoRegister.hashCode) +
+      (buttonText.hashCode) +
+      (clientId.hashCode) +
+      (clientSecret.hashCode) +
+      (defaultStorageQuota.hashCode) +
+      (enabled.hashCode) +
+      (issuerUrl.hashCode) +
+      (mobileOverrideEnabled.hashCode) +
+      (mobileRedirectUri.hashCode) +
+      (profileSigningAlgorithm.hashCode) +
+      (scope.hashCode) +
+      (signingAlgorithm.hashCode) +
+      (storageLabelClaim.hashCode) +
+      (storageQuotaClaim.hashCode);
 
   @override
-  String toString() => 'SystemConfigOAuthDto[autoLaunch=$autoLaunch, autoRegister=$autoRegister, buttonText=$buttonText, clientId=$clientId, clientSecret=$clientSecret, defaultStorageQuota=$defaultStorageQuota, enabled=$enabled, issuerUrl=$issuerUrl, mobileOverrideEnabled=$mobileOverrideEnabled, mobileRedirectUri=$mobileRedirectUri, profileSigningAlgorithm=$profileSigningAlgorithm, scope=$scope, signingAlgorithm=$signingAlgorithm, storageLabelClaim=$storageLabelClaim, storageQuotaClaim=$storageQuotaClaim]';
+  String toString() =>
+      'SystemConfigOAuthDto[autoLaunch=$autoLaunch, autoRegister=$autoRegister, buttonText=$buttonText, clientId=$clientId, clientSecret=$clientSecret, defaultStorageQuota=$defaultStorageQuota, enabled=$enabled, issuerUrl=$issuerUrl, mobileOverrideEnabled=$mobileOverrideEnabled, mobileRedirectUri=$mobileRedirectUri, profileSigningAlgorithm=$profileSigningAlgorithm, scope=$scope, signingAlgorithm=$signingAlgorithm, storageLabelClaim=$storageLabelClaim, storageQuotaClaim=$storageQuotaClaim]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'autoLaunch'] = this.autoLaunch;
-      json[r'autoRegister'] = this.autoRegister;
-      json[r'buttonText'] = this.buttonText;
-      json[r'clientId'] = this.clientId;
-      json[r'clientSecret'] = this.clientSecret;
-      json[r'defaultStorageQuota'] = this.defaultStorageQuota;
-      json[r'enabled'] = this.enabled;
-      json[r'issuerUrl'] = this.issuerUrl;
-      json[r'mobileOverrideEnabled'] = this.mobileOverrideEnabled;
-      json[r'mobileRedirectUri'] = this.mobileRedirectUri;
-      json[r'profileSigningAlgorithm'] = this.profileSigningAlgorithm;
-      json[r'scope'] = this.scope;
-      json[r'signingAlgorithm'] = this.signingAlgorithm;
-      json[r'storageLabelClaim'] = this.storageLabelClaim;
-      json[r'storageQuotaClaim'] = this.storageQuotaClaim;
+    json[r'autoLaunch'] = this.autoLaunch;
+    json[r'autoRegister'] = this.autoRegister;
+    json[r'buttonText'] = this.buttonText;
+    json[r'clientId'] = this.clientId;
+    json[r'clientSecret'] = this.clientSecret;
+    json[r'defaultStorageQuota'] = this.defaultStorageQuota;
+    json[r'enabled'] = this.enabled;
+    json[r'issuerUrl'] = this.issuerUrl;
+    json[r'mobileOverrideEnabled'] = this.mobileOverrideEnabled;
+    json[r'mobileRedirectUri'] = this.mobileRedirectUri;
+    json[r'profileSigningAlgorithm'] = this.profileSigningAlgorithm;
+    json[r'scope'] = this.scope;
+    json[r'signingAlgorithm'] = this.signingAlgorithm;
+    json[r'storageLabelClaim'] = this.storageLabelClaim;
+    json[r'storageQuotaClaim'] = this.storageQuotaClaim;
     return json;
   }
 
@@ -137,9 +140,11 @@ class SystemConfigOAuthDto {
         defaultStorageQuota: num.parse('${json[r'defaultStorageQuota']}'),
         enabled: mapValueOfType<bool>(json, r'enabled')!,
         issuerUrl: mapValueOfType<String>(json, r'issuerUrl')!,
-        mobileOverrideEnabled: mapValueOfType<bool>(json, r'mobileOverrideEnabled')!,
+        mobileOverrideEnabled:
+            mapValueOfType<bool>(json, r'mobileOverrideEnabled')!,
         mobileRedirectUri: mapValueOfType<String>(json, r'mobileRedirectUri')!,
-        profileSigningAlgorithm: mapValueOfType<String>(json, r'profileSigningAlgorithm')!,
+        profileSigningAlgorithm:
+            mapValueOfType<String>(json, r'profileSigningAlgorithm')!,
         scope: mapValueOfType<String>(json, r'scope')!,
         signingAlgorithm: mapValueOfType<String>(json, r'signingAlgorithm')!,
         storageLabelClaim: mapValueOfType<String>(json, r'storageLabelClaim')!,
@@ -149,7 +154,10 @@ class SystemConfigOAuthDto {
     return null;
   }
 
-  static List<SystemConfigOAuthDto> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<SystemConfigOAuthDto> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <SystemConfigOAuthDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -177,13 +185,19 @@ class SystemConfigOAuthDto {
   }
 
   // maps a json object with a list of SystemConfigOAuthDto-objects as value to a dart map
-  static Map<String, List<SystemConfigOAuthDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<SystemConfigOAuthDto>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<SystemConfigOAuthDto>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = SystemConfigOAuthDto.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = SystemConfigOAuthDto.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -208,4 +222,3 @@ class SystemConfigOAuthDto {
     'storageQuotaClaim',
   };
 }
-

@@ -10,7 +10,6 @@
 
 part of openapi.api;
 
-
 class TimeBucketSize {
   /// Instantiate a new enum with the provided [value].
   const TimeBucketSize._(this.value);
@@ -32,9 +31,13 @@ class TimeBucketSize {
     MONTH,
   ];
 
-  static TimeBucketSize? fromJson(dynamic value) => TimeBucketSizeTypeTransformer().decode(value);
+  static TimeBucketSize? fromJson(dynamic value) =>
+      TimeBucketSizeTypeTransformer().decode(value);
 
-  static List<TimeBucketSize> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<TimeBucketSize> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <TimeBucketSize>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -51,7 +54,8 @@ class TimeBucketSize {
 /// Transformation class that can [encode] an instance of [TimeBucketSize] to String,
 /// and [decode] dynamic data back to [TimeBucketSize].
 class TimeBucketSizeTypeTransformer {
-  factory TimeBucketSizeTypeTransformer() => _instance ??= const TimeBucketSizeTypeTransformer._();
+  factory TimeBucketSizeTypeTransformer() =>
+      _instance ??= const TimeBucketSizeTypeTransformer._();
 
   const TimeBucketSizeTypeTransformer._();
 
@@ -68,8 +72,10 @@ class TimeBucketSizeTypeTransformer {
   TimeBucketSize? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'DAY': return TimeBucketSize.DAY;
-        case r'MONTH': return TimeBucketSize.MONTH;
+        case r'DAY':
+          return TimeBucketSize.DAY;
+        case r'MONTH':
+          return TimeBucketSize.MONTH;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -82,4 +88,3 @@ class TimeBucketSizeTypeTransformer {
   /// Singleton [TimeBucketSizeTypeTransformer] instance.
   static TimeBucketSizeTypeTransformer? _instance;
 }
-

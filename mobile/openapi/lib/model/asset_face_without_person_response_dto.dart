@@ -37,38 +37,41 @@ class AssetFaceWithoutPersonResponseDto {
   int imageWidth;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is AssetFaceWithoutPersonResponseDto &&
-    other.boundingBoxX1 == boundingBoxX1 &&
-    other.boundingBoxX2 == boundingBoxX2 &&
-    other.boundingBoxY1 == boundingBoxY1 &&
-    other.boundingBoxY2 == boundingBoxY2 &&
-    other.id == id &&
-    other.imageHeight == imageHeight &&
-    other.imageWidth == imageWidth;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is AssetFaceWithoutPersonResponseDto &&
+          other.boundingBoxX1 == boundingBoxX1 &&
+          other.boundingBoxX2 == boundingBoxX2 &&
+          other.boundingBoxY1 == boundingBoxY1 &&
+          other.boundingBoxY2 == boundingBoxY2 &&
+          other.id == id &&
+          other.imageHeight == imageHeight &&
+          other.imageWidth == imageWidth;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (boundingBoxX1.hashCode) +
-    (boundingBoxX2.hashCode) +
-    (boundingBoxY1.hashCode) +
-    (boundingBoxY2.hashCode) +
-    (id.hashCode) +
-    (imageHeight.hashCode) +
-    (imageWidth.hashCode);
+      // ignore: unnecessary_parenthesis
+      (boundingBoxX1.hashCode) +
+      (boundingBoxX2.hashCode) +
+      (boundingBoxY1.hashCode) +
+      (boundingBoxY2.hashCode) +
+      (id.hashCode) +
+      (imageHeight.hashCode) +
+      (imageWidth.hashCode);
 
   @override
-  String toString() => 'AssetFaceWithoutPersonResponseDto[boundingBoxX1=$boundingBoxX1, boundingBoxX2=$boundingBoxX2, boundingBoxY1=$boundingBoxY1, boundingBoxY2=$boundingBoxY2, id=$id, imageHeight=$imageHeight, imageWidth=$imageWidth]';
+  String toString() =>
+      'AssetFaceWithoutPersonResponseDto[boundingBoxX1=$boundingBoxX1, boundingBoxX2=$boundingBoxX2, boundingBoxY1=$boundingBoxY1, boundingBoxY2=$boundingBoxY2, id=$id, imageHeight=$imageHeight, imageWidth=$imageWidth]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'boundingBoxX1'] = this.boundingBoxX1;
-      json[r'boundingBoxX2'] = this.boundingBoxX2;
-      json[r'boundingBoxY1'] = this.boundingBoxY1;
-      json[r'boundingBoxY2'] = this.boundingBoxY2;
-      json[r'id'] = this.id;
-      json[r'imageHeight'] = this.imageHeight;
-      json[r'imageWidth'] = this.imageWidth;
+    json[r'boundingBoxX1'] = this.boundingBoxX1;
+    json[r'boundingBoxX2'] = this.boundingBoxX2;
+    json[r'boundingBoxY1'] = this.boundingBoxY1;
+    json[r'boundingBoxY2'] = this.boundingBoxY2;
+    json[r'id'] = this.id;
+    json[r'imageHeight'] = this.imageHeight;
+    json[r'imageWidth'] = this.imageWidth;
     return json;
   }
 
@@ -92,7 +95,10 @@ class AssetFaceWithoutPersonResponseDto {
     return null;
   }
 
-  static List<AssetFaceWithoutPersonResponseDto> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<AssetFaceWithoutPersonResponseDto> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <AssetFaceWithoutPersonResponseDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -105,7 +111,8 @@ class AssetFaceWithoutPersonResponseDto {
     return result.toList(growable: growable);
   }
 
-  static Map<String, AssetFaceWithoutPersonResponseDto> mapFromJson(dynamic json) {
+  static Map<String, AssetFaceWithoutPersonResponseDto> mapFromJson(
+      dynamic json) {
     final map = <String, AssetFaceWithoutPersonResponseDto>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
@@ -120,13 +127,19 @@ class AssetFaceWithoutPersonResponseDto {
   }
 
   // maps a json object with a list of AssetFaceWithoutPersonResponseDto-objects as value to a dart map
-  static Map<String, List<AssetFaceWithoutPersonResponseDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<AssetFaceWithoutPersonResponseDto>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<AssetFaceWithoutPersonResponseDto>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = AssetFaceWithoutPersonResponseDto.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = AssetFaceWithoutPersonResponseDto.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -143,4 +156,3 @@ class AssetFaceWithoutPersonResponseDto {
     'imageWidth',
   };
 }
-

@@ -34,30 +34,33 @@ class ScanLibraryDto {
   bool? refreshModifiedFiles;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is ScanLibraryDto &&
-    other.refreshAllFiles == refreshAllFiles &&
-    other.refreshModifiedFiles == refreshModifiedFiles;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ScanLibraryDto &&
+          other.refreshAllFiles == refreshAllFiles &&
+          other.refreshModifiedFiles == refreshModifiedFiles;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (refreshAllFiles == null ? 0 : refreshAllFiles!.hashCode) +
-    (refreshModifiedFiles == null ? 0 : refreshModifiedFiles!.hashCode);
+      // ignore: unnecessary_parenthesis
+      (refreshAllFiles == null ? 0 : refreshAllFiles!.hashCode) +
+      (refreshModifiedFiles == null ? 0 : refreshModifiedFiles!.hashCode);
 
   @override
-  String toString() => 'ScanLibraryDto[refreshAllFiles=$refreshAllFiles, refreshModifiedFiles=$refreshModifiedFiles]';
+  String toString() =>
+      'ScanLibraryDto[refreshAllFiles=$refreshAllFiles, refreshModifiedFiles=$refreshModifiedFiles]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
     if (this.refreshAllFiles != null) {
       json[r'refreshAllFiles'] = this.refreshAllFiles;
     } else {
-    //  json[r'refreshAllFiles'] = null;
+      //  json[r'refreshAllFiles'] = null;
     }
     if (this.refreshModifiedFiles != null) {
       json[r'refreshModifiedFiles'] = this.refreshModifiedFiles;
     } else {
-    //  json[r'refreshModifiedFiles'] = null;
+      //  json[r'refreshModifiedFiles'] = null;
     }
     return json;
   }
@@ -71,13 +74,17 @@ class ScanLibraryDto {
 
       return ScanLibraryDto(
         refreshAllFiles: mapValueOfType<bool>(json, r'refreshAllFiles'),
-        refreshModifiedFiles: mapValueOfType<bool>(json, r'refreshModifiedFiles'),
+        refreshModifiedFiles:
+            mapValueOfType<bool>(json, r'refreshModifiedFiles'),
       );
     }
     return null;
   }
 
-  static List<ScanLibraryDto> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<ScanLibraryDto> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <ScanLibraryDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -105,20 +112,24 @@ class ScanLibraryDto {
   }
 
   // maps a json object with a list of ScanLibraryDto-objects as value to a dart map
-  static Map<String, List<ScanLibraryDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<ScanLibraryDto>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<ScanLibraryDto>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = ScanLibraryDto.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = ScanLibraryDto.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
   }
 
   /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{
-  };
+  static const requiredKeys = <String>{};
 }
-

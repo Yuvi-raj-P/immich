@@ -19,20 +19,21 @@ class SystemConfigReverseGeocodingDto {
   bool enabled;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is SystemConfigReverseGeocodingDto &&
-    other.enabled == enabled;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SystemConfigReverseGeocodingDto && other.enabled == enabled;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (enabled.hashCode);
+      // ignore: unnecessary_parenthesis
+      (enabled.hashCode);
 
   @override
   String toString() => 'SystemConfigReverseGeocodingDto[enabled=$enabled]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'enabled'] = this.enabled;
+    json[r'enabled'] = this.enabled;
     return json;
   }
 
@@ -50,7 +51,10 @@ class SystemConfigReverseGeocodingDto {
     return null;
   }
 
-  static List<SystemConfigReverseGeocodingDto> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<SystemConfigReverseGeocodingDto> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <SystemConfigReverseGeocodingDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -63,7 +67,8 @@ class SystemConfigReverseGeocodingDto {
     return result.toList(growable: growable);
   }
 
-  static Map<String, SystemConfigReverseGeocodingDto> mapFromJson(dynamic json) {
+  static Map<String, SystemConfigReverseGeocodingDto> mapFromJson(
+      dynamic json) {
     final map = <String, SystemConfigReverseGeocodingDto>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
@@ -78,13 +83,19 @@ class SystemConfigReverseGeocodingDto {
   }
 
   // maps a json object with a list of SystemConfigReverseGeocodingDto-objects as value to a dart map
-  static Map<String, List<SystemConfigReverseGeocodingDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<SystemConfigReverseGeocodingDto>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<SystemConfigReverseGeocodingDto>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = SystemConfigReverseGeocodingDto.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = SystemConfigReverseGeocodingDto.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -95,4 +106,3 @@ class SystemConfigReverseGeocodingDto {
     'enabled',
   };
 }
-

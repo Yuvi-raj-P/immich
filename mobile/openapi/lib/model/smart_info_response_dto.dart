@@ -22,15 +22,17 @@ class SmartInfoResponseDto {
   List<String>? tags;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is SmartInfoResponseDto &&
-    _deepEquality.equals(other.objects, objects) &&
-    _deepEquality.equals(other.tags, tags);
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SmartInfoResponseDto &&
+          _deepEquality.equals(other.objects, objects) &&
+          _deepEquality.equals(other.tags, tags);
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (objects == null ? 0 : objects!.hashCode) +
-    (tags == null ? 0 : tags!.hashCode);
+      // ignore: unnecessary_parenthesis
+      (objects == null ? 0 : objects!.hashCode) +
+      (tags == null ? 0 : tags!.hashCode);
 
   @override
   String toString() => 'SmartInfoResponseDto[objects=$objects, tags=$tags]';
@@ -40,12 +42,12 @@ class SmartInfoResponseDto {
     if (this.objects != null) {
       json[r'objects'] = this.objects;
     } else {
-    //  json[r'objects'] = null;
+      //  json[r'objects'] = null;
     }
     if (this.tags != null) {
       json[r'tags'] = this.tags;
     } else {
-    //  json[r'tags'] = null;
+      //  json[r'tags'] = null;
     }
     return json;
   }
@@ -59,7 +61,9 @@ class SmartInfoResponseDto {
 
       return SmartInfoResponseDto(
         objects: json[r'objects'] is Iterable
-            ? (json[r'objects'] as Iterable).cast<String>().toList(growable: false)
+            ? (json[r'objects'] as Iterable)
+                .cast<String>()
+                .toList(growable: false)
             : const [],
         tags: json[r'tags'] is Iterable
             ? (json[r'tags'] as Iterable).cast<String>().toList(growable: false)
@@ -69,7 +73,10 @@ class SmartInfoResponseDto {
     return null;
   }
 
-  static List<SmartInfoResponseDto> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<SmartInfoResponseDto> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <SmartInfoResponseDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -97,20 +104,24 @@ class SmartInfoResponseDto {
   }
 
   // maps a json object with a list of SmartInfoResponseDto-objects as value to a dart map
-  static Map<String, List<SmartInfoResponseDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<SmartInfoResponseDto>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<SmartInfoResponseDto>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = SmartInfoResponseDto.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = SmartInfoResponseDto.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
   }
 
   /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{
-  };
+  static const requiredKeys = <String>{};
 }
-

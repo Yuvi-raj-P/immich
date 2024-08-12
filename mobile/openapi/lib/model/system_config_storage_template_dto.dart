@@ -25,26 +25,29 @@ class SystemConfigStorageTemplateDto {
   String template;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is SystemConfigStorageTemplateDto &&
-    other.enabled == enabled &&
-    other.hashVerificationEnabled == hashVerificationEnabled &&
-    other.template == template;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SystemConfigStorageTemplateDto &&
+          other.enabled == enabled &&
+          other.hashVerificationEnabled == hashVerificationEnabled &&
+          other.template == template;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (enabled.hashCode) +
-    (hashVerificationEnabled.hashCode) +
-    (template.hashCode);
+      // ignore: unnecessary_parenthesis
+      (enabled.hashCode) +
+      (hashVerificationEnabled.hashCode) +
+      (template.hashCode);
 
   @override
-  String toString() => 'SystemConfigStorageTemplateDto[enabled=$enabled, hashVerificationEnabled=$hashVerificationEnabled, template=$template]';
+  String toString() =>
+      'SystemConfigStorageTemplateDto[enabled=$enabled, hashVerificationEnabled=$hashVerificationEnabled, template=$template]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'enabled'] = this.enabled;
-      json[r'hashVerificationEnabled'] = this.hashVerificationEnabled;
-      json[r'template'] = this.template;
+    json[r'enabled'] = this.enabled;
+    json[r'hashVerificationEnabled'] = this.hashVerificationEnabled;
+    json[r'template'] = this.template;
     return json;
   }
 
@@ -57,14 +60,18 @@ class SystemConfigStorageTemplateDto {
 
       return SystemConfigStorageTemplateDto(
         enabled: mapValueOfType<bool>(json, r'enabled')!,
-        hashVerificationEnabled: mapValueOfType<bool>(json, r'hashVerificationEnabled')!,
+        hashVerificationEnabled:
+            mapValueOfType<bool>(json, r'hashVerificationEnabled')!,
         template: mapValueOfType<String>(json, r'template')!,
       );
     }
     return null;
   }
 
-  static List<SystemConfigStorageTemplateDto> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<SystemConfigStorageTemplateDto> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <SystemConfigStorageTemplateDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -92,13 +99,19 @@ class SystemConfigStorageTemplateDto {
   }
 
   // maps a json object with a list of SystemConfigStorageTemplateDto-objects as value to a dart map
-  static Map<String, List<SystemConfigStorageTemplateDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<SystemConfigStorageTemplateDto>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<SystemConfigStorageTemplateDto>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = SystemConfigStorageTemplateDto.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = SystemConfigStorageTemplateDto.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -111,4 +124,3 @@ class SystemConfigStorageTemplateDto {
     'template',
   };
 }
-

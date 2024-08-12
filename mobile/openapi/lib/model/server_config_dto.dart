@@ -37,38 +37,41 @@ class ServerConfigDto {
   int userDeleteDelay;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is ServerConfigDto &&
-    other.externalDomain == externalDomain &&
-    other.isInitialized == isInitialized &&
-    other.isOnboarded == isOnboarded &&
-    other.loginPageMessage == loginPageMessage &&
-    other.oauthButtonText == oauthButtonText &&
-    other.trashDays == trashDays &&
-    other.userDeleteDelay == userDeleteDelay;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ServerConfigDto &&
+          other.externalDomain == externalDomain &&
+          other.isInitialized == isInitialized &&
+          other.isOnboarded == isOnboarded &&
+          other.loginPageMessage == loginPageMessage &&
+          other.oauthButtonText == oauthButtonText &&
+          other.trashDays == trashDays &&
+          other.userDeleteDelay == userDeleteDelay;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (externalDomain.hashCode) +
-    (isInitialized.hashCode) +
-    (isOnboarded.hashCode) +
-    (loginPageMessage.hashCode) +
-    (oauthButtonText.hashCode) +
-    (trashDays.hashCode) +
-    (userDeleteDelay.hashCode);
+      // ignore: unnecessary_parenthesis
+      (externalDomain.hashCode) +
+      (isInitialized.hashCode) +
+      (isOnboarded.hashCode) +
+      (loginPageMessage.hashCode) +
+      (oauthButtonText.hashCode) +
+      (trashDays.hashCode) +
+      (userDeleteDelay.hashCode);
 
   @override
-  String toString() => 'ServerConfigDto[externalDomain=$externalDomain, isInitialized=$isInitialized, isOnboarded=$isOnboarded, loginPageMessage=$loginPageMessage, oauthButtonText=$oauthButtonText, trashDays=$trashDays, userDeleteDelay=$userDeleteDelay]';
+  String toString() =>
+      'ServerConfigDto[externalDomain=$externalDomain, isInitialized=$isInitialized, isOnboarded=$isOnboarded, loginPageMessage=$loginPageMessage, oauthButtonText=$oauthButtonText, trashDays=$trashDays, userDeleteDelay=$userDeleteDelay]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'externalDomain'] = this.externalDomain;
-      json[r'isInitialized'] = this.isInitialized;
-      json[r'isOnboarded'] = this.isOnboarded;
-      json[r'loginPageMessage'] = this.loginPageMessage;
-      json[r'oauthButtonText'] = this.oauthButtonText;
-      json[r'trashDays'] = this.trashDays;
-      json[r'userDeleteDelay'] = this.userDeleteDelay;
+    json[r'externalDomain'] = this.externalDomain;
+    json[r'isInitialized'] = this.isInitialized;
+    json[r'isOnboarded'] = this.isOnboarded;
+    json[r'loginPageMessage'] = this.loginPageMessage;
+    json[r'oauthButtonText'] = this.oauthButtonText;
+    json[r'trashDays'] = this.trashDays;
+    json[r'userDeleteDelay'] = this.userDeleteDelay;
     return json;
   }
 
@@ -92,7 +95,10 @@ class ServerConfigDto {
     return null;
   }
 
-  static List<ServerConfigDto> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<ServerConfigDto> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <ServerConfigDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -120,13 +126,19 @@ class ServerConfigDto {
   }
 
   // maps a json object with a list of ServerConfigDto-objects as value to a dart map
-  static Map<String, List<ServerConfigDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<ServerConfigDto>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<ServerConfigDto>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = ServerConfigDto.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = ServerConfigDto.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -143,4 +155,3 @@ class ServerConfigDto {
     'userDeleteDelay',
   };
 }
-

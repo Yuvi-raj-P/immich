@@ -91,83 +91,88 @@ class SystemConfigFFmpegDto {
   bool twoPass;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is SystemConfigFFmpegDto &&
-    other.accel == accel &&
-    other.accelDecode == accelDecode &&
-    _deepEquality.equals(other.acceptedAudioCodecs, acceptedAudioCodecs) &&
-    _deepEquality.equals(other.acceptedContainers, acceptedContainers) &&
-    _deepEquality.equals(other.acceptedVideoCodecs, acceptedVideoCodecs) &&
-    other.bframes == bframes &&
-    other.cqMode == cqMode &&
-    other.crf == crf &&
-    other.gopSize == gopSize &&
-    other.maxBitrate == maxBitrate &&
-    other.npl == npl &&
-    other.preferredHwDevice == preferredHwDevice &&
-    other.preset == preset &&
-    other.refs == refs &&
-    other.targetAudioCodec == targetAudioCodec &&
-    other.targetResolution == targetResolution &&
-    other.targetVideoCodec == targetVideoCodec &&
-    other.temporalAQ == temporalAQ &&
-    other.threads == threads &&
-    other.tonemap == tonemap &&
-    other.transcode == transcode &&
-    other.twoPass == twoPass;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SystemConfigFFmpegDto &&
+          other.accel == accel &&
+          other.accelDecode == accelDecode &&
+          _deepEquality.equals(
+              other.acceptedAudioCodecs, acceptedAudioCodecs) &&
+          _deepEquality.equals(other.acceptedContainers, acceptedContainers) &&
+          _deepEquality.equals(
+              other.acceptedVideoCodecs, acceptedVideoCodecs) &&
+          other.bframes == bframes &&
+          other.cqMode == cqMode &&
+          other.crf == crf &&
+          other.gopSize == gopSize &&
+          other.maxBitrate == maxBitrate &&
+          other.npl == npl &&
+          other.preferredHwDevice == preferredHwDevice &&
+          other.preset == preset &&
+          other.refs == refs &&
+          other.targetAudioCodec == targetAudioCodec &&
+          other.targetResolution == targetResolution &&
+          other.targetVideoCodec == targetVideoCodec &&
+          other.temporalAQ == temporalAQ &&
+          other.threads == threads &&
+          other.tonemap == tonemap &&
+          other.transcode == transcode &&
+          other.twoPass == twoPass;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (accel.hashCode) +
-    (accelDecode.hashCode) +
-    (acceptedAudioCodecs.hashCode) +
-    (acceptedContainers.hashCode) +
-    (acceptedVideoCodecs.hashCode) +
-    (bframes.hashCode) +
-    (cqMode.hashCode) +
-    (crf.hashCode) +
-    (gopSize.hashCode) +
-    (maxBitrate.hashCode) +
-    (npl.hashCode) +
-    (preferredHwDevice.hashCode) +
-    (preset.hashCode) +
-    (refs.hashCode) +
-    (targetAudioCodec.hashCode) +
-    (targetResolution.hashCode) +
-    (targetVideoCodec.hashCode) +
-    (temporalAQ.hashCode) +
-    (threads.hashCode) +
-    (tonemap.hashCode) +
-    (transcode.hashCode) +
-    (twoPass.hashCode);
+      // ignore: unnecessary_parenthesis
+      (accel.hashCode) +
+      (accelDecode.hashCode) +
+      (acceptedAudioCodecs.hashCode) +
+      (acceptedContainers.hashCode) +
+      (acceptedVideoCodecs.hashCode) +
+      (bframes.hashCode) +
+      (cqMode.hashCode) +
+      (crf.hashCode) +
+      (gopSize.hashCode) +
+      (maxBitrate.hashCode) +
+      (npl.hashCode) +
+      (preferredHwDevice.hashCode) +
+      (preset.hashCode) +
+      (refs.hashCode) +
+      (targetAudioCodec.hashCode) +
+      (targetResolution.hashCode) +
+      (targetVideoCodec.hashCode) +
+      (temporalAQ.hashCode) +
+      (threads.hashCode) +
+      (tonemap.hashCode) +
+      (transcode.hashCode) +
+      (twoPass.hashCode);
 
   @override
-  String toString() => 'SystemConfigFFmpegDto[accel=$accel, accelDecode=$accelDecode, acceptedAudioCodecs=$acceptedAudioCodecs, acceptedContainers=$acceptedContainers, acceptedVideoCodecs=$acceptedVideoCodecs, bframes=$bframes, cqMode=$cqMode, crf=$crf, gopSize=$gopSize, maxBitrate=$maxBitrate, npl=$npl, preferredHwDevice=$preferredHwDevice, preset=$preset, refs=$refs, targetAudioCodec=$targetAudioCodec, targetResolution=$targetResolution, targetVideoCodec=$targetVideoCodec, temporalAQ=$temporalAQ, threads=$threads, tonemap=$tonemap, transcode=$transcode, twoPass=$twoPass]';
+  String toString() =>
+      'SystemConfigFFmpegDto[accel=$accel, accelDecode=$accelDecode, acceptedAudioCodecs=$acceptedAudioCodecs, acceptedContainers=$acceptedContainers, acceptedVideoCodecs=$acceptedVideoCodecs, bframes=$bframes, cqMode=$cqMode, crf=$crf, gopSize=$gopSize, maxBitrate=$maxBitrate, npl=$npl, preferredHwDevice=$preferredHwDevice, preset=$preset, refs=$refs, targetAudioCodec=$targetAudioCodec, targetResolution=$targetResolution, targetVideoCodec=$targetVideoCodec, temporalAQ=$temporalAQ, threads=$threads, tonemap=$tonemap, transcode=$transcode, twoPass=$twoPass]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'accel'] = this.accel;
-      json[r'accelDecode'] = this.accelDecode;
-      json[r'acceptedAudioCodecs'] = this.acceptedAudioCodecs;
-      json[r'acceptedContainers'] = this.acceptedContainers;
-      json[r'acceptedVideoCodecs'] = this.acceptedVideoCodecs;
-      json[r'bframes'] = this.bframes;
-      json[r'cqMode'] = this.cqMode;
-      json[r'crf'] = this.crf;
-      json[r'gopSize'] = this.gopSize;
-      json[r'maxBitrate'] = this.maxBitrate;
-      json[r'npl'] = this.npl;
-      json[r'preferredHwDevice'] = this.preferredHwDevice;
-      json[r'preset'] = this.preset;
-      json[r'refs'] = this.refs;
-      json[r'targetAudioCodec'] = this.targetAudioCodec;
-      json[r'targetResolution'] = this.targetResolution;
-      json[r'targetVideoCodec'] = this.targetVideoCodec;
-      json[r'temporalAQ'] = this.temporalAQ;
-      json[r'threads'] = this.threads;
-      json[r'tonemap'] = this.tonemap;
-      json[r'transcode'] = this.transcode;
-      json[r'twoPass'] = this.twoPass;
+    json[r'accel'] = this.accel;
+    json[r'accelDecode'] = this.accelDecode;
+    json[r'acceptedAudioCodecs'] = this.acceptedAudioCodecs;
+    json[r'acceptedContainers'] = this.acceptedContainers;
+    json[r'acceptedVideoCodecs'] = this.acceptedVideoCodecs;
+    json[r'bframes'] = this.bframes;
+    json[r'cqMode'] = this.cqMode;
+    json[r'crf'] = this.crf;
+    json[r'gopSize'] = this.gopSize;
+    json[r'maxBitrate'] = this.maxBitrate;
+    json[r'npl'] = this.npl;
+    json[r'preferredHwDevice'] = this.preferredHwDevice;
+    json[r'preset'] = this.preset;
+    json[r'refs'] = this.refs;
+    json[r'targetAudioCodec'] = this.targetAudioCodec;
+    json[r'targetResolution'] = this.targetResolution;
+    json[r'targetVideoCodec'] = this.targetVideoCodec;
+    json[r'temporalAQ'] = this.temporalAQ;
+    json[r'threads'] = this.threads;
+    json[r'tonemap'] = this.tonemap;
+    json[r'transcode'] = this.transcode;
+    json[r'twoPass'] = this.twoPass;
     return json;
   }
 
@@ -181,9 +186,12 @@ class SystemConfigFFmpegDto {
       return SystemConfigFFmpegDto(
         accel: TranscodeHWAccel.fromJson(json[r'accel'])!,
         accelDecode: mapValueOfType<bool>(json, r'accelDecode')!,
-        acceptedAudioCodecs: AudioCodec.listFromJson(json[r'acceptedAudioCodecs']),
-        acceptedContainers: VideoContainer.listFromJson(json[r'acceptedContainers']),
-        acceptedVideoCodecs: VideoCodec.listFromJson(json[r'acceptedVideoCodecs']),
+        acceptedAudioCodecs:
+            AudioCodec.listFromJson(json[r'acceptedAudioCodecs']),
+        acceptedContainers:
+            VideoContainer.listFromJson(json[r'acceptedContainers']),
+        acceptedVideoCodecs:
+            VideoCodec.listFromJson(json[r'acceptedVideoCodecs']),
         bframes: mapValueOfType<int>(json, r'bframes')!,
         cqMode: CQMode.fromJson(json[r'cqMode'])!,
         crf: mapValueOfType<int>(json, r'crf')!,
@@ -206,7 +214,10 @@ class SystemConfigFFmpegDto {
     return null;
   }
 
-  static List<SystemConfigFFmpegDto> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<SystemConfigFFmpegDto> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <SystemConfigFFmpegDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -234,13 +245,19 @@ class SystemConfigFFmpegDto {
   }
 
   // maps a json object with a list of SystemConfigFFmpegDto-objects as value to a dart map
-  static Map<String, List<SystemConfigFFmpegDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<SystemConfigFFmpegDto>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<SystemConfigFFmpegDto>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = SystemConfigFFmpegDto.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = SystemConfigFFmpegDto.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -272,4 +289,3 @@ class SystemConfigFFmpegDto {
     'twoPass',
   };
 }
-

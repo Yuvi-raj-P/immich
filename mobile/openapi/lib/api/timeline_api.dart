@@ -10,9 +10,9 @@
 
 part of openapi.api;
 
-
 class TimelineApi {
-  TimelineApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
+  TimelineApi([ApiClient? apiClient])
+      : apiClient = apiClient ?? defaultApiClient;
 
   final ApiClient apiClient;
 
@@ -42,7 +42,20 @@ class TimelineApi {
   /// * [bool] withPartners:
   ///
   /// * [bool] withStacked:
-  Future<Response> getTimeBucketWithHttpInfo(TimeBucketSize size, String timeBucket, { String? albumId, bool? isArchived, bool? isFavorite, bool? isTrashed, String? key, AssetOrder? order, String? personId, String? userId, bool? withPartners, bool? withStacked, }) async {
+  Future<Response> getTimeBucketWithHttpInfo(
+    TimeBucketSize size,
+    String timeBucket, {
+    String? albumId,
+    bool? isArchived,
+    bool? isFavorite,
+    bool? isTrashed,
+    String? key,
+    AssetOrder? order,
+    String? personId,
+    String? userId,
+    bool? withPartners,
+    bool? withStacked,
+  }) async {
     // ignore: prefer_const_declarations
     final path = r'/timeline/bucket';
 
@@ -74,8 +87,8 @@ class TimelineApi {
     if (personId != null) {
       queryParams.addAll(_queryParams('', 'personId', personId));
     }
-      queryParams.addAll(_queryParams('', 'size', size));
-      queryParams.addAll(_queryParams('', 'timeBucket', timeBucket));
+    queryParams.addAll(_queryParams('', 'size', size));
+    queryParams.addAll(_queryParams('', 'timeBucket', timeBucket));
     if (userId != null) {
       queryParams.addAll(_queryParams('', 'userId', userId));
     }
@@ -87,7 +100,6 @@ class TimelineApi {
     }
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -125,20 +137,47 @@ class TimelineApi {
   /// * [bool] withPartners:
   ///
   /// * [bool] withStacked:
-  Future<List<AssetResponseDto>?> getTimeBucket(TimeBucketSize size, String timeBucket, { String? albumId, bool? isArchived, bool? isFavorite, bool? isTrashed, String? key, AssetOrder? order, String? personId, String? userId, bool? withPartners, bool? withStacked, }) async {
-    final response = await getTimeBucketWithHttpInfo(size, timeBucket,  albumId: albumId, isArchived: isArchived, isFavorite: isFavorite, isTrashed: isTrashed, key: key, order: order, personId: personId, userId: userId, withPartners: withPartners, withStacked: withStacked, );
+  Future<List<AssetResponseDto>?> getTimeBucket(
+    TimeBucketSize size,
+    String timeBucket, {
+    String? albumId,
+    bool? isArchived,
+    bool? isFavorite,
+    bool? isTrashed,
+    String? key,
+    AssetOrder? order,
+    String? personId,
+    String? userId,
+    bool? withPartners,
+    bool? withStacked,
+  }) async {
+    final response = await getTimeBucketWithHttpInfo(
+      size,
+      timeBucket,
+      albumId: albumId,
+      isArchived: isArchived,
+      isFavorite: isFavorite,
+      isTrashed: isTrashed,
+      key: key,
+      order: order,
+      personId: personId,
+      userId: userId,
+      withPartners: withPartners,
+      withStacked: withStacked,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<AssetResponseDto>') as List)
-        .cast<AssetResponseDto>()
-        .toList(growable: false);
-
+      return (await apiClient.deserializeAsync(
+              responseBody, 'List<AssetResponseDto>') as List)
+          .cast<AssetResponseDto>()
+          .toList(growable: false);
     }
     return null;
   }
@@ -167,7 +206,19 @@ class TimelineApi {
   /// * [bool] withPartners:
   ///
   /// * [bool] withStacked:
-  Future<Response> getTimeBucketsWithHttpInfo(TimeBucketSize size, { String? albumId, bool? isArchived, bool? isFavorite, bool? isTrashed, String? key, AssetOrder? order, String? personId, String? userId, bool? withPartners, bool? withStacked, }) async {
+  Future<Response> getTimeBucketsWithHttpInfo(
+    TimeBucketSize size, {
+    String? albumId,
+    bool? isArchived,
+    bool? isFavorite,
+    bool? isTrashed,
+    String? key,
+    AssetOrder? order,
+    String? personId,
+    String? userId,
+    bool? withPartners,
+    bool? withStacked,
+  }) async {
     // ignore: prefer_const_declarations
     final path = r'/timeline/buckets';
 
@@ -199,7 +250,7 @@ class TimelineApi {
     if (personId != null) {
       queryParams.addAll(_queryParams('', 'personId', personId));
     }
-      queryParams.addAll(_queryParams('', 'size', size));
+    queryParams.addAll(_queryParams('', 'size', size));
     if (userId != null) {
       queryParams.addAll(_queryParams('', 'userId', userId));
     }
@@ -211,7 +262,6 @@ class TimelineApi {
     }
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -247,20 +297,45 @@ class TimelineApi {
   /// * [bool] withPartners:
   ///
   /// * [bool] withStacked:
-  Future<List<TimeBucketResponseDto>?> getTimeBuckets(TimeBucketSize size, { String? albumId, bool? isArchived, bool? isFavorite, bool? isTrashed, String? key, AssetOrder? order, String? personId, String? userId, bool? withPartners, bool? withStacked, }) async {
-    final response = await getTimeBucketsWithHttpInfo(size,  albumId: albumId, isArchived: isArchived, isFavorite: isFavorite, isTrashed: isTrashed, key: key, order: order, personId: personId, userId: userId, withPartners: withPartners, withStacked: withStacked, );
+  Future<List<TimeBucketResponseDto>?> getTimeBuckets(
+    TimeBucketSize size, {
+    String? albumId,
+    bool? isArchived,
+    bool? isFavorite,
+    bool? isTrashed,
+    String? key,
+    AssetOrder? order,
+    String? personId,
+    String? userId,
+    bool? withPartners,
+    bool? withStacked,
+  }) async {
+    final response = await getTimeBucketsWithHttpInfo(
+      size,
+      albumId: albumId,
+      isArchived: isArchived,
+      isFavorite: isFavorite,
+      isTrashed: isTrashed,
+      key: key,
+      order: order,
+      personId: personId,
+      userId: userId,
+      withPartners: withPartners,
+      withStacked: withStacked,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<TimeBucketResponseDto>') as List)
-        .cast<TimeBucketResponseDto>()
-        .toList(growable: false);
-
+      return (await apiClient.deserializeAsync(
+              responseBody, 'List<TimeBucketResponseDto>') as List)
+          .cast<TimeBucketResponseDto>()
+          .toList(growable: false);
     }
     return null;
   }

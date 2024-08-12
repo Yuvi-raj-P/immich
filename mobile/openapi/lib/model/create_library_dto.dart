@@ -34,33 +34,36 @@ class CreateLibraryDto {
   String ownerId;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is CreateLibraryDto &&
-    _deepEquality.equals(other.exclusionPatterns, exclusionPatterns) &&
-    _deepEquality.equals(other.importPaths, importPaths) &&
-    other.name == name &&
-    other.ownerId == ownerId;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CreateLibraryDto &&
+          _deepEquality.equals(other.exclusionPatterns, exclusionPatterns) &&
+          _deepEquality.equals(other.importPaths, importPaths) &&
+          other.name == name &&
+          other.ownerId == ownerId;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (exclusionPatterns.hashCode) +
-    (importPaths.hashCode) +
-    (name == null ? 0 : name!.hashCode) +
-    (ownerId.hashCode);
+      // ignore: unnecessary_parenthesis
+      (exclusionPatterns.hashCode) +
+      (importPaths.hashCode) +
+      (name == null ? 0 : name!.hashCode) +
+      (ownerId.hashCode);
 
   @override
-  String toString() => 'CreateLibraryDto[exclusionPatterns=$exclusionPatterns, importPaths=$importPaths, name=$name, ownerId=$ownerId]';
+  String toString() =>
+      'CreateLibraryDto[exclusionPatterns=$exclusionPatterns, importPaths=$importPaths, name=$name, ownerId=$ownerId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'exclusionPatterns'] = this.exclusionPatterns;
-      json[r'importPaths'] = this.importPaths;
+    json[r'exclusionPatterns'] = this.exclusionPatterns;
+    json[r'importPaths'] = this.importPaths;
     if (this.name != null) {
       json[r'name'] = this.name;
     } else {
-    //  json[r'name'] = null;
+      //  json[r'name'] = null;
     }
-      json[r'ownerId'] = this.ownerId;
+    json[r'ownerId'] = this.ownerId;
     return json;
   }
 
@@ -73,10 +76,14 @@ class CreateLibraryDto {
 
       return CreateLibraryDto(
         exclusionPatterns: json[r'exclusionPatterns'] is Iterable
-            ? (json[r'exclusionPatterns'] as Iterable).cast<String>().toList(growable: false)
+            ? (json[r'exclusionPatterns'] as Iterable)
+                .cast<String>()
+                .toList(growable: false)
             : const [],
         importPaths: json[r'importPaths'] is Iterable
-            ? (json[r'importPaths'] as Iterable).cast<String>().toList(growable: false)
+            ? (json[r'importPaths'] as Iterable)
+                .cast<String>()
+                .toList(growable: false)
             : const [],
         name: mapValueOfType<String>(json, r'name'),
         ownerId: mapValueOfType<String>(json, r'ownerId')!,
@@ -85,7 +92,10 @@ class CreateLibraryDto {
     return null;
   }
 
-  static List<CreateLibraryDto> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<CreateLibraryDto> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <CreateLibraryDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -113,13 +123,19 @@ class CreateLibraryDto {
   }
 
   // maps a json object with a list of CreateLibraryDto-objects as value to a dart map
-  static Map<String, List<CreateLibraryDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<CreateLibraryDto>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<CreateLibraryDto>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = CreateLibraryDto.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = CreateLibraryDto.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -130,4 +146,3 @@ class CreateLibraryDto {
     'ownerId',
   };
 }
-

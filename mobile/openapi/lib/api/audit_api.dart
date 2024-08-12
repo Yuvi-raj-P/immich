@@ -10,7 +10,6 @@
 
 part of openapi.api;
 
-
 class AuditApi {
   AuditApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
@@ -24,7 +23,11 @@ class AuditApi {
   /// * [EntityType] entityType (required):
   ///
   /// * [String] userId:
-  Future<Response> getAuditDeletesWithHttpInfo(DateTime after, EntityType entityType, { String? userId, }) async {
+  Future<Response> getAuditDeletesWithHttpInfo(
+    DateTime after,
+    EntityType entityType, {
+    String? userId,
+  }) async {
     // ignore: prefer_const_declarations
     final path = r'/audit/deletes';
 
@@ -35,14 +38,13 @@ class AuditApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-      queryParams.addAll(_queryParams('', 'after', after));
-      queryParams.addAll(_queryParams('', 'entityType', entityType));
+    queryParams.addAll(_queryParams('', 'after', after));
+    queryParams.addAll(_queryParams('', 'entityType', entityType));
     if (userId != null) {
       queryParams.addAll(_queryParams('', 'userId', userId));
     }
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -62,17 +64,28 @@ class AuditApi {
   /// * [EntityType] entityType (required):
   ///
   /// * [String] userId:
-  Future<AuditDeletesResponseDto?> getAuditDeletes(DateTime after, EntityType entityType, { String? userId, }) async {
-    final response = await getAuditDeletesWithHttpInfo(after, entityType,  userId: userId, );
+  Future<AuditDeletesResponseDto?> getAuditDeletes(
+    DateTime after,
+    EntityType entityType, {
+    String? userId,
+  }) async {
+    final response = await getAuditDeletesWithHttpInfo(
+      after,
+      entityType,
+      userId: userId,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AuditDeletesResponseDto',) as AuditDeletesResponseDto;
-    
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'AuditDeletesResponseDto',
+      ) as AuditDeletesResponseDto;
     }
     return null;
   }

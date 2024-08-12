@@ -10,7 +10,6 @@
 
 part of openapi.api;
 
-
 class JobCommand {
   /// Instantiate a new enum with the provided [value].
   const JobCommand._(this.value);
@@ -38,9 +37,13 @@ class JobCommand {
     clearFailed,
   ];
 
-  static JobCommand? fromJson(dynamic value) => JobCommandTypeTransformer().decode(value);
+  static JobCommand? fromJson(dynamic value) =>
+      JobCommandTypeTransformer().decode(value);
 
-  static List<JobCommand> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<JobCommand> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <JobCommand>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -57,7 +60,8 @@ class JobCommand {
 /// Transformation class that can [encode] an instance of [JobCommand] to String,
 /// and [decode] dynamic data back to [JobCommand].
 class JobCommandTypeTransformer {
-  factory JobCommandTypeTransformer() => _instance ??= const JobCommandTypeTransformer._();
+  factory JobCommandTypeTransformer() =>
+      _instance ??= const JobCommandTypeTransformer._();
 
   const JobCommandTypeTransformer._();
 
@@ -74,11 +78,16 @@ class JobCommandTypeTransformer {
   JobCommand? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'start': return JobCommand.start;
-        case r'pause': return JobCommand.pause;
-        case r'resume': return JobCommand.resume;
-        case r'empty': return JobCommand.empty;
-        case r'clear-failed': return JobCommand.clearFailed;
+        case r'start':
+          return JobCommand.start;
+        case r'pause':
+          return JobCommand.pause;
+        case r'resume':
+          return JobCommand.resume;
+        case r'empty':
+          return JobCommand.empty;
+        case r'clear-failed':
+          return JobCommand.clearFailed;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -91,4 +100,3 @@ class JobCommandTypeTransformer {
   /// Singleton [JobCommandTypeTransformer] instance.
   static JobCommandTypeTransformer? _instance;
 }
-

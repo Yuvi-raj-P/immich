@@ -22,23 +22,25 @@ class SystemConfigLibraryScanDto {
   bool enabled;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is SystemConfigLibraryScanDto &&
-    other.cronExpression == cronExpression &&
-    other.enabled == enabled;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SystemConfigLibraryScanDto &&
+          other.cronExpression == cronExpression &&
+          other.enabled == enabled;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (cronExpression.hashCode) +
-    (enabled.hashCode);
+      // ignore: unnecessary_parenthesis
+      (cronExpression.hashCode) + (enabled.hashCode);
 
   @override
-  String toString() => 'SystemConfigLibraryScanDto[cronExpression=$cronExpression, enabled=$enabled]';
+  String toString() =>
+      'SystemConfigLibraryScanDto[cronExpression=$cronExpression, enabled=$enabled]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'cronExpression'] = this.cronExpression;
-      json[r'enabled'] = this.enabled;
+    json[r'cronExpression'] = this.cronExpression;
+    json[r'enabled'] = this.enabled;
     return json;
   }
 
@@ -57,7 +59,10 @@ class SystemConfigLibraryScanDto {
     return null;
   }
 
-  static List<SystemConfigLibraryScanDto> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<SystemConfigLibraryScanDto> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <SystemConfigLibraryScanDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -85,13 +90,19 @@ class SystemConfigLibraryScanDto {
   }
 
   // maps a json object with a list of SystemConfigLibraryScanDto-objects as value to a dart map
-  static Map<String, List<SystemConfigLibraryScanDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<SystemConfigLibraryScanDto>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<SystemConfigLibraryScanDto>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = SystemConfigLibraryScanDto.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = SystemConfigLibraryScanDto.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -103,4 +114,3 @@ class SystemConfigLibraryScanDto {
     'enabled',
   };
 }
-

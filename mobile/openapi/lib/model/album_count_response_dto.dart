@@ -25,26 +25,27 @@ class AlbumCountResponseDto {
   int shared;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is AlbumCountResponseDto &&
-    other.notShared == notShared &&
-    other.owned == owned &&
-    other.shared == shared;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is AlbumCountResponseDto &&
+          other.notShared == notShared &&
+          other.owned == owned &&
+          other.shared == shared;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (notShared.hashCode) +
-    (owned.hashCode) +
-    (shared.hashCode);
+      // ignore: unnecessary_parenthesis
+      (notShared.hashCode) + (owned.hashCode) + (shared.hashCode);
 
   @override
-  String toString() => 'AlbumCountResponseDto[notShared=$notShared, owned=$owned, shared=$shared]';
+  String toString() =>
+      'AlbumCountResponseDto[notShared=$notShared, owned=$owned, shared=$shared]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'notShared'] = this.notShared;
-      json[r'owned'] = this.owned;
-      json[r'shared'] = this.shared;
+    json[r'notShared'] = this.notShared;
+    json[r'owned'] = this.owned;
+    json[r'shared'] = this.shared;
     return json;
   }
 
@@ -64,7 +65,10 @@ class AlbumCountResponseDto {
     return null;
   }
 
-  static List<AlbumCountResponseDto> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<AlbumCountResponseDto> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <AlbumCountResponseDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -92,13 +96,19 @@ class AlbumCountResponseDto {
   }
 
   // maps a json object with a list of AlbumCountResponseDto-objects as value to a dart map
-  static Map<String, List<AlbumCountResponseDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<AlbumCountResponseDto>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<AlbumCountResponseDto>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = AlbumCountResponseDto.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = AlbumCountResponseDto.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -111,4 +121,3 @@ class AlbumCountResponseDto {
     'shared',
   };
 }
-

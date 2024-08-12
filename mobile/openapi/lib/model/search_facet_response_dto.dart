@@ -22,23 +22,25 @@ class SearchFacetResponseDto {
   String fieldName;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is SearchFacetResponseDto &&
-    _deepEquality.equals(other.counts, counts) &&
-    other.fieldName == fieldName;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SearchFacetResponseDto &&
+          _deepEquality.equals(other.counts, counts) &&
+          other.fieldName == fieldName;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (counts.hashCode) +
-    (fieldName.hashCode);
+      // ignore: unnecessary_parenthesis
+      (counts.hashCode) + (fieldName.hashCode);
 
   @override
-  String toString() => 'SearchFacetResponseDto[counts=$counts, fieldName=$fieldName]';
+  String toString() =>
+      'SearchFacetResponseDto[counts=$counts, fieldName=$fieldName]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'counts'] = this.counts;
-      json[r'fieldName'] = this.fieldName;
+    json[r'counts'] = this.counts;
+    json[r'fieldName'] = this.fieldName;
     return json;
   }
 
@@ -57,7 +59,10 @@ class SearchFacetResponseDto {
     return null;
   }
 
-  static List<SearchFacetResponseDto> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<SearchFacetResponseDto> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <SearchFacetResponseDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -85,13 +90,19 @@ class SearchFacetResponseDto {
   }
 
   // maps a json object with a list of SearchFacetResponseDto-objects as value to a dart map
-  static Map<String, List<SearchFacetResponseDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<SearchFacetResponseDto>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<SearchFacetResponseDto>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = SearchFacetResponseDto.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = SearchFacetResponseDto.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -103,4 +114,3 @@ class SearchFacetResponseDto {
     'fieldName',
   };
 }
-

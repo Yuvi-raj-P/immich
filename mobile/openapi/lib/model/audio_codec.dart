@@ -10,7 +10,6 @@
 
 part of openapi.api;
 
-
 class AudioCodec {
   /// Instantiate a new enum with the provided [value].
   const AudioCodec._(this.value);
@@ -34,9 +33,13 @@ class AudioCodec {
     libopus,
   ];
 
-  static AudioCodec? fromJson(dynamic value) => AudioCodecTypeTransformer().decode(value);
+  static AudioCodec? fromJson(dynamic value) =>
+      AudioCodecTypeTransformer().decode(value);
 
-  static List<AudioCodec> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<AudioCodec> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <AudioCodec>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -53,7 +56,8 @@ class AudioCodec {
 /// Transformation class that can [encode] an instance of [AudioCodec] to String,
 /// and [decode] dynamic data back to [AudioCodec].
 class AudioCodecTypeTransformer {
-  factory AudioCodecTypeTransformer() => _instance ??= const AudioCodecTypeTransformer._();
+  factory AudioCodecTypeTransformer() =>
+      _instance ??= const AudioCodecTypeTransformer._();
 
   const AudioCodecTypeTransformer._();
 
@@ -70,9 +74,12 @@ class AudioCodecTypeTransformer {
   AudioCodec? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'mp3': return AudioCodec.mp3;
-        case r'aac': return AudioCodec.aac;
-        case r'libopus': return AudioCodec.libopus;
+        case r'mp3':
+          return AudioCodec.mp3;
+        case r'aac':
+          return AudioCodec.aac;
+        case r'libopus':
+          return AudioCodec.libopus;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -85,4 +92,3 @@ class AudioCodecTypeTransformer {
   /// Singleton [AudioCodecTypeTransformer] instance.
   static AudioCodecTypeTransformer? _instance;
 }
-

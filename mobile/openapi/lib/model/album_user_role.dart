@@ -10,7 +10,6 @@
 
 part of openapi.api;
 
-
 class AlbumUserRole {
   /// Instantiate a new enum with the provided [value].
   const AlbumUserRole._(this.value);
@@ -32,9 +31,13 @@ class AlbumUserRole {
     viewer,
   ];
 
-  static AlbumUserRole? fromJson(dynamic value) => AlbumUserRoleTypeTransformer().decode(value);
+  static AlbumUserRole? fromJson(dynamic value) =>
+      AlbumUserRoleTypeTransformer().decode(value);
 
-  static List<AlbumUserRole> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<AlbumUserRole> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <AlbumUserRole>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -51,7 +54,8 @@ class AlbumUserRole {
 /// Transformation class that can [encode] an instance of [AlbumUserRole] to String,
 /// and [decode] dynamic data back to [AlbumUserRole].
 class AlbumUserRoleTypeTransformer {
-  factory AlbumUserRoleTypeTransformer() => _instance ??= const AlbumUserRoleTypeTransformer._();
+  factory AlbumUserRoleTypeTransformer() =>
+      _instance ??= const AlbumUserRoleTypeTransformer._();
 
   const AlbumUserRoleTypeTransformer._();
 
@@ -68,8 +72,10 @@ class AlbumUserRoleTypeTransformer {
   AlbumUserRole? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'editor': return AlbumUserRole.editor;
-        case r'viewer': return AlbumUserRole.viewer;
+        case r'editor':
+          return AlbumUserRole.editor;
+        case r'viewer':
+          return AlbumUserRole.viewer;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -82,4 +88,3 @@ class AlbumUserRoleTypeTransformer {
   /// Singleton [AlbumUserRoleTypeTransformer] instance.
   static AlbumUserRoleTypeTransformer? _instance;
 }
-

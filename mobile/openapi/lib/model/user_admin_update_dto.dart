@@ -59,58 +59,61 @@ class UserAdminUpdateDto {
   String? storageLabel;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is UserAdminUpdateDto &&
-    other.email == email &&
-    other.name == name &&
-    other.password == password &&
-    other.quotaSizeInBytes == quotaSizeInBytes &&
-    other.shouldChangePassword == shouldChangePassword &&
-    other.storageLabel == storageLabel;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is UserAdminUpdateDto &&
+          other.email == email &&
+          other.name == name &&
+          other.password == password &&
+          other.quotaSizeInBytes == quotaSizeInBytes &&
+          other.shouldChangePassword == shouldChangePassword &&
+          other.storageLabel == storageLabel;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (email == null ? 0 : email!.hashCode) +
-    (name == null ? 0 : name!.hashCode) +
-    (password == null ? 0 : password!.hashCode) +
-    (quotaSizeInBytes == null ? 0 : quotaSizeInBytes!.hashCode) +
-    (shouldChangePassword == null ? 0 : shouldChangePassword!.hashCode) +
-    (storageLabel == null ? 0 : storageLabel!.hashCode);
+      // ignore: unnecessary_parenthesis
+      (email == null ? 0 : email!.hashCode) +
+      (name == null ? 0 : name!.hashCode) +
+      (password == null ? 0 : password!.hashCode) +
+      (quotaSizeInBytes == null ? 0 : quotaSizeInBytes!.hashCode) +
+      (shouldChangePassword == null ? 0 : shouldChangePassword!.hashCode) +
+      (storageLabel == null ? 0 : storageLabel!.hashCode);
 
   @override
-  String toString() => 'UserAdminUpdateDto[email=$email, name=$name, password=$password, quotaSizeInBytes=$quotaSizeInBytes, shouldChangePassword=$shouldChangePassword, storageLabel=$storageLabel]';
+  String toString() =>
+      'UserAdminUpdateDto[email=$email, name=$name, password=$password, quotaSizeInBytes=$quotaSizeInBytes, shouldChangePassword=$shouldChangePassword, storageLabel=$storageLabel]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
     if (this.email != null) {
       json[r'email'] = this.email;
     } else {
-    //  json[r'email'] = null;
+      //  json[r'email'] = null;
     }
     if (this.name != null) {
       json[r'name'] = this.name;
     } else {
-    //  json[r'name'] = null;
+      //  json[r'name'] = null;
     }
     if (this.password != null) {
       json[r'password'] = this.password;
     } else {
-    //  json[r'password'] = null;
+      //  json[r'password'] = null;
     }
     if (this.quotaSizeInBytes != null) {
       json[r'quotaSizeInBytes'] = this.quotaSizeInBytes;
     } else {
-    //  json[r'quotaSizeInBytes'] = null;
+      //  json[r'quotaSizeInBytes'] = null;
     }
     if (this.shouldChangePassword != null) {
       json[r'shouldChangePassword'] = this.shouldChangePassword;
     } else {
-    //  json[r'shouldChangePassword'] = null;
+      //  json[r'shouldChangePassword'] = null;
     }
     if (this.storageLabel != null) {
       json[r'storageLabel'] = this.storageLabel;
     } else {
-    //  json[r'storageLabel'] = null;
+      //  json[r'storageLabel'] = null;
     }
     return json;
   }
@@ -127,14 +130,18 @@ class UserAdminUpdateDto {
         name: mapValueOfType<String>(json, r'name'),
         password: mapValueOfType<String>(json, r'password'),
         quotaSizeInBytes: mapValueOfType<int>(json, r'quotaSizeInBytes'),
-        shouldChangePassword: mapValueOfType<bool>(json, r'shouldChangePassword'),
+        shouldChangePassword:
+            mapValueOfType<bool>(json, r'shouldChangePassword'),
         storageLabel: mapValueOfType<String>(json, r'storageLabel'),
       );
     }
     return null;
   }
 
-  static List<UserAdminUpdateDto> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<UserAdminUpdateDto> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <UserAdminUpdateDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -162,20 +169,24 @@ class UserAdminUpdateDto {
   }
 
   // maps a json object with a list of UserAdminUpdateDto-objects as value to a dart map
-  static Map<String, List<UserAdminUpdateDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<UserAdminUpdateDto>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<UserAdminUpdateDto>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = UserAdminUpdateDto.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = UserAdminUpdateDto.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
   }
 
   /// The list of required keys that must be present in a JSON.
-  static const requiredKeys = <String>{
-  };
+  static const requiredKeys = <String>{};
 }
-

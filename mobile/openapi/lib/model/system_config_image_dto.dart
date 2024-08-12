@@ -41,38 +41,41 @@ class SystemConfigImageDto {
   int thumbnailSize;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is SystemConfigImageDto &&
-    other.colorspace == colorspace &&
-    other.extractEmbedded == extractEmbedded &&
-    other.previewFormat == previewFormat &&
-    other.previewSize == previewSize &&
-    other.quality == quality &&
-    other.thumbnailFormat == thumbnailFormat &&
-    other.thumbnailSize == thumbnailSize;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SystemConfigImageDto &&
+          other.colorspace == colorspace &&
+          other.extractEmbedded == extractEmbedded &&
+          other.previewFormat == previewFormat &&
+          other.previewSize == previewSize &&
+          other.quality == quality &&
+          other.thumbnailFormat == thumbnailFormat &&
+          other.thumbnailSize == thumbnailSize;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (colorspace.hashCode) +
-    (extractEmbedded.hashCode) +
-    (previewFormat.hashCode) +
-    (previewSize.hashCode) +
-    (quality.hashCode) +
-    (thumbnailFormat.hashCode) +
-    (thumbnailSize.hashCode);
+      // ignore: unnecessary_parenthesis
+      (colorspace.hashCode) +
+      (extractEmbedded.hashCode) +
+      (previewFormat.hashCode) +
+      (previewSize.hashCode) +
+      (quality.hashCode) +
+      (thumbnailFormat.hashCode) +
+      (thumbnailSize.hashCode);
 
   @override
-  String toString() => 'SystemConfigImageDto[colorspace=$colorspace, extractEmbedded=$extractEmbedded, previewFormat=$previewFormat, previewSize=$previewSize, quality=$quality, thumbnailFormat=$thumbnailFormat, thumbnailSize=$thumbnailSize]';
+  String toString() =>
+      'SystemConfigImageDto[colorspace=$colorspace, extractEmbedded=$extractEmbedded, previewFormat=$previewFormat, previewSize=$previewSize, quality=$quality, thumbnailFormat=$thumbnailFormat, thumbnailSize=$thumbnailSize]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'colorspace'] = this.colorspace;
-      json[r'extractEmbedded'] = this.extractEmbedded;
-      json[r'previewFormat'] = this.previewFormat;
-      json[r'previewSize'] = this.previewSize;
-      json[r'quality'] = this.quality;
-      json[r'thumbnailFormat'] = this.thumbnailFormat;
-      json[r'thumbnailSize'] = this.thumbnailSize;
+    json[r'colorspace'] = this.colorspace;
+    json[r'extractEmbedded'] = this.extractEmbedded;
+    json[r'previewFormat'] = this.previewFormat;
+    json[r'previewSize'] = this.previewSize;
+    json[r'quality'] = this.quality;
+    json[r'thumbnailFormat'] = this.thumbnailFormat;
+    json[r'thumbnailSize'] = this.thumbnailSize;
     return json;
   }
 
@@ -96,7 +99,10 @@ class SystemConfigImageDto {
     return null;
   }
 
-  static List<SystemConfigImageDto> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<SystemConfigImageDto> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <SystemConfigImageDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -124,13 +130,19 @@ class SystemConfigImageDto {
   }
 
   // maps a json object with a list of SystemConfigImageDto-objects as value to a dart map
-  static Map<String, List<SystemConfigImageDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<SystemConfigImageDto>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<SystemConfigImageDto>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = SystemConfigImageDto.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = SystemConfigImageDto.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -147,4 +159,3 @@ class SystemConfigImageDto {
     'thumbnailSize',
   };
 }
-

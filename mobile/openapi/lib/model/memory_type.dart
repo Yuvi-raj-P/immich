@@ -10,7 +10,6 @@
 
 part of openapi.api;
 
-
 class MemoryType {
   /// Instantiate a new enum with the provided [value].
   const MemoryType._(this.value);
@@ -30,9 +29,13 @@ class MemoryType {
     onThisDay,
   ];
 
-  static MemoryType? fromJson(dynamic value) => MemoryTypeTypeTransformer().decode(value);
+  static MemoryType? fromJson(dynamic value) =>
+      MemoryTypeTypeTransformer().decode(value);
 
-  static List<MemoryType> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<MemoryType> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <MemoryType>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -49,7 +52,8 @@ class MemoryType {
 /// Transformation class that can [encode] an instance of [MemoryType] to String,
 /// and [decode] dynamic data back to [MemoryType].
 class MemoryTypeTypeTransformer {
-  factory MemoryTypeTypeTransformer() => _instance ??= const MemoryTypeTypeTransformer._();
+  factory MemoryTypeTypeTransformer() =>
+      _instance ??= const MemoryTypeTypeTransformer._();
 
   const MemoryTypeTypeTransformer._();
 
@@ -66,7 +70,8 @@ class MemoryTypeTypeTransformer {
   MemoryType? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'on_this_day': return MemoryType.onThisDay;
+        case r'on_this_day':
+          return MemoryType.onThisDay;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -79,4 +84,3 @@ class MemoryTypeTypeTransformer {
   /// Singleton [MemoryTypeTypeTransformer] instance.
   static MemoryTypeTypeTransformer? _instance;
 }
-

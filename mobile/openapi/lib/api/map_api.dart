@@ -10,7 +10,6 @@
 
 part of openapi.api;
 
-
 class MapApi {
   MapApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
@@ -30,7 +29,14 @@ class MapApi {
   /// * [bool] withPartners:
   ///
   /// * [bool] withSharedAlbums:
-  Future<Response> getMapMarkersWithHttpInfo({ DateTime? fileCreatedAfter, DateTime? fileCreatedBefore, bool? isArchived, bool? isFavorite, bool? withPartners, bool? withSharedAlbums, }) async {
+  Future<Response> getMapMarkersWithHttpInfo({
+    DateTime? fileCreatedAfter,
+    DateTime? fileCreatedBefore,
+    bool? isArchived,
+    bool? isFavorite,
+    bool? withPartners,
+    bool? withSharedAlbums,
+  }) async {
     // ignore: prefer_const_declarations
     final path = r'/map/markers';
 
@@ -42,10 +48,12 @@ class MapApi {
     final formParams = <String, String>{};
 
     if (fileCreatedAfter != null) {
-      queryParams.addAll(_queryParams('', 'fileCreatedAfter', fileCreatedAfter));
+      queryParams
+          .addAll(_queryParams('', 'fileCreatedAfter', fileCreatedAfter));
     }
     if (fileCreatedBefore != null) {
-      queryParams.addAll(_queryParams('', 'fileCreatedBefore', fileCreatedBefore));
+      queryParams
+          .addAll(_queryParams('', 'fileCreatedBefore', fileCreatedBefore));
     }
     if (isArchived != null) {
       queryParams.addAll(_queryParams('', 'isArchived', isArchived));
@@ -57,11 +65,11 @@ class MapApi {
       queryParams.addAll(_queryParams('', 'withPartners', withPartners));
     }
     if (withSharedAlbums != null) {
-      queryParams.addAll(_queryParams('', 'withSharedAlbums', withSharedAlbums));
+      queryParams
+          .addAll(_queryParams('', 'withSharedAlbums', withSharedAlbums));
     }
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -87,20 +95,35 @@ class MapApi {
   /// * [bool] withPartners:
   ///
   /// * [bool] withSharedAlbums:
-  Future<List<MapMarkerResponseDto>?> getMapMarkers({ DateTime? fileCreatedAfter, DateTime? fileCreatedBefore, bool? isArchived, bool? isFavorite, bool? withPartners, bool? withSharedAlbums, }) async {
-    final response = await getMapMarkersWithHttpInfo( fileCreatedAfter: fileCreatedAfter, fileCreatedBefore: fileCreatedBefore, isArchived: isArchived, isFavorite: isFavorite, withPartners: withPartners, withSharedAlbums: withSharedAlbums, );
+  Future<List<MapMarkerResponseDto>?> getMapMarkers({
+    DateTime? fileCreatedAfter,
+    DateTime? fileCreatedBefore,
+    bool? isArchived,
+    bool? isFavorite,
+    bool? withPartners,
+    bool? withSharedAlbums,
+  }) async {
+    final response = await getMapMarkersWithHttpInfo(
+      fileCreatedAfter: fileCreatedAfter,
+      fileCreatedBefore: fileCreatedBefore,
+      isArchived: isArchived,
+      isFavorite: isFavorite,
+      withPartners: withPartners,
+      withSharedAlbums: withSharedAlbums,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<MapMarkerResponseDto>') as List)
-        .cast<MapMarkerResponseDto>()
-        .toList(growable: false);
-
+      return (await apiClient.deserializeAsync(
+              responseBody, 'List<MapMarkerResponseDto>') as List)
+          .cast<MapMarkerResponseDto>()
+          .toList(growable: false);
     }
     return null;
   }
@@ -111,7 +134,10 @@ class MapApi {
   /// * [MapTheme] theme (required):
   ///
   /// * [String] key:
-  Future<Response> getMapStyleWithHttpInfo(MapTheme theme, { String? key, }) async {
+  Future<Response> getMapStyleWithHttpInfo(
+    MapTheme theme, {
+    String? key,
+  }) async {
     // ignore: prefer_const_declarations
     final path = r'/map/style.json';
 
@@ -125,10 +151,9 @@ class MapApi {
     if (key != null) {
       queryParams.addAll(_queryParams('', 'key', key));
     }
-      queryParams.addAll(_queryParams('', 'theme', theme));
+    queryParams.addAll(_queryParams('', 'theme', theme));
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -146,17 +171,26 @@ class MapApi {
   /// * [MapTheme] theme (required):
   ///
   /// * [String] key:
-  Future<Object?> getMapStyle(MapTheme theme, { String? key, }) async {
-    final response = await getMapStyleWithHttpInfo(theme,  key: key, );
+  Future<Object?> getMapStyle(
+    MapTheme theme, {
+    String? key,
+  }) async {
+    final response = await getMapStyleWithHttpInfo(
+      theme,
+      key: key,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'Object',) as Object;
-    
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'Object',
+      ) as Object;
     }
     return null;
   }
@@ -167,7 +201,10 @@ class MapApi {
   /// * [double] lat (required):
   ///
   /// * [double] lon (required):
-  Future<Response> reverseGeocodeWithHttpInfo(double lat, double lon,) async {
+  Future<Response> reverseGeocodeWithHttpInfo(
+    double lat,
+    double lon,
+  ) async {
     // ignore: prefer_const_declarations
     final path = r'/map/reverse-geocode';
 
@@ -178,11 +215,10 @@ class MapApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-      queryParams.addAll(_queryParams('', 'lat', lat));
-      queryParams.addAll(_queryParams('', 'lon', lon));
+    queryParams.addAll(_queryParams('', 'lat', lat));
+    queryParams.addAll(_queryParams('', 'lon', lon));
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -200,20 +236,27 @@ class MapApi {
   /// * [double] lat (required):
   ///
   /// * [double] lon (required):
-  Future<List<MapReverseGeocodeResponseDto>?> reverseGeocode(double lat, double lon,) async {
-    final response = await reverseGeocodeWithHttpInfo(lat, lon,);
+  Future<List<MapReverseGeocodeResponseDto>?> reverseGeocode(
+    double lat,
+    double lon,
+  ) async {
+    final response = await reverseGeocodeWithHttpInfo(
+      lat,
+      lon,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<MapReverseGeocodeResponseDto>') as List)
-        .cast<MapReverseGeocodeResponseDto>()
-        .toList(growable: false);
-
+      return (await apiClient.deserializeAsync(
+              responseBody, 'List<MapReverseGeocodeResponseDto>') as List)
+          .cast<MapReverseGeocodeResponseDto>()
+          .toList(growable: false);
     }
     return null;
   }

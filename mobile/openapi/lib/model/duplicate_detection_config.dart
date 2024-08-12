@@ -24,23 +24,25 @@ class DuplicateDetectionConfig {
   double maxDistance;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is DuplicateDetectionConfig &&
-    other.enabled == enabled &&
-    other.maxDistance == maxDistance;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is DuplicateDetectionConfig &&
+          other.enabled == enabled &&
+          other.maxDistance == maxDistance;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (enabled.hashCode) +
-    (maxDistance.hashCode);
+      // ignore: unnecessary_parenthesis
+      (enabled.hashCode) + (maxDistance.hashCode);
 
   @override
-  String toString() => 'DuplicateDetectionConfig[enabled=$enabled, maxDistance=$maxDistance]';
+  String toString() =>
+      'DuplicateDetectionConfig[enabled=$enabled, maxDistance=$maxDistance]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'enabled'] = this.enabled;
-      json[r'maxDistance'] = this.maxDistance;
+    json[r'enabled'] = this.enabled;
+    json[r'maxDistance'] = this.maxDistance;
     return json;
   }
 
@@ -59,7 +61,10 @@ class DuplicateDetectionConfig {
     return null;
   }
 
-  static List<DuplicateDetectionConfig> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<DuplicateDetectionConfig> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <DuplicateDetectionConfig>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -87,13 +92,19 @@ class DuplicateDetectionConfig {
   }
 
   // maps a json object with a list of DuplicateDetectionConfig-objects as value to a dart map
-  static Map<String, List<DuplicateDetectionConfig>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<DuplicateDetectionConfig>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<DuplicateDetectionConfig>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = DuplicateDetectionConfig.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = DuplicateDetectionConfig.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -105,4 +116,3 @@ class DuplicateDetectionConfig {
     'maxDistance',
   };
 }
-

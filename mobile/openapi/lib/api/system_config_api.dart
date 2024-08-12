@@ -10,9 +10,9 @@
 
 part of openapi.api;
 
-
 class SystemConfigApi {
-  SystemConfigApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
+  SystemConfigApi([ApiClient? apiClient])
+      : apiClient = apiClient ?? defaultApiClient;
 
   final ApiClient apiClient;
 
@@ -29,7 +29,6 @@ class SystemConfigApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -50,9 +49,12 @@ class SystemConfigApi {
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SystemConfigDto',) as SystemConfigDto;
-    
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'SystemConfigDto',
+      ) as SystemConfigDto;
     }
     return null;
   }
@@ -70,7 +72,6 @@ class SystemConfigApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -91,9 +92,12 @@ class SystemConfigApi {
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SystemConfigDto',) as SystemConfigDto;
-    
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'SystemConfigDto',
+      ) as SystemConfigDto;
     }
     return null;
   }
@@ -112,7 +116,6 @@ class SystemConfigApi {
 
     const contentTypes = <String>[];
 
-
     return apiClient.invokeAPI(
       path,
       'GET',
@@ -124,7 +127,8 @@ class SystemConfigApi {
     );
   }
 
-  Future<SystemConfigTemplateStorageOptionDto?> getStorageTemplateOptions() async {
+  Future<SystemConfigTemplateStorageOptionDto?>
+      getStorageTemplateOptions() async {
     final response = await getStorageTemplateOptionsWithHttpInfo();
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
@@ -132,9 +136,12 @@ class SystemConfigApi {
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SystemConfigTemplateStorageOptionDto',) as SystemConfigTemplateStorageOptionDto;
-    
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'SystemConfigTemplateStorageOptionDto',
+      ) as SystemConfigTemplateStorageOptionDto;
     }
     return null;
   }
@@ -143,7 +150,9 @@ class SystemConfigApi {
   /// Parameters:
   ///
   /// * [SystemConfigDto] systemConfigDto (required):
-  Future<Response> updateConfigWithHttpInfo(SystemConfigDto systemConfigDto,) async {
+  Future<Response> updateConfigWithHttpInfo(
+    SystemConfigDto systemConfigDto,
+  ) async {
     // ignore: prefer_const_declarations
     final path = r'/system-config';
 
@@ -155,7 +164,6 @@ class SystemConfigApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>['application/json'];
-
 
     return apiClient.invokeAPI(
       path,
@@ -171,17 +179,24 @@ class SystemConfigApi {
   /// Parameters:
   ///
   /// * [SystemConfigDto] systemConfigDto (required):
-  Future<SystemConfigDto?> updateConfig(SystemConfigDto systemConfigDto,) async {
-    final response = await updateConfigWithHttpInfo(systemConfigDto,);
+  Future<SystemConfigDto?> updateConfig(
+    SystemConfigDto systemConfigDto,
+  ) async {
+    final response = await updateConfigWithHttpInfo(
+      systemConfigDto,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SystemConfigDto',) as SystemConfigDto;
-    
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'SystemConfigDto',
+      ) as SystemConfigDto;
     }
     return null;
   }

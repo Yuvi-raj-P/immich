@@ -22,23 +22,25 @@ class SystemConfigServerDto {
   String loginPageMessage;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is SystemConfigServerDto &&
-    other.externalDomain == externalDomain &&
-    other.loginPageMessage == loginPageMessage;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SystemConfigServerDto &&
+          other.externalDomain == externalDomain &&
+          other.loginPageMessage == loginPageMessage;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (externalDomain.hashCode) +
-    (loginPageMessage.hashCode);
+      // ignore: unnecessary_parenthesis
+      (externalDomain.hashCode) + (loginPageMessage.hashCode);
 
   @override
-  String toString() => 'SystemConfigServerDto[externalDomain=$externalDomain, loginPageMessage=$loginPageMessage]';
+  String toString() =>
+      'SystemConfigServerDto[externalDomain=$externalDomain, loginPageMessage=$loginPageMessage]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'externalDomain'] = this.externalDomain;
-      json[r'loginPageMessage'] = this.loginPageMessage;
+    json[r'externalDomain'] = this.externalDomain;
+    json[r'loginPageMessage'] = this.loginPageMessage;
     return json;
   }
 
@@ -57,7 +59,10 @@ class SystemConfigServerDto {
     return null;
   }
 
-  static List<SystemConfigServerDto> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<SystemConfigServerDto> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <SystemConfigServerDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -85,13 +90,19 @@ class SystemConfigServerDto {
   }
 
   // maps a json object with a list of SystemConfigServerDto-objects as value to a dart map
-  static Map<String, List<SystemConfigServerDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<SystemConfigServerDto>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<SystemConfigServerDto>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = SystemConfigServerDto.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = SystemConfigServerDto.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -103,4 +114,3 @@ class SystemConfigServerDto {
     'loginPageMessage',
   };
 }
-

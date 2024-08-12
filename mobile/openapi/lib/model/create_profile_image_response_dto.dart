@@ -22,23 +22,25 @@ class CreateProfileImageResponseDto {
   String userId;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is CreateProfileImageResponseDto &&
-    other.profileImagePath == profileImagePath &&
-    other.userId == userId;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CreateProfileImageResponseDto &&
+          other.profileImagePath == profileImagePath &&
+          other.userId == userId;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (profileImagePath.hashCode) +
-    (userId.hashCode);
+      // ignore: unnecessary_parenthesis
+      (profileImagePath.hashCode) + (userId.hashCode);
 
   @override
-  String toString() => 'CreateProfileImageResponseDto[profileImagePath=$profileImagePath, userId=$userId]';
+  String toString() =>
+      'CreateProfileImageResponseDto[profileImagePath=$profileImagePath, userId=$userId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'profileImagePath'] = this.profileImagePath;
-      json[r'userId'] = this.userId;
+    json[r'profileImagePath'] = this.profileImagePath;
+    json[r'userId'] = this.userId;
     return json;
   }
 
@@ -57,7 +59,10 @@ class CreateProfileImageResponseDto {
     return null;
   }
 
-  static List<CreateProfileImageResponseDto> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<CreateProfileImageResponseDto> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <CreateProfileImageResponseDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -85,13 +90,19 @@ class CreateProfileImageResponseDto {
   }
 
   // maps a json object with a list of CreateProfileImageResponseDto-objects as value to a dart map
-  static Map<String, List<CreateProfileImageResponseDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<CreateProfileImageResponseDto>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<CreateProfileImageResponseDto>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = CreateProfileImageResponseDto.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = CreateProfileImageResponseDto.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -103,4 +114,3 @@ class CreateProfileImageResponseDto {
     'userId',
   };
 }
-

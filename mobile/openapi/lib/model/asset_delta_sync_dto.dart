@@ -22,23 +22,25 @@ class AssetDeltaSyncDto {
   List<String> userIds;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is AssetDeltaSyncDto &&
-    other.updatedAfter == updatedAfter &&
-    _deepEquality.equals(other.userIds, userIds);
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is AssetDeltaSyncDto &&
+          other.updatedAfter == updatedAfter &&
+          _deepEquality.equals(other.userIds, userIds);
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (updatedAfter.hashCode) +
-    (userIds.hashCode);
+      // ignore: unnecessary_parenthesis
+      (updatedAfter.hashCode) + (userIds.hashCode);
 
   @override
-  String toString() => 'AssetDeltaSyncDto[updatedAfter=$updatedAfter, userIds=$userIds]';
+  String toString() =>
+      'AssetDeltaSyncDto[updatedAfter=$updatedAfter, userIds=$userIds]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'updatedAfter'] = this.updatedAfter.toUtc().toIso8601String();
-      json[r'userIds'] = this.userIds;
+    json[r'updatedAfter'] = this.updatedAfter.toUtc().toIso8601String();
+    json[r'userIds'] = this.userIds;
     return json;
   }
 
@@ -52,14 +54,19 @@ class AssetDeltaSyncDto {
       return AssetDeltaSyncDto(
         updatedAfter: mapDateTime(json, r'updatedAfter', r'')!,
         userIds: json[r'userIds'] is Iterable
-            ? (json[r'userIds'] as Iterable).cast<String>().toList(growable: false)
+            ? (json[r'userIds'] as Iterable)
+                .cast<String>()
+                .toList(growable: false)
             : const [],
       );
     }
     return null;
   }
 
-  static List<AssetDeltaSyncDto> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<AssetDeltaSyncDto> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <AssetDeltaSyncDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -87,13 +94,19 @@ class AssetDeltaSyncDto {
   }
 
   // maps a json object with a list of AssetDeltaSyncDto-objects as value to a dart map
-  static Map<String, List<AssetDeltaSyncDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<AssetDeltaSyncDto>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<AssetDeltaSyncDto>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = AssetDeltaSyncDto.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = AssetDeltaSyncDto.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -105,4 +118,3 @@ class AssetDeltaSyncDto {
     'userIds',
   };
 }
-

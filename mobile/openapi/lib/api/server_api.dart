@@ -10,7 +10,6 @@
 
 part of openapi.api;
 
-
 class ServerApi {
   ServerApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
@@ -29,7 +28,6 @@ class ServerApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -63,7 +61,6 @@ class ServerApi {
 
     const contentTypes = <String>[];
 
-
     return apiClient.invokeAPI(
       path,
       'GET',
@@ -83,9 +80,12 @@ class ServerApi {
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'LicenseResponseDto',) as LicenseResponseDto;
-    
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'LicenseResponseDto',
+      ) as LicenseResponseDto;
     }
     return null;
   }
@@ -94,7 +94,9 @@ class ServerApi {
   /// Parameters:
   ///
   /// * [LicenseKeyDto] licenseKeyDto (required):
-  Future<Response> setServerLicenseWithHttpInfo(LicenseKeyDto licenseKeyDto,) async {
+  Future<Response> setServerLicenseWithHttpInfo(
+    LicenseKeyDto licenseKeyDto,
+  ) async {
     // ignore: prefer_const_declarations
     final path = r'/server/license';
 
@@ -106,7 +108,6 @@ class ServerApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>['application/json'];
-
 
     return apiClient.invokeAPI(
       path,
@@ -122,17 +123,24 @@ class ServerApi {
   /// Parameters:
   ///
   /// * [LicenseKeyDto] licenseKeyDto (required):
-  Future<LicenseResponseDto?> setServerLicense(LicenseKeyDto licenseKeyDto,) async {
-    final response = await setServerLicenseWithHttpInfo(licenseKeyDto,);
+  Future<LicenseResponseDto?> setServerLicense(
+    LicenseKeyDto licenseKeyDto,
+  ) async {
+    final response = await setServerLicenseWithHttpInfo(
+      licenseKeyDto,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'LicenseResponseDto',) as LicenseResponseDto;
-    
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'LicenseResponseDto',
+      ) as LicenseResponseDto;
     }
     return null;
   }

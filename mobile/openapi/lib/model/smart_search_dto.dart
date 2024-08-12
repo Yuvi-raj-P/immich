@@ -274,221 +274,224 @@ class SmartSearchDto {
   bool? withExif;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is SmartSearchDto &&
-    other.city == city &&
-    other.country == country &&
-    other.createdAfter == createdAfter &&
-    other.createdBefore == createdBefore &&
-    other.deviceId == deviceId &&
-    other.isArchived == isArchived &&
-    other.isEncoded == isEncoded &&
-    other.isFavorite == isFavorite &&
-    other.isMotion == isMotion &&
-    other.isNotInAlbum == isNotInAlbum &&
-    other.isOffline == isOffline &&
-    other.isVisible == isVisible &&
-    other.lensModel == lensModel &&
-    other.libraryId == libraryId &&
-    other.make == make &&
-    other.model == model &&
-    other.page == page &&
-    _deepEquality.equals(other.personIds, personIds) &&
-    other.query == query &&
-    other.size == size &&
-    other.state == state &&
-    other.takenAfter == takenAfter &&
-    other.takenBefore == takenBefore &&
-    other.trashedAfter == trashedAfter &&
-    other.trashedBefore == trashedBefore &&
-    other.type == type &&
-    other.updatedAfter == updatedAfter &&
-    other.updatedBefore == updatedBefore &&
-    other.withArchived == withArchived &&
-    other.withDeleted == withDeleted &&
-    other.withExif == withExif;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SmartSearchDto &&
+          other.city == city &&
+          other.country == country &&
+          other.createdAfter == createdAfter &&
+          other.createdBefore == createdBefore &&
+          other.deviceId == deviceId &&
+          other.isArchived == isArchived &&
+          other.isEncoded == isEncoded &&
+          other.isFavorite == isFavorite &&
+          other.isMotion == isMotion &&
+          other.isNotInAlbum == isNotInAlbum &&
+          other.isOffline == isOffline &&
+          other.isVisible == isVisible &&
+          other.lensModel == lensModel &&
+          other.libraryId == libraryId &&
+          other.make == make &&
+          other.model == model &&
+          other.page == page &&
+          _deepEquality.equals(other.personIds, personIds) &&
+          other.query == query &&
+          other.size == size &&
+          other.state == state &&
+          other.takenAfter == takenAfter &&
+          other.takenBefore == takenBefore &&
+          other.trashedAfter == trashedAfter &&
+          other.trashedBefore == trashedBefore &&
+          other.type == type &&
+          other.updatedAfter == updatedAfter &&
+          other.updatedBefore == updatedBefore &&
+          other.withArchived == withArchived &&
+          other.withDeleted == withDeleted &&
+          other.withExif == withExif;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (city == null ? 0 : city!.hashCode) +
-    (country == null ? 0 : country!.hashCode) +
-    (createdAfter == null ? 0 : createdAfter!.hashCode) +
-    (createdBefore == null ? 0 : createdBefore!.hashCode) +
-    (deviceId == null ? 0 : deviceId!.hashCode) +
-    (isArchived == null ? 0 : isArchived!.hashCode) +
-    (isEncoded == null ? 0 : isEncoded!.hashCode) +
-    (isFavorite == null ? 0 : isFavorite!.hashCode) +
-    (isMotion == null ? 0 : isMotion!.hashCode) +
-    (isNotInAlbum == null ? 0 : isNotInAlbum!.hashCode) +
-    (isOffline == null ? 0 : isOffline!.hashCode) +
-    (isVisible == null ? 0 : isVisible!.hashCode) +
-    (lensModel == null ? 0 : lensModel!.hashCode) +
-    (libraryId == null ? 0 : libraryId!.hashCode) +
-    (make == null ? 0 : make!.hashCode) +
-    (model == null ? 0 : model!.hashCode) +
-    (page == null ? 0 : page!.hashCode) +
-    (personIds.hashCode) +
-    (query.hashCode) +
-    (size == null ? 0 : size!.hashCode) +
-    (state == null ? 0 : state!.hashCode) +
-    (takenAfter == null ? 0 : takenAfter!.hashCode) +
-    (takenBefore == null ? 0 : takenBefore!.hashCode) +
-    (trashedAfter == null ? 0 : trashedAfter!.hashCode) +
-    (trashedBefore == null ? 0 : trashedBefore!.hashCode) +
-    (type == null ? 0 : type!.hashCode) +
-    (updatedAfter == null ? 0 : updatedAfter!.hashCode) +
-    (updatedBefore == null ? 0 : updatedBefore!.hashCode) +
-    (withArchived.hashCode) +
-    (withDeleted == null ? 0 : withDeleted!.hashCode) +
-    (withExif == null ? 0 : withExif!.hashCode);
+      // ignore: unnecessary_parenthesis
+      (city == null ? 0 : city!.hashCode) +
+      (country == null ? 0 : country!.hashCode) +
+      (createdAfter == null ? 0 : createdAfter!.hashCode) +
+      (createdBefore == null ? 0 : createdBefore!.hashCode) +
+      (deviceId == null ? 0 : deviceId!.hashCode) +
+      (isArchived == null ? 0 : isArchived!.hashCode) +
+      (isEncoded == null ? 0 : isEncoded!.hashCode) +
+      (isFavorite == null ? 0 : isFavorite!.hashCode) +
+      (isMotion == null ? 0 : isMotion!.hashCode) +
+      (isNotInAlbum == null ? 0 : isNotInAlbum!.hashCode) +
+      (isOffline == null ? 0 : isOffline!.hashCode) +
+      (isVisible == null ? 0 : isVisible!.hashCode) +
+      (lensModel == null ? 0 : lensModel!.hashCode) +
+      (libraryId == null ? 0 : libraryId!.hashCode) +
+      (make == null ? 0 : make!.hashCode) +
+      (model == null ? 0 : model!.hashCode) +
+      (page == null ? 0 : page!.hashCode) +
+      (personIds.hashCode) +
+      (query.hashCode) +
+      (size == null ? 0 : size!.hashCode) +
+      (state == null ? 0 : state!.hashCode) +
+      (takenAfter == null ? 0 : takenAfter!.hashCode) +
+      (takenBefore == null ? 0 : takenBefore!.hashCode) +
+      (trashedAfter == null ? 0 : trashedAfter!.hashCode) +
+      (trashedBefore == null ? 0 : trashedBefore!.hashCode) +
+      (type == null ? 0 : type!.hashCode) +
+      (updatedAfter == null ? 0 : updatedAfter!.hashCode) +
+      (updatedBefore == null ? 0 : updatedBefore!.hashCode) +
+      (withArchived.hashCode) +
+      (withDeleted == null ? 0 : withDeleted!.hashCode) +
+      (withExif == null ? 0 : withExif!.hashCode);
 
   @override
-  String toString() => 'SmartSearchDto[city=$city, country=$country, createdAfter=$createdAfter, createdBefore=$createdBefore, deviceId=$deviceId, isArchived=$isArchived, isEncoded=$isEncoded, isFavorite=$isFavorite, isMotion=$isMotion, isNotInAlbum=$isNotInAlbum, isOffline=$isOffline, isVisible=$isVisible, lensModel=$lensModel, libraryId=$libraryId, make=$make, model=$model, page=$page, personIds=$personIds, query=$query, size=$size, state=$state, takenAfter=$takenAfter, takenBefore=$takenBefore, trashedAfter=$trashedAfter, trashedBefore=$trashedBefore, type=$type, updatedAfter=$updatedAfter, updatedBefore=$updatedBefore, withArchived=$withArchived, withDeleted=$withDeleted, withExif=$withExif]';
+  String toString() =>
+      'SmartSearchDto[city=$city, country=$country, createdAfter=$createdAfter, createdBefore=$createdBefore, deviceId=$deviceId, isArchived=$isArchived, isEncoded=$isEncoded, isFavorite=$isFavorite, isMotion=$isMotion, isNotInAlbum=$isNotInAlbum, isOffline=$isOffline, isVisible=$isVisible, lensModel=$lensModel, libraryId=$libraryId, make=$make, model=$model, page=$page, personIds=$personIds, query=$query, size=$size, state=$state, takenAfter=$takenAfter, takenBefore=$takenBefore, trashedAfter=$trashedAfter, trashedBefore=$trashedBefore, type=$type, updatedAfter=$updatedAfter, updatedBefore=$updatedBefore, withArchived=$withArchived, withDeleted=$withDeleted, withExif=$withExif]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
     if (this.city != null) {
       json[r'city'] = this.city;
     } else {
-    //  json[r'city'] = null;
+      //  json[r'city'] = null;
     }
     if (this.country != null) {
       json[r'country'] = this.country;
     } else {
-    //  json[r'country'] = null;
+      //  json[r'country'] = null;
     }
     if (this.createdAfter != null) {
       json[r'createdAfter'] = this.createdAfter!.toUtc().toIso8601String();
     } else {
-    //  json[r'createdAfter'] = null;
+      //  json[r'createdAfter'] = null;
     }
     if (this.createdBefore != null) {
       json[r'createdBefore'] = this.createdBefore!.toUtc().toIso8601String();
     } else {
-    //  json[r'createdBefore'] = null;
+      //  json[r'createdBefore'] = null;
     }
     if (this.deviceId != null) {
       json[r'deviceId'] = this.deviceId;
     } else {
-    //  json[r'deviceId'] = null;
+      //  json[r'deviceId'] = null;
     }
     if (this.isArchived != null) {
       json[r'isArchived'] = this.isArchived;
     } else {
-    //  json[r'isArchived'] = null;
+      //  json[r'isArchived'] = null;
     }
     if (this.isEncoded != null) {
       json[r'isEncoded'] = this.isEncoded;
     } else {
-    //  json[r'isEncoded'] = null;
+      //  json[r'isEncoded'] = null;
     }
     if (this.isFavorite != null) {
       json[r'isFavorite'] = this.isFavorite;
     } else {
-    //  json[r'isFavorite'] = null;
+      //  json[r'isFavorite'] = null;
     }
     if (this.isMotion != null) {
       json[r'isMotion'] = this.isMotion;
     } else {
-    //  json[r'isMotion'] = null;
+      //  json[r'isMotion'] = null;
     }
     if (this.isNotInAlbum != null) {
       json[r'isNotInAlbum'] = this.isNotInAlbum;
     } else {
-    //  json[r'isNotInAlbum'] = null;
+      //  json[r'isNotInAlbum'] = null;
     }
     if (this.isOffline != null) {
       json[r'isOffline'] = this.isOffline;
     } else {
-    //  json[r'isOffline'] = null;
+      //  json[r'isOffline'] = null;
     }
     if (this.isVisible != null) {
       json[r'isVisible'] = this.isVisible;
     } else {
-    //  json[r'isVisible'] = null;
+      //  json[r'isVisible'] = null;
     }
     if (this.lensModel != null) {
       json[r'lensModel'] = this.lensModel;
     } else {
-    //  json[r'lensModel'] = null;
+      //  json[r'lensModel'] = null;
     }
     if (this.libraryId != null) {
       json[r'libraryId'] = this.libraryId;
     } else {
-    //  json[r'libraryId'] = null;
+      //  json[r'libraryId'] = null;
     }
     if (this.make != null) {
       json[r'make'] = this.make;
     } else {
-    //  json[r'make'] = null;
+      //  json[r'make'] = null;
     }
     if (this.model != null) {
       json[r'model'] = this.model;
     } else {
-    //  json[r'model'] = null;
+      //  json[r'model'] = null;
     }
     if (this.page != null) {
       json[r'page'] = this.page;
     } else {
-    //  json[r'page'] = null;
+      //  json[r'page'] = null;
     }
-      json[r'personIds'] = this.personIds;
-      json[r'query'] = this.query;
+    json[r'personIds'] = this.personIds;
+    json[r'query'] = this.query;
     if (this.size != null) {
       json[r'size'] = this.size;
     } else {
-    //  json[r'size'] = null;
+      //  json[r'size'] = null;
     }
     if (this.state != null) {
       json[r'state'] = this.state;
     } else {
-    //  json[r'state'] = null;
+      //  json[r'state'] = null;
     }
     if (this.takenAfter != null) {
       json[r'takenAfter'] = this.takenAfter!.toUtc().toIso8601String();
     } else {
-    //  json[r'takenAfter'] = null;
+      //  json[r'takenAfter'] = null;
     }
     if (this.takenBefore != null) {
       json[r'takenBefore'] = this.takenBefore!.toUtc().toIso8601String();
     } else {
-    //  json[r'takenBefore'] = null;
+      //  json[r'takenBefore'] = null;
     }
     if (this.trashedAfter != null) {
       json[r'trashedAfter'] = this.trashedAfter!.toUtc().toIso8601String();
     } else {
-    //  json[r'trashedAfter'] = null;
+      //  json[r'trashedAfter'] = null;
     }
     if (this.trashedBefore != null) {
       json[r'trashedBefore'] = this.trashedBefore!.toUtc().toIso8601String();
     } else {
-    //  json[r'trashedBefore'] = null;
+      //  json[r'trashedBefore'] = null;
     }
     if (this.type != null) {
       json[r'type'] = this.type;
     } else {
-    //  json[r'type'] = null;
+      //  json[r'type'] = null;
     }
     if (this.updatedAfter != null) {
       json[r'updatedAfter'] = this.updatedAfter!.toUtc().toIso8601String();
     } else {
-    //  json[r'updatedAfter'] = null;
+      //  json[r'updatedAfter'] = null;
     }
     if (this.updatedBefore != null) {
       json[r'updatedBefore'] = this.updatedBefore!.toUtc().toIso8601String();
     } else {
-    //  json[r'updatedBefore'] = null;
+      //  json[r'updatedBefore'] = null;
     }
-      json[r'withArchived'] = this.withArchived;
+    json[r'withArchived'] = this.withArchived;
     if (this.withDeleted != null) {
       json[r'withDeleted'] = this.withDeleted;
     } else {
-    //  json[r'withDeleted'] = null;
+      //  json[r'withDeleted'] = null;
     }
     if (this.withExif != null) {
       json[r'withExif'] = this.withExif;
     } else {
-    //  json[r'withExif'] = null;
+      //  json[r'withExif'] = null;
     }
     return json;
   }
@@ -519,7 +522,9 @@ class SmartSearchDto {
         model: mapValueOfType<String>(json, r'model'),
         page: num.parse('${json[r'page']}'),
         personIds: json[r'personIds'] is Iterable
-            ? (json[r'personIds'] as Iterable).cast<String>().toList(growable: false)
+            ? (json[r'personIds'] as Iterable)
+                .cast<String>()
+                .toList(growable: false)
             : const [],
         query: mapValueOfType<String>(json, r'query')!,
         size: num.parse('${json[r'size']}'),
@@ -539,7 +544,10 @@ class SmartSearchDto {
     return null;
   }
 
-  static List<SmartSearchDto> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<SmartSearchDto> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <SmartSearchDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -567,13 +575,19 @@ class SmartSearchDto {
   }
 
   // maps a json object with a list of SmartSearchDto-objects as value to a dart map
-  static Map<String, List<SmartSearchDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<SmartSearchDto>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<SmartSearchDto>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = SmartSearchDto.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = SmartSearchDto.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -584,4 +598,3 @@ class SmartSearchDto {
     'query',
   };
 }
-

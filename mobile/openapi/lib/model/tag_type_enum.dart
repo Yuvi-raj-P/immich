@@ -10,7 +10,6 @@
 
 part of openapi.api;
 
-
 class TagTypeEnum {
   /// Instantiate a new enum with the provided [value].
   const TagTypeEnum._(this.value);
@@ -34,9 +33,13 @@ class TagTypeEnum {
     CUSTOM,
   ];
 
-  static TagTypeEnum? fromJson(dynamic value) => TagTypeEnumTypeTransformer().decode(value);
+  static TagTypeEnum? fromJson(dynamic value) =>
+      TagTypeEnumTypeTransformer().decode(value);
 
-  static List<TagTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<TagTypeEnum> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <TagTypeEnum>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -53,7 +56,8 @@ class TagTypeEnum {
 /// Transformation class that can [encode] an instance of [TagTypeEnum] to String,
 /// and [decode] dynamic data back to [TagTypeEnum].
 class TagTypeEnumTypeTransformer {
-  factory TagTypeEnumTypeTransformer() => _instance ??= const TagTypeEnumTypeTransformer._();
+  factory TagTypeEnumTypeTransformer() =>
+      _instance ??= const TagTypeEnumTypeTransformer._();
 
   const TagTypeEnumTypeTransformer._();
 
@@ -70,9 +74,12 @@ class TagTypeEnumTypeTransformer {
   TagTypeEnum? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'OBJECT': return TagTypeEnum.OBJECT;
-        case r'FACE': return TagTypeEnum.FACE;
-        case r'CUSTOM': return TagTypeEnum.CUSTOM;
+        case r'OBJECT':
+          return TagTypeEnum.OBJECT;
+        case r'FACE':
+          return TagTypeEnum.FACE;
+        case r'CUSTOM':
+          return TagTypeEnum.CUSTOM;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -85,4 +92,3 @@ class TagTypeEnumTypeTransformer {
   /// Singleton [TagTypeEnumTypeTransformer] instance.
   static TagTypeEnumTypeTransformer? _instance;
 }
-

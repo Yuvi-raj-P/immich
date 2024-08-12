@@ -19,20 +19,20 @@ class APIKeyUpdateDto {
   String name;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is APIKeyUpdateDto &&
-    other.name == name;
+  bool operator ==(Object other) =>
+      identical(this, other) || other is APIKeyUpdateDto && other.name == name;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (name.hashCode);
+      // ignore: unnecessary_parenthesis
+      (name.hashCode);
 
   @override
   String toString() => 'APIKeyUpdateDto[name=$name]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'name'] = this.name;
+    json[r'name'] = this.name;
     return json;
   }
 
@@ -50,7 +50,10 @@ class APIKeyUpdateDto {
     return null;
   }
 
-  static List<APIKeyUpdateDto> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<APIKeyUpdateDto> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <APIKeyUpdateDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -78,13 +81,19 @@ class APIKeyUpdateDto {
   }
 
   // maps a json object with a list of APIKeyUpdateDto-objects as value to a dart map
-  static Map<String, List<APIKeyUpdateDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<APIKeyUpdateDto>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<APIKeyUpdateDto>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = APIKeyUpdateDto.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = APIKeyUpdateDto.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -95,4 +104,3 @@ class APIKeyUpdateDto {
     'name',
   };
 }
-

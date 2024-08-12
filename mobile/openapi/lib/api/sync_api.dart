@@ -10,7 +10,6 @@
 
 part of openapi.api;
 
-
 class SyncApi {
   SyncApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
@@ -20,7 +19,9 @@ class SyncApi {
   /// Parameters:
   ///
   /// * [AssetDeltaSyncDto] assetDeltaSyncDto (required):
-  Future<Response> getDeltaSyncWithHttpInfo(AssetDeltaSyncDto assetDeltaSyncDto,) async {
+  Future<Response> getDeltaSyncWithHttpInfo(
+    AssetDeltaSyncDto assetDeltaSyncDto,
+  ) async {
     // ignore: prefer_const_declarations
     final path = r'/sync/delta-sync';
 
@@ -33,7 +34,6 @@ class SyncApi {
 
     const contentTypes = <String>['application/json'];
 
-
     return apiClient.invokeAPI(
       path,
       'POST',
@@ -48,17 +48,24 @@ class SyncApi {
   /// Parameters:
   ///
   /// * [AssetDeltaSyncDto] assetDeltaSyncDto (required):
-  Future<AssetDeltaSyncResponseDto?> getDeltaSync(AssetDeltaSyncDto assetDeltaSyncDto,) async {
-    final response = await getDeltaSyncWithHttpInfo(assetDeltaSyncDto,);
+  Future<AssetDeltaSyncResponseDto?> getDeltaSync(
+    AssetDeltaSyncDto assetDeltaSyncDto,
+  ) async {
+    final response = await getDeltaSyncWithHttpInfo(
+      assetDeltaSyncDto,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AssetDeltaSyncResponseDto',) as AssetDeltaSyncResponseDto;
-    
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'AssetDeltaSyncResponseDto',
+      ) as AssetDeltaSyncResponseDto;
     }
     return null;
   }
@@ -67,7 +74,9 @@ class SyncApi {
   /// Parameters:
   ///
   /// * [AssetFullSyncDto] assetFullSyncDto (required):
-  Future<Response> getFullSyncForUserWithHttpInfo(AssetFullSyncDto assetFullSyncDto,) async {
+  Future<Response> getFullSyncForUserWithHttpInfo(
+    AssetFullSyncDto assetFullSyncDto,
+  ) async {
     // ignore: prefer_const_declarations
     final path = r'/sync/full-sync';
 
@@ -79,7 +88,6 @@ class SyncApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>['application/json'];
-
 
     return apiClient.invokeAPI(
       path,
@@ -95,20 +103,25 @@ class SyncApi {
   /// Parameters:
   ///
   /// * [AssetFullSyncDto] assetFullSyncDto (required):
-  Future<List<AssetResponseDto>?> getFullSyncForUser(AssetFullSyncDto assetFullSyncDto,) async {
-    final response = await getFullSyncForUserWithHttpInfo(assetFullSyncDto,);
+  Future<List<AssetResponseDto>?> getFullSyncForUser(
+    AssetFullSyncDto assetFullSyncDto,
+  ) async {
+    final response = await getFullSyncForUserWithHttpInfo(
+      assetFullSyncDto,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<AssetResponseDto>') as List)
-        .cast<AssetResponseDto>()
-        .toList(growable: false);
-
+      return (await apiClient.deserializeAsync(
+              responseBody, 'List<AssetResponseDto>') as List)
+          .cast<AssetResponseDto>()
+          .toList(growable: false);
     }
     return null;
   }

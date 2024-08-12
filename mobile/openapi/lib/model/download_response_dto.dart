@@ -22,23 +22,25 @@ class DownloadResponseDto {
   int totalSize;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is DownloadResponseDto &&
-    _deepEquality.equals(other.archives, archives) &&
-    other.totalSize == totalSize;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is DownloadResponseDto &&
+          _deepEquality.equals(other.archives, archives) &&
+          other.totalSize == totalSize;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (archives.hashCode) +
-    (totalSize.hashCode);
+      // ignore: unnecessary_parenthesis
+      (archives.hashCode) + (totalSize.hashCode);
 
   @override
-  String toString() => 'DownloadResponseDto[archives=$archives, totalSize=$totalSize]';
+  String toString() =>
+      'DownloadResponseDto[archives=$archives, totalSize=$totalSize]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'archives'] = this.archives;
-      json[r'totalSize'] = this.totalSize;
+    json[r'archives'] = this.archives;
+    json[r'totalSize'] = this.totalSize;
     return json;
   }
 
@@ -57,7 +59,10 @@ class DownloadResponseDto {
     return null;
   }
 
-  static List<DownloadResponseDto> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<DownloadResponseDto> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <DownloadResponseDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -85,13 +90,19 @@ class DownloadResponseDto {
   }
 
   // maps a json object with a list of DownloadResponseDto-objects as value to a dart map
-  static Map<String, List<DownloadResponseDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<DownloadResponseDto>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<DownloadResponseDto>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = DownloadResponseDto.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = DownloadResponseDto.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -103,4 +114,3 @@ class DownloadResponseDto {
     'totalSize',
   };
 }
-

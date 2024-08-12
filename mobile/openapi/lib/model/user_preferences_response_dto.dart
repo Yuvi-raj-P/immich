@@ -31,32 +31,35 @@ class UserPreferencesResponseDto {
   PurchaseResponse purchase;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is UserPreferencesResponseDto &&
-    other.avatar == avatar &&
-    other.download == download &&
-    other.emailNotifications == emailNotifications &&
-    other.memories == memories &&
-    other.purchase == purchase;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is UserPreferencesResponseDto &&
+          other.avatar == avatar &&
+          other.download == download &&
+          other.emailNotifications == emailNotifications &&
+          other.memories == memories &&
+          other.purchase == purchase;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (avatar.hashCode) +
-    (download.hashCode) +
-    (emailNotifications.hashCode) +
-    (memories.hashCode) +
-    (purchase.hashCode);
+      // ignore: unnecessary_parenthesis
+      (avatar.hashCode) +
+      (download.hashCode) +
+      (emailNotifications.hashCode) +
+      (memories.hashCode) +
+      (purchase.hashCode);
 
   @override
-  String toString() => 'UserPreferencesResponseDto[avatar=$avatar, download=$download, emailNotifications=$emailNotifications, memories=$memories, purchase=$purchase]';
+  String toString() =>
+      'UserPreferencesResponseDto[avatar=$avatar, download=$download, emailNotifications=$emailNotifications, memories=$memories, purchase=$purchase]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'avatar'] = this.avatar;
-      json[r'download'] = this.download;
-      json[r'emailNotifications'] = this.emailNotifications;
-      json[r'memories'] = this.memories;
-      json[r'purchase'] = this.purchase;
+    json[r'avatar'] = this.avatar;
+    json[r'download'] = this.download;
+    json[r'emailNotifications'] = this.emailNotifications;
+    json[r'memories'] = this.memories;
+    json[r'purchase'] = this.purchase;
     return json;
   }
 
@@ -70,7 +73,8 @@ class UserPreferencesResponseDto {
       return UserPreferencesResponseDto(
         avatar: AvatarResponse.fromJson(json[r'avatar'])!,
         download: DownloadResponse.fromJson(json[r'download'])!,
-        emailNotifications: EmailNotificationsResponse.fromJson(json[r'emailNotifications'])!,
+        emailNotifications:
+            EmailNotificationsResponse.fromJson(json[r'emailNotifications'])!,
         memories: MemoryResponse.fromJson(json[r'memories'])!,
         purchase: PurchaseResponse.fromJson(json[r'purchase'])!,
       );
@@ -78,7 +82,10 @@ class UserPreferencesResponseDto {
     return null;
   }
 
-  static List<UserPreferencesResponseDto> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<UserPreferencesResponseDto> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <UserPreferencesResponseDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -106,13 +113,19 @@ class UserPreferencesResponseDto {
   }
 
   // maps a json object with a list of UserPreferencesResponseDto-objects as value to a dart map
-  static Map<String, List<UserPreferencesResponseDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<UserPreferencesResponseDto>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<UserPreferencesResponseDto>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = UserPreferencesResponseDto.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = UserPreferencesResponseDto.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -127,4 +140,3 @@ class UserPreferencesResponseDto {
     'purchase',
   };
 }
-

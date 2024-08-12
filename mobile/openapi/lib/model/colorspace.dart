@@ -10,7 +10,6 @@
 
 part of openapi.api;
 
-
 class Colorspace {
   /// Instantiate a new enum with the provided [value].
   const Colorspace._(this.value);
@@ -32,9 +31,13 @@ class Colorspace {
     p3,
   ];
 
-  static Colorspace? fromJson(dynamic value) => ColorspaceTypeTransformer().decode(value);
+  static Colorspace? fromJson(dynamic value) =>
+      ColorspaceTypeTransformer().decode(value);
 
-  static List<Colorspace> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<Colorspace> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <Colorspace>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -51,7 +54,8 @@ class Colorspace {
 /// Transformation class that can [encode] an instance of [Colorspace] to String,
 /// and [decode] dynamic data back to [Colorspace].
 class ColorspaceTypeTransformer {
-  factory ColorspaceTypeTransformer() => _instance ??= const ColorspaceTypeTransformer._();
+  factory ColorspaceTypeTransformer() =>
+      _instance ??= const ColorspaceTypeTransformer._();
 
   const ColorspaceTypeTransformer._();
 
@@ -68,8 +72,10 @@ class ColorspaceTypeTransformer {
   Colorspace? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'srgb': return Colorspace.srgb;
-        case r'p3': return Colorspace.p3;
+        case r'srgb':
+          return Colorspace.srgb;
+        case r'p3':
+          return Colorspace.p3;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -82,4 +88,3 @@ class ColorspaceTypeTransformer {
   /// Singleton [ColorspaceTypeTransformer] instance.
   static ColorspaceTypeTransformer? _instance;
 }
-

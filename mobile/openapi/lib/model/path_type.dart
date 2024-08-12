@@ -10,7 +10,6 @@
 
 part of openapi.api;
 
-
 class PathType {
   /// Instantiate a new enum with the provided [value].
   const PathType._(this.value);
@@ -42,9 +41,13 @@ class PathType {
     profile,
   ];
 
-  static PathType? fromJson(dynamic value) => PathTypeTypeTransformer().decode(value);
+  static PathType? fromJson(dynamic value) =>
+      PathTypeTypeTransformer().decode(value);
 
-  static List<PathType> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<PathType> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <PathType>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -61,7 +64,8 @@ class PathType {
 /// Transformation class that can [encode] an instance of [PathType] to String,
 /// and [decode] dynamic data back to [PathType].
 class PathTypeTypeTransformer {
-  factory PathTypeTypeTransformer() => _instance ??= const PathTypeTypeTransformer._();
+  factory PathTypeTypeTransformer() =>
+      _instance ??= const PathTypeTypeTransformer._();
 
   const PathTypeTypeTransformer._();
 
@@ -78,13 +82,20 @@ class PathTypeTypeTransformer {
   PathType? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'original': return PathType.original;
-        case r'preview': return PathType.preview;
-        case r'thumbnail': return PathType.thumbnail;
-        case r'encoded_video': return PathType.encodedVideo;
-        case r'sidecar': return PathType.sidecar;
-        case r'face': return PathType.face;
-        case r'profile': return PathType.profile;
+        case r'original':
+          return PathType.original;
+        case r'preview':
+          return PathType.preview;
+        case r'thumbnail':
+          return PathType.thumbnail;
+        case r'encoded_video':
+          return PathType.encodedVideo;
+        case r'sidecar':
+          return PathType.sidecar;
+        case r'face':
+          return PathType.face;
+        case r'profile':
+          return PathType.profile;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -97,4 +108,3 @@ class PathTypeTypeTransformer {
   /// Singleton [PathTypeTypeTransformer] instance.
   static PathTypeTypeTransformer? _instance;
 }
-

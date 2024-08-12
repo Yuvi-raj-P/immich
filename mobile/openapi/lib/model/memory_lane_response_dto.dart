@@ -22,23 +22,25 @@ class MemoryLaneResponseDto {
   int yearsAgo;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is MemoryLaneResponseDto &&
-    _deepEquality.equals(other.assets, assets) &&
-    other.yearsAgo == yearsAgo;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MemoryLaneResponseDto &&
+          _deepEquality.equals(other.assets, assets) &&
+          other.yearsAgo == yearsAgo;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (assets.hashCode) +
-    (yearsAgo.hashCode);
+      // ignore: unnecessary_parenthesis
+      (assets.hashCode) + (yearsAgo.hashCode);
 
   @override
-  String toString() => 'MemoryLaneResponseDto[assets=$assets, yearsAgo=$yearsAgo]';
+  String toString() =>
+      'MemoryLaneResponseDto[assets=$assets, yearsAgo=$yearsAgo]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'assets'] = this.assets;
-      json[r'yearsAgo'] = this.yearsAgo;
+    json[r'assets'] = this.assets;
+    json[r'yearsAgo'] = this.yearsAgo;
     return json;
   }
 
@@ -57,7 +59,10 @@ class MemoryLaneResponseDto {
     return null;
   }
 
-  static List<MemoryLaneResponseDto> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<MemoryLaneResponseDto> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <MemoryLaneResponseDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -85,13 +90,19 @@ class MemoryLaneResponseDto {
   }
 
   // maps a json object with a list of MemoryLaneResponseDto-objects as value to a dart map
-  static Map<String, List<MemoryLaneResponseDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<MemoryLaneResponseDto>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<MemoryLaneResponseDto>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = MemoryLaneResponseDto.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = MemoryLaneResponseDto.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -103,4 +114,3 @@ class MemoryLaneResponseDto {
     'yearsAgo',
   };
 }
-

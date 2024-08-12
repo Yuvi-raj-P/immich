@@ -19,20 +19,21 @@ class MergePersonDto {
   List<String> ids;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is MergePersonDto &&
-    _deepEquality.equals(other.ids, ids);
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MergePersonDto && _deepEquality.equals(other.ids, ids);
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (ids.hashCode);
+      // ignore: unnecessary_parenthesis
+      (ids.hashCode);
 
   @override
   String toString() => 'MergePersonDto[ids=$ids]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'ids'] = this.ids;
+    json[r'ids'] = this.ids;
     return json;
   }
 
@@ -52,7 +53,10 @@ class MergePersonDto {
     return null;
   }
 
-  static List<MergePersonDto> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<MergePersonDto> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <MergePersonDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -80,13 +84,19 @@ class MergePersonDto {
   }
 
   // maps a json object with a list of MergePersonDto-objects as value to a dart map
-  static Map<String, List<MergePersonDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<MergePersonDto>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<MergePersonDto>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = MergePersonDto.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = MergePersonDto.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -97,4 +107,3 @@ class MergePersonDto {
     'ids',
   };
 }
-

@@ -10,7 +10,6 @@
 
 part of openapi.api;
 
-
 class TrashApi {
   TrashApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
@@ -29,7 +28,6 @@ class TrashApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -53,7 +51,9 @@ class TrashApi {
   /// Parameters:
   ///
   /// * [BulkIdsDto] bulkIdsDto (required):
-  Future<Response> restoreAssetsWithHttpInfo(BulkIdsDto bulkIdsDto,) async {
+  Future<Response> restoreAssetsWithHttpInfo(
+    BulkIdsDto bulkIdsDto,
+  ) async {
     // ignore: prefer_const_declarations
     final path = r'/trash/restore/assets';
 
@@ -65,7 +65,6 @@ class TrashApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>['application/json'];
-
 
     return apiClient.invokeAPI(
       path,
@@ -81,8 +80,12 @@ class TrashApi {
   /// Parameters:
   ///
   /// * [BulkIdsDto] bulkIdsDto (required):
-  Future<void> restoreAssets(BulkIdsDto bulkIdsDto,) async {
-    final response = await restoreAssetsWithHttpInfo(bulkIdsDto,);
+  Future<void> restoreAssets(
+    BulkIdsDto bulkIdsDto,
+  ) async {
+    final response = await restoreAssetsWithHttpInfo(
+      bulkIdsDto,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -101,7 +104,6 @@ class TrashApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,

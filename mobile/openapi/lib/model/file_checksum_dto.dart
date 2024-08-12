@@ -19,20 +19,22 @@ class FileChecksumDto {
   List<String> filenames;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is FileChecksumDto &&
-    _deepEquality.equals(other.filenames, filenames);
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is FileChecksumDto &&
+          _deepEquality.equals(other.filenames, filenames);
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (filenames.hashCode);
+      // ignore: unnecessary_parenthesis
+      (filenames.hashCode);
 
   @override
   String toString() => 'FileChecksumDto[filenames=$filenames]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'filenames'] = this.filenames;
+    json[r'filenames'] = this.filenames;
     return json;
   }
 
@@ -45,14 +47,19 @@ class FileChecksumDto {
 
       return FileChecksumDto(
         filenames: json[r'filenames'] is Iterable
-            ? (json[r'filenames'] as Iterable).cast<String>().toList(growable: false)
+            ? (json[r'filenames'] as Iterable)
+                .cast<String>()
+                .toList(growable: false)
             : const [],
       );
     }
     return null;
   }
 
-  static List<FileChecksumDto> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<FileChecksumDto> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <FileChecksumDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -80,13 +87,19 @@ class FileChecksumDto {
   }
 
   // maps a json object with a list of FileChecksumDto-objects as value to a dart map
-  static Map<String, List<FileChecksumDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<FileChecksumDto>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<FileChecksumDto>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = FileChecksumDto.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = FileChecksumDto.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -97,4 +110,3 @@ class FileChecksumDto {
     'filenames',
   };
 }
-

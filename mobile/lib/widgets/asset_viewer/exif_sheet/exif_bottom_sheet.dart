@@ -172,7 +172,7 @@ class ExifBottomSheet extends HookConsumerWidget {
                         style: context.textTheme.labelMedium?.copyWith(
                           color: context.textTheme.labelMedium?.color
                               ?.withAlpha(200),
-                          fontWeight: FontWeight.w600,
+                          fontWeight: FontWeight.w400,
                         ),
                       ).tr(),
                     ),

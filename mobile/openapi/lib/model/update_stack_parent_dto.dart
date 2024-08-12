@@ -22,23 +22,25 @@ class UpdateStackParentDto {
   String oldParentId;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is UpdateStackParentDto &&
-    other.newParentId == newParentId &&
-    other.oldParentId == oldParentId;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is UpdateStackParentDto &&
+          other.newParentId == newParentId &&
+          other.oldParentId == oldParentId;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (newParentId.hashCode) +
-    (oldParentId.hashCode);
+      // ignore: unnecessary_parenthesis
+      (newParentId.hashCode) + (oldParentId.hashCode);
 
   @override
-  String toString() => 'UpdateStackParentDto[newParentId=$newParentId, oldParentId=$oldParentId]';
+  String toString() =>
+      'UpdateStackParentDto[newParentId=$newParentId, oldParentId=$oldParentId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'newParentId'] = this.newParentId;
-      json[r'oldParentId'] = this.oldParentId;
+    json[r'newParentId'] = this.newParentId;
+    json[r'oldParentId'] = this.oldParentId;
     return json;
   }
 
@@ -57,7 +59,10 @@ class UpdateStackParentDto {
     return null;
   }
 
-  static List<UpdateStackParentDto> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<UpdateStackParentDto> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <UpdateStackParentDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -85,13 +90,19 @@ class UpdateStackParentDto {
   }
 
   // maps a json object with a list of UpdateStackParentDto-objects as value to a dart map
-  static Map<String, List<UpdateStackParentDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<UpdateStackParentDto>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<UpdateStackParentDto>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = UpdateStackParentDto.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = UpdateStackParentDto.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -103,4 +114,3 @@ class UpdateStackParentDto {
     'oldParentId',
   };
 }
-

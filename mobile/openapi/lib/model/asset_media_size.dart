@@ -10,7 +10,6 @@
 
 part of openapi.api;
 
-
 class AssetMediaSize {
   /// Instantiate a new enum with the provided [value].
   const AssetMediaSize._(this.value);
@@ -32,9 +31,13 @@ class AssetMediaSize {
     thumbnail,
   ];
 
-  static AssetMediaSize? fromJson(dynamic value) => AssetMediaSizeTypeTransformer().decode(value);
+  static AssetMediaSize? fromJson(dynamic value) =>
+      AssetMediaSizeTypeTransformer().decode(value);
 
-  static List<AssetMediaSize> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<AssetMediaSize> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <AssetMediaSize>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -51,7 +54,8 @@ class AssetMediaSize {
 /// Transformation class that can [encode] an instance of [AssetMediaSize] to String,
 /// and [decode] dynamic data back to [AssetMediaSize].
 class AssetMediaSizeTypeTransformer {
-  factory AssetMediaSizeTypeTransformer() => _instance ??= const AssetMediaSizeTypeTransformer._();
+  factory AssetMediaSizeTypeTransformer() =>
+      _instance ??= const AssetMediaSizeTypeTransformer._();
 
   const AssetMediaSizeTypeTransformer._();
 
@@ -68,8 +72,10 @@ class AssetMediaSizeTypeTransformer {
   AssetMediaSize? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'preview': return AssetMediaSize.preview;
-        case r'thumbnail': return AssetMediaSize.thumbnail;
+        case r'preview':
+          return AssetMediaSize.preview;
+        case r'thumbnail':
+          return AssetMediaSize.thumbnail;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -82,4 +88,3 @@ class AssetMediaSizeTypeTransformer {
   /// Singleton [AssetMediaSizeTypeTransformer] instance.
   static AssetMediaSizeTypeTransformer? _instance;
 }
-

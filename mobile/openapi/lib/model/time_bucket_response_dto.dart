@@ -22,23 +22,25 @@ class TimeBucketResponseDto {
   String timeBucket;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is TimeBucketResponseDto &&
-    other.count == count &&
-    other.timeBucket == timeBucket;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is TimeBucketResponseDto &&
+          other.count == count &&
+          other.timeBucket == timeBucket;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (count.hashCode) +
-    (timeBucket.hashCode);
+      // ignore: unnecessary_parenthesis
+      (count.hashCode) + (timeBucket.hashCode);
 
   @override
-  String toString() => 'TimeBucketResponseDto[count=$count, timeBucket=$timeBucket]';
+  String toString() =>
+      'TimeBucketResponseDto[count=$count, timeBucket=$timeBucket]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'count'] = this.count;
-      json[r'timeBucket'] = this.timeBucket;
+    json[r'count'] = this.count;
+    json[r'timeBucket'] = this.timeBucket;
     return json;
   }
 
@@ -57,7 +59,10 @@ class TimeBucketResponseDto {
     return null;
   }
 
-  static List<TimeBucketResponseDto> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<TimeBucketResponseDto> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <TimeBucketResponseDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -85,13 +90,19 @@ class TimeBucketResponseDto {
   }
 
   // maps a json object with a list of TimeBucketResponseDto-objects as value to a dart map
-  static Map<String, List<TimeBucketResponseDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<TimeBucketResponseDto>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<TimeBucketResponseDto>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = TimeBucketResponseDto.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = TimeBucketResponseDto.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -103,4 +114,3 @@ class TimeBucketResponseDto {
     'timeBucket',
   };
 }
-

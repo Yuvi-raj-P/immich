@@ -10,9 +10,9 @@
 
 part of openapi.api;
 
-
 class FileReportsApi {
-  FileReportsApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
+  FileReportsApi([ApiClient? apiClient])
+      : apiClient = apiClient ?? defaultApiClient;
 
   final ApiClient apiClient;
 
@@ -20,7 +20,9 @@ class FileReportsApi {
   /// Parameters:
   ///
   /// * [FileReportFixDto] fileReportFixDto (required):
-  Future<Response> fixAuditFilesWithHttpInfo(FileReportFixDto fileReportFixDto,) async {
+  Future<Response> fixAuditFilesWithHttpInfo(
+    FileReportFixDto fileReportFixDto,
+  ) async {
     // ignore: prefer_const_declarations
     final path = r'/reports/fix';
 
@@ -32,7 +34,6 @@ class FileReportsApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>['application/json'];
-
 
     return apiClient.invokeAPI(
       path,
@@ -48,8 +49,12 @@ class FileReportsApi {
   /// Parameters:
   ///
   /// * [FileReportFixDto] fileReportFixDto (required):
-  Future<void> fixAuditFiles(FileReportFixDto fileReportFixDto,) async {
-    final response = await fixAuditFilesWithHttpInfo(fileReportFixDto,);
+  Future<void> fixAuditFiles(
+    FileReportFixDto fileReportFixDto,
+  ) async {
+    final response = await fixAuditFilesWithHttpInfo(
+      fileReportFixDto,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -68,7 +73,6 @@ class FileReportsApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -89,9 +93,12 @@ class FileReportsApi {
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'FileReportDto',) as FileReportDto;
-    
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'FileReportDto',
+      ) as FileReportDto;
     }
     return null;
   }
@@ -100,7 +107,9 @@ class FileReportsApi {
   /// Parameters:
   ///
   /// * [FileChecksumDto] fileChecksumDto (required):
-  Future<Response> getFileChecksumsWithHttpInfo(FileChecksumDto fileChecksumDto,) async {
+  Future<Response> getFileChecksumsWithHttpInfo(
+    FileChecksumDto fileChecksumDto,
+  ) async {
     // ignore: prefer_const_declarations
     final path = r'/reports/checksum';
 
@@ -112,7 +121,6 @@ class FileReportsApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>['application/json'];
-
 
     return apiClient.invokeAPI(
       path,
@@ -128,20 +136,25 @@ class FileReportsApi {
   /// Parameters:
   ///
   /// * [FileChecksumDto] fileChecksumDto (required):
-  Future<List<FileChecksumResponseDto>?> getFileChecksums(FileChecksumDto fileChecksumDto,) async {
-    final response = await getFileChecksumsWithHttpInfo(fileChecksumDto,);
+  Future<List<FileChecksumResponseDto>?> getFileChecksums(
+    FileChecksumDto fileChecksumDto,
+  ) async {
+    final response = await getFileChecksumsWithHttpInfo(
+      fileChecksumDto,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
       final responseBody = await _decodeBodyBytes(response);
-      return (await apiClient.deserializeAsync(responseBody, 'List<FileChecksumResponseDto>') as List)
-        .cast<FileChecksumResponseDto>()
-        .toList(growable: false);
-
+      return (await apiClient.deserializeAsync(
+              responseBody, 'List<FileChecksumResponseDto>') as List)
+          .cast<FileChecksumResponseDto>()
+          .toList(growable: false);
     }
     return null;
   }

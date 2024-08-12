@@ -10,9 +10,9 @@
 
 part of openapi.api;
 
-
 class SystemMetadataApi {
-  SystemMetadataApi([ApiClient? apiClient]) : apiClient = apiClient ?? defaultApiClient;
+  SystemMetadataApi([ApiClient? apiClient])
+      : apiClient = apiClient ?? defaultApiClient;
 
   final ApiClient apiClient;
 
@@ -29,7 +29,6 @@ class SystemMetadataApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -50,9 +49,12 @@ class SystemMetadataApi {
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'AdminOnboardingUpdateDto',) as AdminOnboardingUpdateDto;
-    
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'AdminOnboardingUpdateDto',
+      ) as AdminOnboardingUpdateDto;
     }
     return null;
   }
@@ -70,7 +72,6 @@ class SystemMetadataApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>[];
-
 
     return apiClient.invokeAPI(
       path,
@@ -91,9 +92,12 @@ class SystemMetadataApi {
     // When a remote server returns no body with a status of 204, we shall not decode it.
     // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
     // FormatException when trying to decode an empty string.
-    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
-      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ReverseGeocodingStateResponseDto',) as ReverseGeocodingStateResponseDto;
-    
+    if (response.body.isNotEmpty &&
+        response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(
+        await _decodeBodyBytes(response),
+        'ReverseGeocodingStateResponseDto',
+      ) as ReverseGeocodingStateResponseDto;
     }
     return null;
   }
@@ -102,7 +106,9 @@ class SystemMetadataApi {
   /// Parameters:
   ///
   /// * [AdminOnboardingUpdateDto] adminOnboardingUpdateDto (required):
-  Future<Response> updateAdminOnboardingWithHttpInfo(AdminOnboardingUpdateDto adminOnboardingUpdateDto,) async {
+  Future<Response> updateAdminOnboardingWithHttpInfo(
+    AdminOnboardingUpdateDto adminOnboardingUpdateDto,
+  ) async {
     // ignore: prefer_const_declarations
     final path = r'/system-metadata/admin-onboarding';
 
@@ -114,7 +120,6 @@ class SystemMetadataApi {
     final formParams = <String, String>{};
 
     const contentTypes = <String>['application/json'];
-
 
     return apiClient.invokeAPI(
       path,
@@ -130,8 +135,12 @@ class SystemMetadataApi {
   /// Parameters:
   ///
   /// * [AdminOnboardingUpdateDto] adminOnboardingUpdateDto (required):
-  Future<void> updateAdminOnboarding(AdminOnboardingUpdateDto adminOnboardingUpdateDto,) async {
-    final response = await updateAdminOnboardingWithHttpInfo(adminOnboardingUpdateDto,);
+  Future<void> updateAdminOnboarding(
+    AdminOnboardingUpdateDto adminOnboardingUpdateDto,
+  ) async {
+    final response = await updateAdminOnboardingWithHttpInfo(
+      adminOnboardingUpdateDto,
+    );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

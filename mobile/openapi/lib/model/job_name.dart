@@ -10,7 +10,6 @@
 
 part of openapi.api;
 
-
 class JobName {
   /// Instantiate a new enum with the provided [value].
   const JobName._(this.value);
@@ -31,7 +30,8 @@ class JobName {
   static const smartSearch = JobName._(r'smartSearch');
   static const duplicateDetection = JobName._(r'duplicateDetection');
   static const backgroundTask = JobName._(r'backgroundTask');
-  static const storageTemplateMigration = JobName._(r'storageTemplateMigration');
+  static const storageTemplateMigration =
+      JobName._(r'storageTemplateMigration');
   static const migration = JobName._(r'migration');
   static const search = JobName._(r'search');
   static const sidecar = JobName._(r'sidecar');
@@ -56,9 +56,13 @@ class JobName {
     notifications,
   ];
 
-  static JobName? fromJson(dynamic value) => JobNameTypeTransformer().decode(value);
+  static JobName? fromJson(dynamic value) =>
+      JobNameTypeTransformer().decode(value);
 
-  static List<JobName> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<JobName> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <JobName>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -75,7 +79,8 @@ class JobName {
 /// Transformation class that can [encode] an instance of [JobName] to String,
 /// and [decode] dynamic data back to [JobName].
 class JobNameTypeTransformer {
-  factory JobNameTypeTransformer() => _instance ??= const JobNameTypeTransformer._();
+  factory JobNameTypeTransformer() =>
+      _instance ??= const JobNameTypeTransformer._();
 
   const JobNameTypeTransformer._();
 
@@ -92,20 +97,34 @@ class JobNameTypeTransformer {
   JobName? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'thumbnailGeneration': return JobName.thumbnailGeneration;
-        case r'metadataExtraction': return JobName.metadataExtraction;
-        case r'videoConversion': return JobName.videoConversion;
-        case r'faceDetection': return JobName.faceDetection;
-        case r'facialRecognition': return JobName.facialRecognition;
-        case r'smartSearch': return JobName.smartSearch;
-        case r'duplicateDetection': return JobName.duplicateDetection;
-        case r'backgroundTask': return JobName.backgroundTask;
-        case r'storageTemplateMigration': return JobName.storageTemplateMigration;
-        case r'migration': return JobName.migration;
-        case r'search': return JobName.search;
-        case r'sidecar': return JobName.sidecar;
-        case r'library': return JobName.library_;
-        case r'notifications': return JobName.notifications;
+        case r'thumbnailGeneration':
+          return JobName.thumbnailGeneration;
+        case r'metadataExtraction':
+          return JobName.metadataExtraction;
+        case r'videoConversion':
+          return JobName.videoConversion;
+        case r'faceDetection':
+          return JobName.faceDetection;
+        case r'facialRecognition':
+          return JobName.facialRecognition;
+        case r'smartSearch':
+          return JobName.smartSearch;
+        case r'duplicateDetection':
+          return JobName.duplicateDetection;
+        case r'backgroundTask':
+          return JobName.backgroundTask;
+        case r'storageTemplateMigration':
+          return JobName.storageTemplateMigration;
+        case r'migration':
+          return JobName.migration;
+        case r'search':
+          return JobName.search;
+        case r'sidecar':
+          return JobName.sidecar;
+        case r'library':
+          return JobName.library_;
+        case r'notifications':
+          return JobName.notifications;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -118,4 +137,3 @@ class JobNameTypeTransformer {
   /// Singleton [JobNameTypeTransformer] instance.
   static JobNameTypeTransformer? _instance;
 }
-

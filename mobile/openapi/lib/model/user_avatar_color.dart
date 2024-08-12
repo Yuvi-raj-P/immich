@@ -10,7 +10,6 @@
 
 part of openapi.api;
 
-
 class UserAvatarColor {
   /// Instantiate a new enum with the provided [value].
   const UserAvatarColor._(this.value);
@@ -48,9 +47,13 @@ class UserAvatarColor {
     amber,
   ];
 
-  static UserAvatarColor? fromJson(dynamic value) => UserAvatarColorTypeTransformer().decode(value);
+  static UserAvatarColor? fromJson(dynamic value) =>
+      UserAvatarColorTypeTransformer().decode(value);
 
-  static List<UserAvatarColor> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<UserAvatarColor> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <UserAvatarColor>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -67,7 +70,8 @@ class UserAvatarColor {
 /// Transformation class that can [encode] an instance of [UserAvatarColor] to String,
 /// and [decode] dynamic data back to [UserAvatarColor].
 class UserAvatarColorTypeTransformer {
-  factory UserAvatarColorTypeTransformer() => _instance ??= const UserAvatarColorTypeTransformer._();
+  factory UserAvatarColorTypeTransformer() =>
+      _instance ??= const UserAvatarColorTypeTransformer._();
 
   const UserAvatarColorTypeTransformer._();
 
@@ -84,16 +88,26 @@ class UserAvatarColorTypeTransformer {
   UserAvatarColor? decode(dynamic data, {bool allowNull = true}) {
     if (data != null) {
       switch (data) {
-        case r'primary': return UserAvatarColor.primary;
-        case r'pink': return UserAvatarColor.pink;
-        case r'red': return UserAvatarColor.red;
-        case r'yellow': return UserAvatarColor.yellow;
-        case r'blue': return UserAvatarColor.blue;
-        case r'green': return UserAvatarColor.green;
-        case r'purple': return UserAvatarColor.purple;
-        case r'orange': return UserAvatarColor.orange;
-        case r'gray': return UserAvatarColor.gray;
-        case r'amber': return UserAvatarColor.amber;
+        case r'primary':
+          return UserAvatarColor.primary;
+        case r'pink':
+          return UserAvatarColor.pink;
+        case r'red':
+          return UserAvatarColor.red;
+        case r'yellow':
+          return UserAvatarColor.yellow;
+        case r'blue':
+          return UserAvatarColor.blue;
+        case r'green':
+          return UserAvatarColor.green;
+        case r'purple':
+          return UserAvatarColor.purple;
+        case r'orange':
+          return UserAvatarColor.orange;
+        case r'gray':
+          return UserAvatarColor.gray;
+        case r'amber':
+          return UserAvatarColor.amber;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -106,4 +120,3 @@ class UserAvatarColorTypeTransformer {
   /// Singleton [UserAvatarColorTypeTransformer] instance.
   static UserAvatarColorTypeTransformer? _instance;
 }
-

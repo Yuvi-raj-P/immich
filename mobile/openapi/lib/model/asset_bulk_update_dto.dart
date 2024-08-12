@@ -85,75 +85,78 @@ class AssetBulkUpdateDto {
   String? stackParentId;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is AssetBulkUpdateDto &&
-    other.dateTimeOriginal == dateTimeOriginal &&
-    other.duplicateId == duplicateId &&
-    _deepEquality.equals(other.ids, ids) &&
-    other.isArchived == isArchived &&
-    other.isFavorite == isFavorite &&
-    other.latitude == latitude &&
-    other.longitude == longitude &&
-    other.removeParent == removeParent &&
-    other.stackParentId == stackParentId;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is AssetBulkUpdateDto &&
+          other.dateTimeOriginal == dateTimeOriginal &&
+          other.duplicateId == duplicateId &&
+          _deepEquality.equals(other.ids, ids) &&
+          other.isArchived == isArchived &&
+          other.isFavorite == isFavorite &&
+          other.latitude == latitude &&
+          other.longitude == longitude &&
+          other.removeParent == removeParent &&
+          other.stackParentId == stackParentId;
 
   @override
   int get hashCode =>
-    // ignore: unnecessary_parenthesis
-    (dateTimeOriginal == null ? 0 : dateTimeOriginal!.hashCode) +
-    (duplicateId == null ? 0 : duplicateId!.hashCode) +
-    (ids.hashCode) +
-    (isArchived == null ? 0 : isArchived!.hashCode) +
-    (isFavorite == null ? 0 : isFavorite!.hashCode) +
-    (latitude == null ? 0 : latitude!.hashCode) +
-    (longitude == null ? 0 : longitude!.hashCode) +
-    (removeParent == null ? 0 : removeParent!.hashCode) +
-    (stackParentId == null ? 0 : stackParentId!.hashCode);
+      // ignore: unnecessary_parenthesis
+      (dateTimeOriginal == null ? 0 : dateTimeOriginal!.hashCode) +
+      (duplicateId == null ? 0 : duplicateId!.hashCode) +
+      (ids.hashCode) +
+      (isArchived == null ? 0 : isArchived!.hashCode) +
+      (isFavorite == null ? 0 : isFavorite!.hashCode) +
+      (latitude == null ? 0 : latitude!.hashCode) +
+      (longitude == null ? 0 : longitude!.hashCode) +
+      (removeParent == null ? 0 : removeParent!.hashCode) +
+      (stackParentId == null ? 0 : stackParentId!.hashCode);
 
   @override
-  String toString() => 'AssetBulkUpdateDto[dateTimeOriginal=$dateTimeOriginal, duplicateId=$duplicateId, ids=$ids, isArchived=$isArchived, isFavorite=$isFavorite, latitude=$latitude, longitude=$longitude, removeParent=$removeParent, stackParentId=$stackParentId]';
+  String toString() =>
+      'AssetBulkUpdateDto[dateTimeOriginal=$dateTimeOriginal, duplicateId=$duplicateId, ids=$ids, isArchived=$isArchived, isFavorite=$isFavorite, latitude=$latitude, longitude=$longitude, removeParent=$removeParent, stackParentId=$stackParentId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
     if (this.dateTimeOriginal != null) {
       json[r'dateTimeOriginal'] = this.dateTimeOriginal;
     } else {
-    //  json[r'dateTimeOriginal'] = null;
+      //  json[r'dateTimeOriginal'] = null;
     }
     if (this.duplicateId != null) {
       json[r'duplicateId'] = this.duplicateId;
     } else {
-    //  json[r'duplicateId'] = null;
+      //  json[r'duplicateId'] = null;
     }
-      json[r'ids'] = this.ids;
+    json[r'ids'] = this.ids;
     if (this.isArchived != null) {
       json[r'isArchived'] = this.isArchived;
     } else {
-    //  json[r'isArchived'] = null;
+      //  json[r'isArchived'] = null;
     }
     if (this.isFavorite != null) {
       json[r'isFavorite'] = this.isFavorite;
     } else {
-    //  json[r'isFavorite'] = null;
+      //  json[r'isFavorite'] = null;
     }
     if (this.latitude != null) {
       json[r'latitude'] = this.latitude;
     } else {
-    //  json[r'latitude'] = null;
+      //  json[r'latitude'] = null;
     }
     if (this.longitude != null) {
       json[r'longitude'] = this.longitude;
     } else {
-    //  json[r'longitude'] = null;
+      //  json[r'longitude'] = null;
     }
     if (this.removeParent != null) {
       json[r'removeParent'] = this.removeParent;
     } else {
-    //  json[r'removeParent'] = null;
+      //  json[r'removeParent'] = null;
     }
     if (this.stackParentId != null) {
       json[r'stackParentId'] = this.stackParentId;
     } else {
-    //  json[r'stackParentId'] = null;
+      //  json[r'stackParentId'] = null;
     }
     return json;
   }
@@ -182,7 +185,10 @@ class AssetBulkUpdateDto {
     return null;
   }
 
-  static List<AssetBulkUpdateDto> listFromJson(dynamic json, {bool growable = false,}) {
+  static List<AssetBulkUpdateDto> listFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final result = <AssetBulkUpdateDto>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
@@ -210,13 +216,19 @@ class AssetBulkUpdateDto {
   }
 
   // maps a json object with a list of AssetBulkUpdateDto-objects as value to a dart map
-  static Map<String, List<AssetBulkUpdateDto>> mapListFromJson(dynamic json, {bool growable = false,}) {
+  static Map<String, List<AssetBulkUpdateDto>> mapListFromJson(
+    dynamic json, {
+    bool growable = false,
+  }) {
     final map = <String, List<AssetBulkUpdateDto>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = AssetBulkUpdateDto.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = AssetBulkUpdateDto.listFromJson(
+          entry.value,
+          growable: growable,
+        );
       }
     }
     return map;
@@ -227,4 +239,3 @@ class AssetBulkUpdateDto {
     'ids',
   };
 }
-
