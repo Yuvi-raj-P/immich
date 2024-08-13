@@ -11,8 +11,9 @@ import 'package:immich_mobile/widgets/common/immich_image.dart';
 import 'package:immich_mobile/widgets/common/immich_toast.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:immich_mobile/routing/router.dart';
-import 'package:photo_manager/photo_manager.dart';
 import 'package:immich_mobile/providers/album/album.provider.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:photo_manager/photo_manager.dart';
 
 /// A stateless widget that provides functionality for editing an image.
 ///
@@ -24,17 +25,16 @@ import 'package:immich_mobile/providers/album/album.provider.dart';
 @immutable
 @RoutePage()
 class EditImagePage extends ConsumerWidget {
-  final Asset? asset;
-  final Image? image;
+  final Asset asset;
+  final Image image;
+  final bool isEdited;
 
   const EditImagePage({
     super.key,
-    this.image,
-    this.asset,
-  }) : assert(
-          (image != null && asset == null) || (image == null && asset != null),
-          'Must supply one of asset or image',
-        );
+    required this.asset,
+    required this.image,
+    required this.isEdited,
+  });
 
   Future<Uint8List> _imageToUint8List(Image image) async {
     final Completer<Uint8List> completer = Completer();
@@ -58,71 +58,101 @@ class EditImagePage extends ConsumerWidget {
     return completer.future;
   }
 
+  void _showSaveDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: Theme.of(context).canvasColor,
+          title: const Text('Saving Image'),
+          content: const Text(
+            'The edited image will be saved to your gallery first, then will be backed up to the server eventually.',
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: Text(
+                'OK',
+                style: TextStyle(color: Theme.of(context).primaryColor),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final ImageProvider provider = (asset != null)
-        ? ImmichImage.imageProvider(asset: asset!)
-        : (image != null)
-            ? image!.image
-            : throw Exception('Invalid image source type');
-
-    final Image imageWidget = (asset != null)
-        ? Image(image: ImmichImage.imageProvider(asset: asset!))
-        : (image != null)
-            ? image!
-            : throw Exception('Invalid image source type');
+    final Image imageWidget =
+        Image(image: ImmichImage.imageProvider(asset: asset));
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+        title: const Text('Edit'),
         leading: IconButton(
           icon: Icon(
             Icons.close_rounded,
-            color: Theme.of(context).iconTheme.color,
+            color: Theme.of(context).primaryColor,
             size: 24,
           ),
           onPressed: () =>
               Navigator.of(context).popUntil((route) => route.isFirst),
         ),
+        backgroundColor: Theme.of(context).canvasColor,
         actions: <Widget>[
-          if (image != null)
-            TextButton(
-              onPressed: () async {
-                try {
-                  final Uint8List imageData = await _imageToUint8List(image!);
-                  ImmichToast.show(
-                    durationInSecond: 3,
-                    context: context,
-                    msg: 'Image Saved!',
-                    gravity: ToastGravity.CENTER,
-                  );
-
-                  await PhotoManager.editor.saveImage(
-                    imageData,
-                    title: '${asset!.fileName}_edited.jpg',
-                  );
-                  await ref.read(albumProvider.notifier).getDeviceAlbums();
-                  Navigator.of(context).popUntil((route) => route.isFirst);
-                } catch (e) {
-                  ImmichToast.show(
-                    durationInSecond: 6,
-                    context: context,
-                    msg: 'Error: ${e.toString()}',
-                    gravity: ToastGravity.BOTTOM,
-                  );
-                }
-              },
-              child: Text(
-                'Save to gallery',
-                style: Theme.of(context).textTheme.displayMedium,
-              ),
+          IconButton(
+            icon: Icon(
+              Icons.done_rounded,
+              color: Theme.of(context).primaryColor,
+              size: 24,
             ),
+            onPressed: isEdited
+                ? () async {
+                    _showSaveDialog(context);
+                    try {
+                      final Uint8List imageData =
+                          await _imageToUint8List(image);
+                      if (Platform.isIOS) {
+                        await PhotoManager.editor.saveImage(
+                          imageData,
+                          title:
+                              "${asset.fileName.substring(0, asset.fileName.length - 4)}_edited.jpg",
+                        );
+                      } else {
+                        final directory = await getExternalStorageDirectory();
+                        final dcimPath =
+                            '${directory!.parent.parent.parent.parent.path}/DCIM';
+                        final fileName =
+                            "${asset.fileName.substring(0, asset.fileName.length - 4)}_edited.jpg";
+                        final filePath = '$dcimPath/$fileName';
+                        final file = File(filePath);
+                        await file.writeAsBytes(imageData);
+                        await ref
+                            .read(albumProvider.notifier)
+                            .getDeviceAlbums();
+                      }
+                      Navigator.of(context).popUntil((route) => route.isFirst);
+                    } catch (e) {
+                      ImmichToast.show(
+                        durationInSecond: 6,
+                        context: context,
+                        msg: 'Error: ${e.toString()}',
+                        gravity: ToastGravity.BOTTOM,
+                      );
+                    }
+                  }
+                : null,
+          ),
         ],
       ),
+      backgroundColor: Theme.of(context).primaryColorDark,
       body: Column(
         children: <Widget>[
           Expanded(
-            child: Image(image: provider),
+            child: image,
           ),
           Container(
             height: 80,
@@ -132,7 +162,7 @@ class EditImagePage extends ConsumerWidget {
       ),
       bottomNavigationBar: Container(
         height: 80,
-        margin: const EdgeInsets.only(bottom: 20, right: 10, left: 10, top: 10),
+        margin: const EdgeInsets.only(bottom: 60, right: 10, left: 10, top: 10),
         decoration: BoxDecoration(
           color: Theme.of(context).bottomAppBarTheme.color,
           borderRadius: BorderRadius.circular(30),
@@ -148,7 +178,9 @@ class EditImagePage extends ConsumerWidget {
                 color: Theme.of(context).iconTheme.color,
               ),
               onPressed: () {
-                context.pushRoute(CropImageRoute(image: imageWidget));
+                context.pushRoute(
+                  CropImageRoute(asset: asset, image: imageWidget),
+                );
               },
             ),
             Text('Crop', style: Theme.of(context).textTheme.displayMedium),

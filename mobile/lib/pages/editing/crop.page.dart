@@ -3,7 +3,10 @@ import 'package:crop_image/crop_image.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:immich_mobile/routing/router.dart';
 import 'package:immich_mobile/utils/hooks/crop_controller_hook.dart';
+import 'package:immich_mobile/widgets/common/immich_toast.dart';
 import 'edit.page.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:immich_mobile/entities/asset.entity.dart';
 import 'package:auto_route/auto_route.dart';
 
 /// A widget for cropping an image.
@@ -14,7 +17,8 @@ import 'package:auto_route/auto_route.dart';
 @RoutePage()
 class CropImagePage extends HookWidget {
   final Image image;
-  const CropImagePage({super.key, required this.image});
+  final Asset asset;
+  const CropImagePage({super.key, required this.image, required this.asset});
 
   @override
   Widget build(BuildContext context) {
@@ -23,30 +27,49 @@ class CropImagePage extends HookWidget {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).bottomAppBarTheme.color,
-        leading: CloseButton(color: Theme.of(context).iconTheme.color),
+        backgroundColor: Theme.of(context).canvasColor,
+        title: const Text('Crop'),
+        leading: CloseButton(color: Theme.of(context).primaryColor),
         actions: [
           IconButton(
             icon: Icon(
               Icons.done_rounded,
-              color: Theme.of(context).iconTheme.color,
+              color: Theme.of(context).primaryColor,
               size: 24,
             ),
             onPressed: () async {
-              final croppedImage = await cropController.croppedImage();
-              context.pushRoute(EditImageRoute(image: croppedImage));
+              try {
+                final croppedImage = await cropController.croppedImage();
+                context.pushRoute(
+                  EditImageRoute(
+                    asset: asset,
+                    image: croppedImage,
+                    isEdited: true,
+                  ),
+                );
+              } catch (e) {
+                // Log the error
+                ImmichToast.show(
+                  durationInSecond: 3,
+                  context: context,
+                  msg: 'Error: $e',
+                  gravity: ToastGravity.CENTER,
+                );
+              }
             },
           ),
         ],
       ),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
           return Column(
             children: [
               Container(
                 padding: const EdgeInsets.only(top: 20),
-                width: double.infinity,
+                width: constraints.maxWidth * 0.9,
                 height: constraints.maxHeight * 0.6,
+                color: Theme.of(context).scaffoldBackgroundColor,
                 child: CropImage(
                   controller: cropController,
                   image: image,
@@ -57,7 +80,7 @@ class CropImagePage extends HookWidget {
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    color: Theme.of(context).bottomAppBarTheme.color,
+                    color: Theme.of(context).scaffoldBackgroundColor,
                     borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(20),
                       topRight: Radius.circular(20),
@@ -188,7 +211,7 @@ class _AspectRatioButton extends StatelessWidget {
           icon: Icon(
             iconData,
             color: aspectRatio.value == ratio
-                ? Colors.indigo
+                ? Theme.of(context).primaryColor
                 : Theme.of(context).iconTheme.color,
           ),
           onPressed: () {
