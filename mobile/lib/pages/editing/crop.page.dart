@@ -25,13 +25,14 @@ class CropImagePage extends HookWidget {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).bottomAppBarTheme.color,
-        leading: CloseButton(color: Theme.of(context).iconTheme.color),
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        title: const Text('Crop'),
+        leading: CloseButton(color: Theme.of(context).primaryColor),
         actions: [
           IconButton(
             icon: Icon(
               Icons.done_rounded,
-              color: Theme.of(context).iconTheme.color,
+              color: Theme.of(context).primaryColor,
               size: 24,
             ),
             onPressed: () async {
@@ -47,13 +48,14 @@ class CropImagePage extends HookWidget {
           ),
         ],
       ),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
           return Column(
             children: [
               Container(
                 padding: const EdgeInsets.only(top: 20),
-                width: double.infinity,
+                width: constraints.maxWidth * 0.9,
                 height: constraints.maxHeight * 0.6,
                 child: CropImage(
                   controller: cropController,
@@ -196,7 +198,7 @@ class _AspectRatioButton extends StatelessWidget {
           icon: Icon(
             iconData,
             color: aspectRatio.value == ratio
-                ? Colors.indigo
+                ? Theme.of(context).primaryColor
                 : Theme.of(context).iconTheme.color,
           ),
           onPressed: () {
@@ -205,7 +207,7 @@ class _AspectRatioButton extends StatelessWidget {
             cropController.aspectRatio = ratio;
           },
         ),
-        Text(label, style: Theme.of(context).textTheme.bodyMedium),
+        Text(label, style: Theme.of(context).textTheme.displayMedium),
       ],
     );
   }
