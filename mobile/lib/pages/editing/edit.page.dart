@@ -87,11 +87,12 @@ class EditImagePage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+        title: const Text('Edit'),
+        backgroundColor: Theme.of(context).canvasColor,
         leading: IconButton(
           icon: Icon(
             Icons.close_rounded,
-            color: Theme.of(context).iconTheme.color,
+            color: Theme.of(context).primaryColor,
             size: 24,
           ),
           onPressed: () =>
@@ -105,27 +106,44 @@ class EditImagePage extends ConsumerWidget {
             child: Text(
               'Save to gallery',
               style: TextStyle(
-                color:
-                    isEdited ? Theme.of(context).iconTheme.color : Colors.grey,
+                color: isEdited ? Theme.of(context).primaryColor : Colors.grey,
               ),
             ),
           ),
         ],
       ),
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            child: image,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      body: Center(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            maxHeight: MediaQuery.of(context).size.height * 0.7,
+            maxWidth: MediaQuery.of(context).size.width * 0.9,
           ),
-          Container(
-            height: 80,
-            color: Theme.of(context).bottomAppBarTheme.color,
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(7),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.2),
+                  spreadRadius: 2,
+                  blurRadius: 10,
+                  offset: const Offset(0, 3),
+                ),
+              ],
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(7),
+              child: Image(
+                image: image.image,
+                fit: BoxFit.contain,
+              ),
+            ),
           ),
-        ],
+        ),
       ),
       bottomNavigationBar: Container(
-        height: 80,
-        margin: const EdgeInsets.only(bottom: 20, right: 10, left: 10, top: 10),
+        height: 70,
+        margin: const EdgeInsets.only(bottom: 60, right: 10, left: 10, top: 10),
         decoration: BoxDecoration(
           color: Theme.of(context).bottomAppBarTheme.color,
           borderRadius: BorderRadius.circular(30),
@@ -139,6 +157,7 @@ class EditImagePage extends ConsumerWidget {
                     ? Icons.crop_rotate_rounded
                     : Icons.crop_rotate_rounded,
                 color: Theme.of(context).iconTheme.color,
+                size: 25,
               ),
               onPressed: () {
                 context.pushRoute(
